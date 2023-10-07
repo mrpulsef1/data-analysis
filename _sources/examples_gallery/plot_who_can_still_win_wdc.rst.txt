@@ -80,7 +80,7 @@ https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scor
 
         events = fastf1.events.get_events_remaining(backend="ergast")
         # Count how many sprints and conventional races are left
-        sprint_events = len(events.loc[events["EventFormat"] == "sprint"])
+        sprint_events = len(events.loc[events["EventFormat"] == "sprint_shootout"])
         conventional_events = len(events.loc[events["EventFormat"] == "conventional"])
 
         # Calculate points for each
@@ -157,28 +157,28 @@ can still win.
 
  .. code-block:: none
 
-    1: Max Verstappen, Current points: 339.0, Theoretical max points: 495, Can win: Yes
-    2: Sergio Pérez, Current points: 201.0, Theoretical max points: 357, Can win: Yes
-    3: Fernando Alonso, Current points: 168.0, Theoretical max points: 324, Can win: No
-    4: Lewis Hamilton, Current points: 156.0, Theoretical max points: 312, Can win: No
-    5: Carlos Sainz, Current points: 102.0, Theoretical max points: 258, Can win: No
-    6: Charles Leclerc, Current points: 99.0, Theoretical max points: 255, Can win: No
-    7: George Russell, Current points: 99.0, Theoretical max points: 255, Can win: No
-    8: Lando Norris, Current points: 75.0, Theoretical max points: 231, Can win: No
-    9: Lance Stroll, Current points: 47.0, Theoretical max points: 203, Can win: No
-    10: Pierre Gasly, Current points: 37.0, Theoretical max points: 193, Can win: No
-    11: Esteban Ocon, Current points: 36.0, Theoretical max points: 192, Can win: No
-    12: Oscar Piastri, Current points: 36.0, Theoretical max points: 192, Can win: No
-    13: Alexander Albon, Current points: 15.0, Theoretical max points: 171, Can win: No
-    14: Nico Hülkenberg, Current points: 9.0, Theoretical max points: 165, Can win: No
-    15: Valtteri Bottas, Current points: 5.0, Theoretical max points: 161, Can win: No
-    16: Guanyu Zhou, Current points: 4.0, Theoretical max points: 160, Can win: No
-    17: Yuki Tsunoda, Current points: 3.0, Theoretical max points: 159, Can win: No
-    18: Kevin Magnussen, Current points: 2.0, Theoretical max points: 158, Can win: No
-    19: Logan Sargeant, Current points: 0.0, Theoretical max points: 156, Can win: No
-    20: Nyck de Vries, Current points: 0.0, Theoretical max points: 156, Can win: No
-    21: Daniel Ricciardo, Current points: 0.0, Theoretical max points: 156, Can win: No
-    22: Liam Lawson, Current points: 0.0, Theoretical max points: 156, Can win: No
+    1: Max Verstappen, Current points: 400.0, Theoretical max points: 580, Can win: Yes
+    2: Sergio Pérez, Current points: 223.0, Theoretical max points: 403, Can win: Yes
+    3: Lewis Hamilton, Current points: 190.0, Theoretical max points: 370, Can win: No
+    4: Fernando Alonso, Current points: 174.0, Theoretical max points: 354, Can win: No
+    5: Carlos Sainz, Current points: 150.0, Theoretical max points: 330, Can win: No
+    6: Charles Leclerc, Current points: 135.0, Theoretical max points: 315, Can win: No
+    7: Lando Norris, Current points: 115.0, Theoretical max points: 295, Can win: No
+    8: George Russell, Current points: 115.0, Theoretical max points: 295, Can win: No
+    9: Oscar Piastri, Current points: 57.0, Theoretical max points: 237, Can win: No
+    10: Lance Stroll, Current points: 47.0, Theoretical max points: 227, Can win: No
+    11: Pierre Gasly, Current points: 46.0, Theoretical max points: 226, Can win: No
+    12: Esteban Ocon, Current points: 38.0, Theoretical max points: 218, Can win: No
+    13: Alexander Albon, Current points: 21.0, Theoretical max points: 201, Can win: No
+    14: Nico Hülkenberg, Current points: 9.0, Theoretical max points: 189, Can win: No
+    15: Valtteri Bottas, Current points: 6.0, Theoretical max points: 186, Can win: No
+    16: Guanyu Zhou, Current points: 4.0, Theoretical max points: 184, Can win: No
+    17: Yuki Tsunoda, Current points: 3.0, Theoretical max points: 183, Can win: No
+    18: Kevin Magnussen, Current points: 3.0, Theoretical max points: 183, Can win: No
+    19: Liam Lawson, Current points: 2.0, Theoretical max points: 182, Can win: No
+    20: Logan Sargeant, Current points: 0.0, Theoretical max points: 180, Can win: No
+    21: Nyck de Vries, Current points: 0.0, Theoretical max points: 180, Can win: No
+    22: Daniel Ricciardo, Current points: 0.0, Theoretical max points: 180, Can win: No
 
 
 
@@ -186,7 +186,7 @@ can still win.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.787 seconds)
+   **Total running time of the script:** (0 minutes 0.725 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_who_can_still_win_wdc.py:
