@@ -255,7 +255,7 @@ Plot aesthetics
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 31.739 seconds)
+   **Total running time of the script:** (0 minutes 17.526 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_strategy.py:

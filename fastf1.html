@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Timing and Telemetry Data - fastf1.core" href="core.html" /><link rel="prev" title="Plot driver standings in a heatmap" href="examples_gallery/plot_results_tracker.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>General Functions - fastf1 - FastF1 3.1.4</title>
+        <title>General Functions - fastf1 - FastF1 3.1.5</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.4</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.1.5</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.4</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.1.5</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -332,8 +332,8 @@ name:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>year</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Championship year</p></li>
-<li><p><strong>gp</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – <p>Name as str or round number as int. If gp is
+<li><p><strong>year</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Championship year</p></li>
+<li><p><strong>gp</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – <p>Name as str or round number as int. If gp is
 a string, a fuzzy match will be performed on all events and the
 closest match will be selected.
 Fuzzy matching uses country, location, name and officialName of
@@ -341,8 +341,8 @@ each event as reference.</p>
 <p>Some examples that will be correctly interpreted: ‘bahrain’,
 ‘australia’, ‘abudabi’, ‘monza’.</p>
 </p></li>
-<li><p><strong>identifier</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – see <a class="reference internal" href="events.html#sessionidentifier"><span class="std std-ref">Session identifiers</span></a></p></li>
-<li><p><strong>backend</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>]]) – <p>select a specific backend as data source, options:
+<li><p><strong>identifier</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</span>) – see <a class="reference internal" href="events.html#sessionidentifier"><span class="std std-ref">Session identifiers</span></a></p></li>
+<li><p><strong>backend</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>]]</span>) – <p>select a specific backend as data source, options:
 - <code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>: FastF1’s own backend, full support for 2018 to now</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>: uses data from the F1 live timing API, sessions
@@ -357,12 +357,12 @@ the other backends are used as a fallback in case the default
 is not available.</p>
 <p>For seasons older than 2018 <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code> is always used.</p>
 </p></li>
-<li><p><strong>force_ergast</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – [Deprecated, use <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>] Always use data
+<li><p><strong>force_ergast</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – [Deprecated, use <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>] Always use data
 from the ergast database to create the event schedule</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -375,11 +375,11 @@ based on year, test  event number and session number.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>year</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Championship year</p></li>
-<li><p><strong>test_number</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of the testing event (usually at most two)</p></li>
-<li><p><strong>session_number</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of the session within a specific testing
+<li><p><strong>year</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Championship year</p></li>
+<li><p><strong>test_number</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Number of the testing event (usually at most two)</p></li>
+<li><p><strong>session_number</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Number of the session within a specific testing
 event. Each testing event usually has three sessions.</p></li>
-<li><p><strong>backend</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>]]) – <p>select a specific backend as data source, options:</p>
+<li><p><strong>backend</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>]]</span>) – <p>select a specific backend as data source, options:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>: FastF1’s own backend, full support for 2018 to now</p></li>
 <li><dl class="simple">
@@ -396,7 +396,7 @@ is not available.</p>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -413,15 +413,15 @@ season and gp.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>year</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Championship year</p></li>
-<li><p><strong>gp</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Name as str or round number as int. If gp is
+<li><p><strong>year</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Championship year</p></li>
+<li><p><strong>gp</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – Name as str or round number as int. If gp is
 a string, a fuzzy match will be performed on all events and the
 closest match will be selected.
 Fuzzy matching uses country, location, name and officialName of
 each event as reference.
 Note that the round number cannot be used to get a testing event,
 as all testing event are round 0!</p></li>
-<li><p><strong>backend</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>]]) – <p>select a specific backend as data source, options:</p>
+<li><p><strong>backend</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>]]</span>) – <p>select a specific backend as data source, options:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>: FastF1’s own backend, full support for 2018 to now</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>: uses data from the F1 live timing API, sessions
@@ -436,15 +436,15 @@ the other backends are used as a fallback in case the default
 is not available.</p>
 <p>For seasons older than 2018 <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code> is always used.</p>
 </p></li>
-<li><p><strong>force_ergast</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – [Deprecated, use <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>] Always use data
+<li><p><strong>force_ergast</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – [Deprecated, use <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>] Always use data
 from the ergast database to create the event schedule</p></li>
-<li><p><strong>strict_search</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Match precisely the query, or default to
+<li><p><strong>strict_search</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Match precisely the query, or default to
 fuzzy search. If no event is found with
 <code class="docutils literal notranslate"><span class="pre">strict_search=True</span></code>, the function will return None</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="events.html#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="events.html#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a></span></p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -459,10 +459,10 @@ fuzzy search. If no event is found with
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dt</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>]) – Optional DateTime to get events after.</p></li>
-<li><p><strong>include_testing</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Include or exclude testing sessions from the
+<li><p><strong>dt</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>]</span>) – Optional DateTime to get events after.</p></li>
+<li><p><strong>include_testing</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Include or exclude testing sessions from the
 event schedule.</p></li>
-<li><p><strong>backend</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>]]) – <p>select a specific backend as data source, options:</p>
+<li><p><strong>backend</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>]]</span>) – <p>select a specific backend as data source, options:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>: FastF1’s own backend, full support for 2018 to now</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>: uses data from the F1 live timing API, sessions
@@ -477,12 +477,12 @@ the other backends are used as a fallback in case the default
 is not available.</p>
 <p>For seasons older than 2018 <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code> is always used.</p>
 </p></li>
-<li><p><strong>force_ergast</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – [Deprecated, use <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>] Always use data
+<li><p><strong>force_ergast</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – [Deprecated, use <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>] Always use data
 from the ergast database to create the event schedule</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="events.html#fastf1.events.EventSchedule" title="fastf1.events.EventSchedule"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSchedule</span></code></a></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="events.html#fastf1.events.EventSchedule" title="fastf1.events.EventSchedule"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSchedule</span></code></a></span></p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -498,9 +498,9 @@ based on year and test event number.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>year</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Championship year</p></li>
-<li><p><strong>test_number</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of the testing event (usually at most two)</p></li>
-<li><p><strong>backend</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>]]) – <p>select a specific backend as data source, options:</p>
+<li><p><strong>year</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Championship year</p></li>
+<li><p><strong>test_number</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Number of the testing event (usually at most two)</p></li>
+<li><p><strong>backend</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>]]</span>) – <p>select a specific backend as data source, options:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>: FastF1’s own backend, full support for 2018 to now</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>: uses data from the F1 live timing API, sessions
@@ -514,7 +514,7 @@ is not available.</p>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="events.html#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="events.html#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a></span></p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -530,10 +530,10 @@ season.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>year</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Championship year</p></li>
-<li><p><strong>include_testing</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Include or exclude testing sessions from the
+<li><p><strong>year</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Championship year</p></li>
+<li><p><strong>include_testing</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Include or exclude testing sessions from the
 event schedule.</p></li>
-<li><p><strong>backend</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>]]) – <p>select a specific backend as data source, options:</p>
+<li><p><strong>backend</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>]]</span>) – <p>select a specific backend as data source, options:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">'fastf1'</span></code>: FastF1’s own backend, full support for 2018 to now</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'f1timing'</span></code>: uses data from the F1 live timing API, sessions
@@ -548,12 +548,12 @@ the other backends are used as a fallback in case the default
 is not available.</p>
 <p>For seasons older than 2018 <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code> is always used.</p>
 </p></li>
-<li><p><strong>force_ergast</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – [Deprecated, use <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>] Always use data
+<li><p><strong>force_ergast</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – [Deprecated, use <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>] Always use data
 from the ergast database to create the event schedule</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="events.html#fastf1.events.EventSchedule" title="fastf1.events.EventSchedule"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSchedule</span></code></a></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="events.html#fastf1.events.EventSchedule" title="fastf1.events.EventSchedule"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSchedule</span></code></a></span></p>
 </dd>
 </dl>
 <div class="versionadded">
@@ -671,15 +671,15 @@ need which will lead to reduced performance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cache_dir</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Path to the directory which should be used to store
+<li><p><strong>cache_dir</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the directory which should be used to store
 cached data. Path needs to exist.</p></li>
-<li><p><strong>ignore_version</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Ignore if cached data was create with a different
+<li><p><strong>ignore_version</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Ignore if cached data was create with a different
 version of the API parser (not recommended: this can cause
 crashes or unrecognized errors as incompatible data may be
 loaded)</p></li>
-<li><p><strong>force_renew</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Ignore existing cached data. Download data and update
+<li><p><strong>force_renew</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Ignore existing cached data. Download data and update
 the cache instead.</p></li>
-<li><p><strong>use_requests_cache</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Do caching of the raw GET and POST requests.</p></li>
+<li><p><strong>use_requests_cache</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Do caching of the raw GET and POST requests.</p></li>
 </ul>
 </dd>
 </dl>
@@ -775,7 +775,7 @@ returned. This can be useful for freezing the state of the cache or
 working with an unstable internet connection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>enabled</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – sets the state of offline mode to ‘enabled’ (<code class="docutils literal notranslate"><span class="pre">True</span></code>)
+<dd class="field-odd"><p><strong>enabled</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – sets the state of offline mode to ‘enabled’ (<code class="docutils literal notranslate"><span class="pre">True</span></code>)
 or ‘disabled’ (<code class="docutils literal notranslate"><span class="pre">False</span></code>)</p>
 </dd>
 </dl>
@@ -814,7 +814,7 @@ WARNING, ERROR and CRITICAL.</p>
 with a higher level will be shown.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>level</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Either a log level from the logging module (e.g. <cite>logging.INFO</cite>)
+<dd class="field-odd"><p><strong>level</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – Either a log level from the logging module (e.g. <cite>logging.INFO</cite>)
 or the level as a string (e.g. ‘WARNING’).</p>
 </dd>
 </dl>
@@ -923,7 +923,7 @@ or the level as a string (e.g. ‘WARNING’).</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=21631f0b"></script>
+</div><script src="_static/documentation_options.js?v=851b9b12"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

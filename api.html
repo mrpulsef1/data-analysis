@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Ergast API Interface" href="ergast.html" /><link rel="prev" title="Event Schedule - fastf1.events" href="events.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>F1 API - fastf1.api - FastF1 3.1.4</title>
+        <title>F1 API - fastf1.api - FastF1 3.1.5</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.4</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.1.5</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.4</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.1.5</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -354,14 +354,14 @@ absolute truth. If necessary, other values are adjusted to fit.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – api path base string (usually <code class="docutils literal notranslate"><span class="pre">Session.api_path</span></code>)</p></li>
-<li><p><strong>response</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – api response can be passed if data was already downloaded</p></li>
+<li><p><strong>path</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – api path base string (usually <code class="docutils literal notranslate"><span class="pre">Session.api_path</span></code>)</p></li>
+<li><p><strong>response</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – api response can be passed if data was already downloaded</p></li>
 <li><p><strong>livedata</strong> – An instance of <a class="reference internal" href="livetiming.html#fastf1.livetiming.data.LiveTimingData" title="fastf1.livetiming.data.LiveTimingData"><code class="xref py py-class docutils literal notranslate"><span class="pre">fastf1.livetiming.data.LiveTimingData</span></code></a>
 to use as a source instead of the api</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>)</p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type">(<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>)</span></p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><p><strong>laps_data and stream_data</strong></p>
@@ -862,13 +862,13 @@ Timestamps and data need to be separated before and only the data must be passed
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>text</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The string which should be parsed</p></li>
-<li><p><strong>zipped</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether the text is compressed. This is the case for  ‘.z’
+<li><p><strong>text</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The string which should be parsed</p></li>
+<li><p><strong>zipped</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Whether the text is compressed. This is the case for  ‘.z’
 data (e.g. position data)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>]</p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>]</span></p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><dl class="simple">
@@ -983,7 +983,7 @@ A likely cause is that the session does not exist because it was cancelled.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=21631f0b"></script>
+</div><script src="_static/documentation_options.js?v=851b9b12"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="F1 API - fastf1.api" href="api.html" /><link rel="prev" title="Timing and Telemetry Data - fastf1.core" href="core.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>Event Schedule - fastf1.events - FastF1 3.1.4</title>
+        <title>Event Schedule - fastf1.events - FastF1 3.1.5</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.4</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.1.5</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.4</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.1.5</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -387,8 +387,8 @@ season.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>*args</strong> – passed on to <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> superclass</p></li>
-<li><p><strong>year</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Championship year</p></li>
-<li><p><strong>force_default_cols</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Enforce that all default columns and only
+<li><p><strong>year</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Championship year</p></li>
+<li><p><strong>force_default_cols</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Enforce that all default columns and only
 the default columns exist</p></li>
 <li><p><strong>**kwargs</strong> – passed on to <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> superclass
 (except ‘columns’ which is unsupported for the event schedule)</p></li>
@@ -444,13 +444,13 @@ testing event.</p>
 <dd><p>Get an <a class="reference internal" href="#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a> by its round number.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>round</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The round number</p>
+<dd class="field-odd"><p><strong>round</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – The round number</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – The round does not exist in the event schedule</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -477,11 +477,11 @@ Grand Prix” as <code class="docutils literal notranslate"><span class="pre">na
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The name of the event. For example,
+<li><p><strong>name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the event. For example,
 <code class="docutils literal notranslate"><span class="pre">.get_event_by_name(&quot;british&quot;)</span></code> and
 <code class="docutils literal notranslate"><span class="pre">.get_event_by_name(&quot;silverstone&quot;)</span></code> will both return the
 event for the British Grand Prix.</p></li>
-<li><p><strong>strict_search</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Search only for exact query matches
+<li><p><strong>strict_search</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Search only for exact query matches
 instead of using fuzzy search. For example,
 <code class="docutils literal notranslate"><span class="pre">.get_event_by_name(&quot;British</span> <span class="pre">Grand</span> <span class="pre">Prix&quot;,</span> <span class="pre">strict_search=True)</span></code> # noqa: E501
 will return the event for the British Grand Prix, whereas
@@ -490,7 +490,7 @@ will return <code class="docutils literal notranslate"><span class="pre">None</s
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a></p>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#fastf1.events.Event" title="fastf1.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -508,7 +508,7 @@ of event and depending on the event format.</p>
 <a class="reference internal" href="fastf1.html#fastf1.get_event" title="fastf1.get_event"><code class="xref py py-func docutils literal notranslate"><span class="pre">fastf1.get_event()</span></code></a> or similar to get a specific event.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>year</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Championship year</p>
+<dd class="field-odd"><p><strong>year</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – Championship year</p>
 </dd>
 </dl>
 <p><strong>Methods:</strong></p>
@@ -552,7 +552,7 @@ of event and depending on the event format.</p>
 testing event.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -580,7 +580,7 @@ testing event.</p>
 <dd class="field-even"><p><strong>ValueError</strong> – No matching session or invalid identifier</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -593,7 +593,7 @@ of this event is or was held.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>identifier</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – see <a class="reference internal" href="#sessionidentifier"><span class="std std-ref">Session identifiers</span></a></p></li>
+<li><p><strong>identifier</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – see <a class="reference internal" href="#sessionidentifier"><span class="std std-ref">Session identifiers</span></a></p></li>
 <li><p><strong>utc</strong> – return a non-timezone-aware UTC timestamp</p></li>
 </ul>
 </dd>
@@ -601,7 +601,7 @@ of this event is or was held.</p>
 <dd class="field-even"><p><strong>ValueError</strong> – No matching session or invalid identifier</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Timestamp</span></code></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timestamp</span></code></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -612,13 +612,13 @@ of this event is or was held.</p>
 <dd><p>Return a session from this event.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>identifier</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – see <a class="reference internal" href="#sessionidentifier"><span class="std std-ref">Session identifiers</span></a></p>
+<dd class="field-odd"><p><strong>identifier</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – see <a class="reference internal" href="#sessionidentifier"><span class="std std-ref">Session identifiers</span></a></p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – No matching session or invalid identifier</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -629,7 +629,7 @@ of this event is or was held.</p>
 <dd><p>Return the race session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -640,7 +640,7 @@ of this event is or was held.</p>
 <dd><p>Return the qualifying session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -651,7 +651,7 @@ of this event is or was held.</p>
 <dd><p>Return the sprint session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -662,7 +662,7 @@ of this event is or was held.</p>
 <dd><p>Return the sprint shootout session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -671,11 +671,11 @@ of this event is or was held.</p>
 <dt class="sig sig-object py" id="fastf1.events.Event.get_practice">
 <span class="sig-name descname"><span class="pre">get_practice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/events.html#Event.get_practice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.events.Event.get_practice" title="Link to this definition">#</a></dt>
 <dd><p>Return the specified practice session.
-:type number: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>
+:type number: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>
 :param number: 1, 2 or 3 - Free practice session number</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></p>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -786,7 +786,7 @@ of this event is or was held.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=21631f0b"></script>
+</div><script src="_static/documentation_options.js?v=851b9b12"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>
