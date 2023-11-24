@@ -24,7 +24,7 @@ Plot the qualifying result with visualization the fastest times.
 
 .. GENERATED FROM PYTHON SOURCE LINES 6-24
 
-.. code-block:: default
+.. code-block:: Python
 
 
 
@@ -57,7 +57,7 @@ First, we need to get an array of all drivers.
 
 .. GENERATED FROM PYTHON SOURCE LINES 26-31
 
-.. code-block:: default
+.. code-block:: Python
 
 
     drivers = pd.unique(session.laps['Driver'])
@@ -86,7 +86,7 @@ number them nicely by starting position.
 
 .. GENERATED FROM PYTHON SOURCE LINES 35-43
 
-.. code-block:: default
+.. code-block:: Python
 
 
     list_fastest_laps = list()
@@ -111,7 +111,7 @@ other lap times.
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-52
 
-.. code-block:: default
+.. code-block:: Python
 
 
     pole_lap = fastest_laps.pick_fastest()
@@ -133,7 +133,7 @@ and 'LapTimeDelta' columns.
 
 .. GENERATED FROM PYTHON SOURCE LINES 56-60
 
-.. code-block:: default
+.. code-block:: Python
 
 
     print(fastest_laps[['Driver', 'LapTime', 'LapTimeDelta']])
@@ -178,7 +178,7 @@ Finally, we'll create a list of team colors per lap to color our plot.
 
 .. GENERATED FROM PYTHON SOURCE LINES 62-68
 
-.. code-block:: default
+.. code-block:: Python
 
     team_colors = list()
     for index, lap in fastest_laps.iterlaps():
@@ -199,7 +199,7 @@ Now, we can plot all the data
 
 .. GENERATED FROM PYTHON SOURCE LINES 70-84
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, ax = plt.subplots()
     ax.barh(fastest_laps.index, fastest_laps['LapTimeDelta'],
@@ -228,7 +228,7 @@ Finally, give the plot a meaningful title
 
 .. GENERATED FROM PYTHON SOURCE LINES 87-94
 
-.. code-block:: default
+.. code-block:: Python
 
 
     lap_time_string = strftimedelta(pole_lap['LapTime'], '%m:%s.%ms')
@@ -252,7 +252,7 @@ Finally, give the plot a meaningful title
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.713 seconds)
+   **Total running time of the script:** (0 minutes 1.647 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_qualifying_results.py:
@@ -261,16 +261,13 @@ Finally, give the plot a meaningful title
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_qualifying_results.ipynb <plot_qualifying_results.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_qualifying_results.py <plot_qualifying_results.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_qualifying_results.ipynb <plot_qualifying_results.ipynb>`
 
 
 .. only:: html

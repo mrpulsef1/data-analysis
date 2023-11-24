@@ -30,7 +30,7 @@ track map. (You could also use any other lap instead.)
 
 .. GENERATED FROM PYTHON SOURCE LINES 10-26
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import fastf1
@@ -68,7 +68,7 @@ rotated vector [x_rot, y_rot] is obtained.
 
 .. GENERATED FROM PYTHON SOURCE LINES 35-42
 
-.. code-block:: default
+.. code-block:: Python
 
 
     def rotate(xy, *, angle):
@@ -92,7 +92,7 @@ the track map is oriented correctly. After that, plot the rotated track map.
 
 .. GENERATED FROM PYTHON SOURCE LINES 46-60
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Get an array of shape [n, 2] where n is the number of points and the second
@@ -117,7 +117,7 @@ the track map is oriented correctly. After that, plot the rotated track map.
  .. code-block:: none
 
 
-    [<matplotlib.lines.Line2D object at 0x7f21996d56a0>]
+    [<matplotlib.lines.Line2D object at 0x7f444b82b040>]
 
 
 
@@ -131,7 +131,7 @@ inside the bubble.
 
 .. GENERATED FROM PYTHON SOURCE LINES 67-103
 
-.. code-block:: default
+.. code-block:: Python
 
 
     offset_vector = [500, 0]  # offset length is chosen arbitrarily to 'look good'
@@ -183,7 +183,7 @@ so that the track is not distorted and show the plot.
 
 .. GENERATED FROM PYTHON SOURCE LINES 107-113
 
-.. code-block:: default
+.. code-block:: Python
 
 
     plt.title(session.event['Location'])
@@ -206,7 +206,7 @@ so that the track is not distorted and show the plot.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.970 seconds)
+   **Total running time of the script:** (0 minutes 10.990 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_annotate_corners.py:
@@ -215,16 +215,13 @@ so that the track is not distorted and show the plot.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_annotate_corners.ipynb <plot_annotate_corners.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_annotate_corners.py <plot_annotate_corners.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_annotate_corners.ipynb <plot_annotate_corners.ipynb>`
 
 
 .. only:: html

@@ -25,7 +25,7 @@ Plot the position of each driver at the end of each lap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 7-14
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import fastf1.plotting
@@ -47,7 +47,7 @@ Load the session and create the plot
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-21
 
-.. code-block:: default
+.. code-block:: Python
 
     session = fastf1.get_session(2023, 1, 'R')
     session.load(telemetry=False, weather=False)
@@ -69,7 +69,7 @@ position over the number of laps.
 
 .. GENERATED FROM PYTHON SOURCE LINES 26-35
 
-.. code-block:: default
+.. code-block:: Python
 
     for drv in session.drivers:
         drv_laps = session.laps.pick_driver(drv)
@@ -94,7 +94,7 @@ one is at the top, set custom tick positions and axis labels.
 
 .. GENERATED FROM PYTHON SOURCE LINES 39-44
 
-.. code-block:: default
+.. code-block:: Python
 
     ax.set_ylim([20.5, 0.5])
     ax.set_yticks([1, 5, 10, 15, 20])
@@ -120,7 +120,7 @@ Because this plot is very crowed, add the legend outside the plot area.
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-51
 
-.. code-block:: default
+.. code-block:: Python
 
     ax.legend(bbox_to_anchor=(1.0, 1.02))
     plt.tight_layout()
@@ -141,7 +141,7 @@ Because this plot is very crowed, add the legend outside the plot area.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 7.152 seconds)
+   **Total running time of the script:** (0 minutes 5.509 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_position_changes.py:
@@ -150,16 +150,13 @@ Because this plot is very crowed, add the legend outside the plot area.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_position_changes.ipynb <plot_position_changes.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_position_changes.py <plot_position_changes.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_position_changes.ipynb <plot_position_changes.ipynb>`
 
 
 .. only:: html

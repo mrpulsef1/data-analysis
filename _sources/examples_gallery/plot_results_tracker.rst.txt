@@ -25,7 +25,7 @@ https://public.tableau.com/app/profile/mateusz.karmalski/viz/F1ResultsTracker202
 
 .. GENERATED FROM PYTHON SOURCE LINES 7-15
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import pandas as pd
@@ -48,7 +48,7 @@ First, we load the results for season 2022.
 
 .. GENERATED FROM PYTHON SOURCE LINES 17-47
 
-.. code-block:: default
+.. code-block:: Python
 
     ergast = Ergast()
     races = ergast.get_race_schedule(2022)  # Races in year 2022
@@ -94,7 +94,7 @@ driver and each column refers to a race, and the cell value is the points.
 
 .. GENERATED FROM PYTHON SOURCE LINES 50-62
 
-.. code-block:: default
+.. code-block:: Python
 
     results = results.pivot(index='driverCode', columns='round', values='points')
     # Here we have a 22-by-22 matrix (22 races and 22 drivers, incl. DEV and HUL)
@@ -121,7 +121,7 @@ The final step is to plot a heatmap using plotly
 
 .. GENERATED FROM PYTHON SOURCE LINES 64-90
 
-.. code-block:: default
+.. code-block:: Python
 
     fig = px.imshow(
         results,
@@ -162,7 +162,7 @@ The final step is to plot a heatmap using plotly
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.184 seconds)
+   **Total running time of the script:** (0 minutes 17.337 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_results_tracker.py:
@@ -171,16 +171,13 @@ The final step is to plot a heatmap using plotly
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_results_tracker.ipynb <plot_results_tracker.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_results_tracker.py <plot_results_tracker.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_results_tracker.ipynb <plot_results_tracker.ipynb>`
 
 
 .. only:: html

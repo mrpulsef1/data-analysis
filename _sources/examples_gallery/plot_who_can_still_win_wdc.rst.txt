@@ -28,7 +28,7 @@ its result.
 
 .. GENERATED FROM PYTHON SOURCE LINES 11-16
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import fastf1
@@ -49,7 +49,7 @@ Reference https://theoehrly.github.io/Fast-F1-Pre-Release-Documentation/ergast.h
 
 .. GENERATED FROM PYTHON SOURCE LINES 19-25
 
-.. code-block:: default
+.. code-block:: Python
 
     def get_drivers_standings():
         ergast = Ergast()
@@ -72,7 +72,7 @@ https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scor
 
 .. GENERATED FROM PYTHON SOURCE LINES 29-45
 
-.. code-block:: default
+.. code-block:: Python
 
     def calculate_max_points_for_remaining_season():
         POINTS_FOR_SPRINT = 8 + 25 + 1  # Winning the sprint, race and fastest lap
@@ -108,7 +108,7 @@ since its more complicated and would require comparing positions.
 
 .. GENERATED FROM PYTHON SOURCE LINES 52-66
 
-.. code-block:: default
+.. code-block:: Python
 
     def calculate_who_can_win(driver_standings, max_points):
         LEADER_POINTS = int(driver_standings.loc[0]['points'])
@@ -138,7 +138,7 @@ can still win.
 
 .. GENERATED FROM PYTHON SOURCE LINES 69-78
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Get the current drivers standings
@@ -157,28 +157,28 @@ can still win.
 
  .. code-block:: none
 
-    1: Max Verstappen, Current points: 524.0, Theoretical max points: 576, Can win: Yes
-    2: Sergio Pérez, Current points: 258.0, Theoretical max points: 310, Can win: No
-    3: Lewis Hamilton, Current points: 226.0, Theoretical max points: 278, Can win: No
-    4: Fernando Alonso, Current points: 198.0, Theoretical max points: 250, Can win: No
-    5: Lando Norris, Current points: 195.0, Theoretical max points: 247, Can win: No
-    6: Carlos Sainz, Current points: 192.0, Theoretical max points: 244, Can win: No
-    7: Charles Leclerc, Current points: 170.0, Theoretical max points: 222, Can win: No
-    8: George Russell, Current points: 156.0, Theoretical max points: 208, Can win: No
-    9: Oscar Piastri, Current points: 87.0, Theoretical max points: 139, Can win: No
-    10: Lance Stroll, Current points: 63.0, Theoretical max points: 115, Can win: No
-    11: Pierre Gasly, Current points: 62.0, Theoretical max points: 114, Can win: No
-    12: Esteban Ocon, Current points: 46.0, Theoretical max points: 98, Can win: No
-    13: Alexander Albon, Current points: 27.0, Theoretical max points: 79, Can win: No
-    14: Yuki Tsunoda, Current points: 13.0, Theoretical max points: 65, Can win: No
-    15: Valtteri Bottas, Current points: 10.0, Theoretical max points: 62, Can win: No
-    16: Nico Hülkenberg, Current points: 9.0, Theoretical max points: 61, Can win: No
-    17: Daniel Ricciardo, Current points: 6.0, Theoretical max points: 58, Can win: No
-    18: Guanyu Zhou, Current points: 6.0, Theoretical max points: 58, Can win: No
-    19: Kevin Magnussen, Current points: 3.0, Theoretical max points: 55, Can win: No
-    20: Liam Lawson, Current points: 2.0, Theoretical max points: 54, Can win: No
-    21: Logan Sargeant, Current points: 1.0, Theoretical max points: 53, Can win: No
-    22: Nyck de Vries, Current points: 0.0, Theoretical max points: 52, Can win: No
+    1: Max Verstappen, Current points: 549.0, Theoretical max points: 575, Can win: Yes
+    2: Sergio Pérez, Current points: 273.0, Theoretical max points: 299, Can win: No
+    3: Lewis Hamilton, Current points: 232.0, Theoretical max points: 258, Can win: No
+    4: Carlos Sainz, Current points: 200.0, Theoretical max points: 226, Can win: No
+    5: Fernando Alonso, Current points: 200.0, Theoretical max points: 226, Can win: No
+    6: Lando Norris, Current points: 195.0, Theoretical max points: 221, Can win: No
+    7: Charles Leclerc, Current points: 188.0, Theoretical max points: 214, Can win: No
+    8: George Russell, Current points: 160.0, Theoretical max points: 186, Can win: No
+    9: Oscar Piastri, Current points: 89.0, Theoretical max points: 115, Can win: No
+    10: Lance Stroll, Current points: 73.0, Theoretical max points: 99, Can win: No
+    11: Pierre Gasly, Current points: 62.0, Theoretical max points: 88, Can win: No
+    12: Esteban Ocon, Current points: 58.0, Theoretical max points: 84, Can win: No
+    13: Alexander Albon, Current points: 27.0, Theoretical max points: 53, Can win: No
+    14: Yuki Tsunoda, Current points: 13.0, Theoretical max points: 39, Can win: No
+    15: Valtteri Bottas, Current points: 10.0, Theoretical max points: 36, Can win: No
+    16: Nico Hülkenberg, Current points: 9.0, Theoretical max points: 35, Can win: No
+    17: Daniel Ricciardo, Current points: 6.0, Theoretical max points: 32, Can win: No
+    18: Guanyu Zhou, Current points: 6.0, Theoretical max points: 32, Can win: No
+    19: Kevin Magnussen, Current points: 3.0, Theoretical max points: 29, Can win: No
+    20: Liam Lawson, Current points: 2.0, Theoretical max points: 28, Can win: No
+    21: Logan Sargeant, Current points: 1.0, Theoretical max points: 27, Can win: No
+    22: Nyck de Vries, Current points: 0.0, Theoretical max points: 26, Can win: No
 
 
 
@@ -186,7 +186,7 @@ can still win.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.306 seconds)
+   **Total running time of the script:** (0 minutes 0.519 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_who_can_still_win_wdc.py:
@@ -195,16 +195,13 @@ can still win.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_who_can_still_win_wdc.ipynb <plot_who_can_still_win_wdc.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_who_can_still_win_wdc.py <plot_who_can_still_win_wdc.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_who_can_still_win_wdc.ipynb <plot_who_can_still_win_wdc.ipynb>`
 
 
 .. only:: html

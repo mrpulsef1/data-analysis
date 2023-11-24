@@ -24,7 +24,7 @@ Plot the speed over the course of a lap and add annotations to mark corners.
 
 .. GENERATED FROM PYTHON SOURCE LINES 6-21
 
-.. code-block:: default
+.. code-block:: Python
 
 
 
@@ -55,7 +55,7 @@ lap.
 
 .. GENERATED FROM PYTHON SOURCE LINES 24-28
 
-.. code-block:: default
+.. code-block:: Python
 
 
     fastest_lap = session.laps.pick_fastest()
@@ -75,7 +75,7 @@ of the corners.
 
 .. GENERATED FROM PYTHON SOURCE LINES 31-34
 
-.. code-block:: default
+.. code-block:: Python
 
 
     circuit_info = session.get_circuit_info()
@@ -94,7 +94,7 @@ markers.
 
 .. GENERATED FROM PYTHON SOURCE LINES 37-68
 
-.. code-block:: default
+.. code-block:: Python
 
 
     team_color = fastf1.plotting.team_color(fastest_lap['Team'])
@@ -142,7 +142,7 @@ markers.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.230 seconds)
+   **Total running time of the script:** (0 minutes 1.992 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_annotate_speed_trace.py:
@@ -151,16 +151,13 @@ markers.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_annotate_speed_trace.ipynb <plot_annotate_speed_trace.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_annotate_speed_trace.py <plot_annotate_speed_trace.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_annotate_speed_trace.ipynb <plot_annotate_speed_trace.ipynb>`
 
 
 .. only:: html

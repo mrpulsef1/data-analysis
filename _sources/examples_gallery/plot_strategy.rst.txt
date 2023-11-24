@@ -25,7 +25,7 @@ Plot all drivers' tyre strategies during a race.
 
 .. GENERATED FROM PYTHON SOURCE LINES 7-12
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import fastf1
@@ -45,7 +45,7 @@ Load the race session
 
 .. GENERATED FROM PYTHON SOURCE LINES 14-19
 
-.. code-block:: default
+.. code-block:: Python
 
 
     session = fastf1.get_session(2022, "Hungary", 'R')
@@ -65,7 +65,7 @@ Get the list of driver numbers
 
 .. GENERATED FROM PYTHON SOURCE LINES 21-24
 
-.. code-block:: default
+.. code-block:: Python
 
     drivers = session.drivers
     print(drivers)
@@ -89,7 +89,7 @@ Convert the driver numbers to three letter abbreviations
 
 .. GENERATED FROM PYTHON SOURCE LINES 26-29
 
-.. code-block:: default
+.. code-block:: Python
 
     drivers = [session.get_driver(driver)["Abbreviation"] for driver in drivers]
     print(drivers)
@@ -117,7 +117,7 @@ And then counting the number of laps in each group.
 
 .. GENERATED FROM PYTHON SOURCE LINES 35-39
 
-.. code-block:: default
+.. code-block:: Python
 
     stints = laps[["Driver", "Stint", "Compound", "LapNumber"]]
     stints = stints.groupby(["Driver", "Stint", "Compound"])
@@ -137,7 +137,7 @@ in that group aka the stint length.
 
 .. GENERATED FROM PYTHON SOURCE LINES 42-45
 
-.. code-block:: default
+.. code-block:: Python
 
     stints = stints.rename(columns={"LapNumber": "StintLength"})
     print(stints)
@@ -174,7 +174,7 @@ Now we can plot the strategies for each driver
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-68
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, ax = plt.subplots(figsize=(5, 10))
 
@@ -210,7 +210,7 @@ Make the plot more readable and intuitive
 
 .. GENERATED FROM PYTHON SOURCE LINES 71-78
 
-.. code-block:: default
+.. code-block:: Python
 
     plt.title("2022 Hungarian Grand Prix Strategies")
     plt.xlabel("Lap Number")
@@ -232,7 +232,7 @@ Plot aesthetics
 
 .. GENERATED FROM PYTHON SOURCE LINES 81-87
 
-.. code-block:: default
+.. code-block:: Python
 
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -255,7 +255,7 @@ Plot aesthetics
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 17.526 seconds)
+   **Total running time of the script:** (0 minutes 17.967 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_strategy.py:
@@ -264,16 +264,13 @@ Plot aesthetics
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_strategy.ipynb <plot_strategy.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_strategy.py <plot_strategy.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_strategy.ipynb <plot_strategy.ipynb>`
 
 
 .. only:: html

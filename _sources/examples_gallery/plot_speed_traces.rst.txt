@@ -24,7 +24,7 @@ Compare two fastest laps by overlaying their speed traces.
 
 .. GENERATED FROM PYTHON SOURCE LINES 6-21
 
-.. code-block:: default
+.. code-block:: Python
 
 
 
@@ -54,7 +54,7 @@ First, we select the two laps that we want to compare
 
 .. GENERATED FROM PYTHON SOURCE LINES 23-27
 
-.. code-block:: default
+.. code-block:: Python
 
 
     ver_lap = session.laps.pick_driver('VER').pick_fastest()
@@ -74,7 +74,7 @@ to the telemetry dataframe as this makes it easier to compare the laps.
 
 .. GENERATED FROM PYTHON SOURCE LINES 30-34
 
-.. code-block:: default
+.. code-block:: Python
 
 
     ver_tel = ver_lap.get_car_data().add_distance()
@@ -94,7 +94,7 @@ We color the individual lines with the driver's team colors.
 
 .. GENERATED FROM PYTHON SOURCE LINES 37-53
 
-.. code-block:: default
+.. code-block:: Python
 
 
     rbr_color = fastf1.plotting.team_color('RBR')
@@ -127,7 +127,7 @@ We color the individual lines with the driver's team colors.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 12.211 seconds)
+   **Total running time of the script:** (0 minutes 10.531 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_speed_traces.py:
@@ -136,16 +136,13 @@ We color the individual lines with the driver's team colors.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_speed_traces.ipynb <plot_speed_traces.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_speed_traces.py <plot_speed_traces.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_speed_traces.ipynb <plot_speed_traces.ipynb>`
 
 
 .. only:: html

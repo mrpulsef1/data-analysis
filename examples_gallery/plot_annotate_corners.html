@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Plot driver standings in a heatmap" href="plot_results_tracker.html" /><link rel="prev" title="Speed visualization on track map" href="plot_speed_on_track.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>Draw a track map with numbered corners - FastF1 3.1.5</title>
+        <title>Draw a track map with numbered corners - FastF1 3.1.6</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">FastF1 <small>3.1.5</small></div></a>
+      <a href="../index.html"><div class="brand">FastF1 <small>3.1.6</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.5</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.1.6</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -259,7 +259,7 @@ to download the full example code</p>
 Then annotate the map with corner numbers.</p>
 <p>Import FastF1 and load the data. Use the telemetry from the fastest for the
 track map. (You could also use any other lap instead.)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fastf1</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fastf1</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -280,7 +280,7 @@ coordinate system.</p>
 <p>By matrix multiplication of the rotation matrix with a vector [x, y], a new
 rotated vector [x_rot, y_rot] is obtained.
 (See also: <a class="reference external" href="https://en.wikipedia.org/wiki/Rotation_matrix">https://en.wikipedia.org/wiki/Rotation_matrix</a>)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
     <span class="n">rot_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)],</span>
                         <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)]])</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">rot_mat</span><span class="p">)</span>
@@ -289,7 +289,7 @@ rotated vector [x_rot, y_rot] is obtained.
 <p>Get the coordinates of the track map from the telemetry of the lap and
 rotate the coordinates using the rotation from <code class="docutils literal notranslate"><span class="pre">circuit_info</span></code> so that
 the track map is oriented correctly. After that, plot the rotated track map.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get an array of shape [n, 2] where n is the number of points and the second</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get an array of shape [n, 2] where n is the number of points and the second</span>
 <span class="c1"># axis is x and y.</span>
 <span class="n">track</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 
@@ -301,7 +301,7 @@ the track map is oriented correctly. After that, plot the rotated track map.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rotated_track</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">rotated_track</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f21996d56a0&gt;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f444b82b040&gt;]
 </pre></div>
 </div>
 <p>Finally, the corner markers are plotted. To plot the numbers next to the
@@ -309,7 +309,7 @@ track, an offset vector that points straight up is defined. This offset
 vector is then rotated by the angle that is given for each corner marker.
 A line and circular bubble are drawn and the corner marker text is printed
 inside the bubble.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">offset_vector</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># offset length is chosen arbitrarily to &#39;look good&#39;</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">offset_vector</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># offset length is chosen arbitrarily to &#39;look good&#39;</span>
 
 <span class="c1"># Iterate over all corners.</span>
 <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">corner</span> <span class="ow">in</span> <span class="n">circuit_info</span><span class="o">.</span><span class="n">corners</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
@@ -345,20 +345,20 @@ inside the bubble.</p>
 </div>
 <p>Add a title, remove tick labels to clean up the plot, set equal axis ratio,
 so that the track is not distorted and show the plot.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">])</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_annotate_corners_001.png" srcset="../_images/sphx_glr_plot_annotate_corners_001.png" alt="Silverstone" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 11.970 seconds)</p>
+<img src="../_images/sphx_glr_plot_annotate_corners_001.png" srcset="../_images/sphx_glr_plot_annotate_corners_001.png" alt="Silverstone" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.990 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-gallery-plot-annotate-corners-py">
-<div class="sphx-glr-download sphx-glr-download-python docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/bae543fd73e064612801f0ae9d60410c/plot_annotate_corners.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_annotate_corners.py</span></code></a></p>
-</div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/754266a2f40f15371b4c8f696418cd49/plot_annotate_corners.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_annotate_corners.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/bae543fd73e064612801f0ae9d60410c/plot_annotate_corners.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_annotate_corners.py</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -413,7 +413,7 @@ so that the track is not distorted and show the plot.</p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=851b9b12"></script>
+</div><script src="../_static/documentation_options.js?v=b2e31178"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>

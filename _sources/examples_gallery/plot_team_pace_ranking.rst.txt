@@ -23,7 +23,7 @@ Rank team's race pace from the fastest to the slowest.
 
 .. GENERATED FROM PYTHON SOURCE LINES 5-14
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import fastf1
@@ -49,7 +49,7 @@ For races with mixed conditions, pick_wo_box() is better.
 
 .. GENERATED FROM PYTHON SOURCE LINES 18-22
 
-.. code-block:: default
+.. code-block:: Python
 
     race = fastf1.get_session(2023, "British Grand Prix", 'R')
     race.load()
@@ -71,7 +71,7 @@ with plotting.setup_mpl.
 
 .. GENERATED FROM PYTHON SOURCE LINES 27-43
 
-.. code-block:: default
+.. code-block:: Python
 
     transformed_laps = laps.copy()
     transformed_laps.loc[:, "LapTime (s)"] = laps["LapTime"].dt.total_seconds()
@@ -106,7 +106,7 @@ with plotting.setup_mpl.
 
 .. GENERATED FROM PYTHON SOURCE LINES 44-64
 
-.. code-block:: default
+.. code-block:: Python
 
     fig, ax = plt.subplots(figsize=(15, 10))
     sns.boxplot(
@@ -143,7 +143,7 @@ with plotting.setup_mpl.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 18.683 seconds)
+   **Total running time of the script:** (0 minutes 16.729 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_team_pace_ranking.py:
@@ -152,16 +152,13 @@ with plotting.setup_mpl.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_team_pace_ranking.ipynb <plot_team_pace_ranking.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_team_pace_ranking.py <plot_team_pace_ranking.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_team_pace_ranking.ipynb <plot_team_pace_ranking.ipynb>`
 
 
 .. only:: html

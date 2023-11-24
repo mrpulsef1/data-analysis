@@ -23,7 +23,7 @@ Visualizae different drivers' laptime distributions.
 
 .. GENERATED FROM PYTHON SOURCE LINES 5-14
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import fastf1
@@ -47,7 +47,7 @@ Load the race session
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-20
 
-.. code-block:: default
+.. code-block:: Python
 
 
     race = fastf1.get_session(2023, "Azerbaijan", 'R')
@@ -68,7 +68,7 @@ as they distort the graph axis.
 
 .. GENERATED FROM PYTHON SOURCE LINES 24-29
 
-.. code-block:: default
+.. code-block:: Python
 
     point_finishers = race.drivers[:10]
     print(point_finishers)
@@ -95,7 +95,7 @@ we need to get their three-letter abbreviations in the finishing order.
 
 .. GENERATED FROM PYTHON SOURCE LINES 32-35
 
-.. code-block:: default
+.. code-block:: Python
 
     finishing_order = [race.get_driver(i)["Abbreviation"] for i in point_finishers]
     print(finishing_order)
@@ -122,7 +122,7 @@ We can do this with the DRIVER_TRANSLATE mapping.
 
 .. GENERATED FROM PYTHON SOURCE LINES 40-44
 
-.. code-block:: default
+.. code-block:: Python
 
     driver_colors = {abv: fastf1.plotting.DRIVER_COLORS[driver] for abv,
                      driver in fastf1.plotting.DRIVER_TRANSLATE.items()}
@@ -136,7 +136,7 @@ We can do this with the DRIVER_TRANSLATE mapping.
 
  .. code-block:: none
 
-    {'LEC': '#dc0000', 'SAI': '#ff8181', 'SHW': '#9c0000', 'VER': '#0600ef', 'PER': '#716de2', 'PIA': '#ff8700', 'NOR': '#eeb370', 'GAS': '#0090ff', 'OCO': '#70c2ff', 'DOO': '#0075c2', 'BOT': '#900000', 'ZHO': '#500000', 'POU': '#700000', 'DEV': '#1e3d61', 'TSU': '#356cac', 'RIC': '#2b4562', 'LAW': '#2b4562', 'HAD': '#1e6176', 'MAG': '#ffffff', 'HUL': '#cacaca', 'BEA': '#c40000', 'ALO': '#006f62', 'STR': '#25a617', 'DRU': '#2f9b90', 'HAM': '#00d2be', 'RUS': '#24ffff', 'VES': '#00a6ff', 'ALB': '#005aff', 'SAR': '#012564'}
+    {'LEC': '#dc0000', 'SAI': '#ff8181', 'SHW': '#9c0000', 'VER': '#0600ef', 'PER': '#716de2', 'DEN': '#9f99e2', 'PIA': '#ff8700', 'NOR': '#eeb370', 'OWA': '#ee6d3a', 'GAS': '#0090ff', 'OCO': '#70c2ff', 'DOO': '#0075c2', 'BOT': '#900000', 'ZHO': '#500000', 'POU': '#700000', 'DEV': '#1e3d61', 'TSU': '#356cac', 'RIC': '#2b4562', 'LAW': '#2b4562', 'HAD': '#1e6176', 'MAG': '#ffffff', 'HUL': '#cacaca', 'BEA': '#c40000', 'ALO': '#006f62', 'STR': '#25a617', 'DRU': '#2f9b90', 'HAM': '#00d2be', 'RUS': '#24ffff', 'VES': '#00a6ff', 'ALB': '#005aff', 'SAR': '#012564', 'OSU': '#1b3d97'}
 
 
 
@@ -148,7 +148,7 @@ Then use the swarm plot to show the actual laptimes.
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-75
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # create the figure
@@ -197,7 +197,7 @@ Make the plot more aesthetic
 
 .. GENERATED FROM PYTHON SOURCE LINES 78-85
 
-.. code-block:: default
+.. code-block:: Python
 
     ax.set_xlabel("Driver")
     ax.set_ylabel("Lap Time (s)")
@@ -221,7 +221,7 @@ Make the plot more aesthetic
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.109 seconds)
+   **Total running time of the script:** (0 minutes 2.893 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_laptimes_distribution.py:
@@ -230,16 +230,13 @@ Make the plot more aesthetic
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_laptimes_distribution.ipynb <plot_laptimes_distribution.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_laptimes_distribution.py <plot_laptimes_distribution.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_laptimes_distribution.ipynb <plot_laptimes_distribution.ipynb>`
 
 
 .. only:: html

@@ -6,34 +6,71 @@
 
 Computation times
 =================
-**02:22.617** total execution time for **examples_gallery** files:
+**02:12.816** total execution time for 14 files **from examples_gallery**:
 
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_speed_on_track.py` (``plot_speed_on_track.py``)                   | 00:20.175 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_driver_laptimes.py` (``plot_driver_laptimes.py``)                 | 00:18.975 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_team_pace_ranking.py` (``plot_team_pace_ranking.py``)             | 00:18.683 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_strategy.py` (``plot_strategy.py``)                               | 00:17.526 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_speed_traces.py` (``plot_speed_traces.py``)                       | 00:12.211 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_annotate_corners.py` (``plot_annotate_corners.py``)               | 00:11.970 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_gear_shifts_on_track.py` (``plot_gear_shifts_on_track.py``)       | 00:11.383 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_results_tracker.py` (``plot_results_tracker.py``)                 | 00:11.184 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_position_changes.py` (``plot_position_changes.py``)               | 00:07.152 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_who_can_still_win_wdc.py` (``plot_who_can_still_win_wdc.py``)     | 00:06.306 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_laptimes_distribution.py` (``plot_laptimes_distribution.py``)     | 00:03.109 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_annotate_speed_trace.py` (``plot_annotate_speed_trace.py``)       | 00:02.230 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_plot_qualifying_results.py` (``plot_qualifying_results.py``)           | 00:01.713 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_examples_gallery_example_fastf1_signalrclient.py` (``example_fastf1_signalrclient.py``) | 00:00.000 | 0.0 MB |
-+--------------------------------------------------------------------------------------------------------+-----------+--------+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_examples_gallery_plot_speed_on_track.py` (``plot_speed_on_track.py``)
+     - 00:19.294
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_strategy.py` (``plot_strategy.py``)
+     - 00:17.967
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_results_tracker.py` (``plot_results_tracker.py``)
+     - 00:17.337
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_driver_laptimes.py` (``plot_driver_laptimes.py``)
+     - 00:17.281
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_team_pace_ranking.py` (``plot_team_pace_ranking.py``)
+     - 00:16.729
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_annotate_corners.py` (``plot_annotate_corners.py``)
+     - 00:10.990
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_speed_traces.py` (``plot_speed_traces.py``)
+     - 00:10.531
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_gear_shifts_on_track.py` (``plot_gear_shifts_on_track.py``)
+     - 00:10.127
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_position_changes.py` (``plot_position_changes.py``)
+     - 00:05.509
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_laptimes_distribution.py` (``plot_laptimes_distribution.py``)
+     - 00:02.893
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_annotate_speed_trace.py` (``plot_annotate_speed_trace.py``)
+     - 00:01.992
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_qualifying_results.py` (``plot_qualifying_results.py``)
+     - 00:01.647
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_plot_who_can_still_win_wdc.py` (``plot_who_can_still_win_wdc.py``)
+     - 00:00.519
+     - 0.0
+   * - :ref:`sphx_glr_examples_gallery_example_fastf1_signalrclient.py` (``example_fastf1_signalrclient.py``)
+     - 00:00.000
+     - 0.0

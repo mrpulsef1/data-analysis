@@ -24,7 +24,7 @@ Speed visualization on track map
 
 .. GENERATED FROM PYTHON SOURCE LINES 6-14
 
-.. code-block:: default
+.. code-block:: Python
 
     import fastf1 as ff1
     import numpy as np
@@ -48,7 +48,7 @@ we want to plot.
 
 .. GENERATED FROM PYTHON SOURCE LINES 17-24
 
-.. code-block:: default
+.. code-block:: Python
 
     year = 2021
     wknd = 9
@@ -70,7 +70,7 @@ Next, we load the session and select the desired data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 26-37
 
-.. code-block:: default
+.. code-block:: Python
 
     session = ff1.get_session(year, wknd, ses)
     weekend = session.event
@@ -99,7 +99,7 @@ line collection needs to be (numlines) x (points per line) x 2 (for x and y)
 
 .. GENERATED FROM PYTHON SOURCE LINES 42-46
 
-.. code-block:: default
+.. code-block:: Python
 
     points = np.array([x, y]).T.reshape(-1, 1, 2)
     segments = np.concatenate([points[:-1], points[1:]], axis=1)
@@ -118,7 +118,7 @@ After this, we can actually plot the data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 48-81
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # We create a plot with title and adjust some setting to make it look good.
@@ -168,7 +168,7 @@ After this, we can actually plot the data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 20.175 seconds)
+   **Total running time of the script:** (0 minutes 19.294 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_speed_on_track.py:
@@ -177,16 +177,13 @@ After this, we can actually plot the data.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_speed_on_track.ipynb <plot_speed_on_track.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_speed_on_track.py <plot_speed_on_track.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_speed_on_track.ipynb <plot_speed_on_track.ipynb>`
 
 
 .. only:: html
