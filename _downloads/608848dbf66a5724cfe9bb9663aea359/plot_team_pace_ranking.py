@@ -3,10 +3,12 @@
 Rank team's race pace from the fastest to the slowest.
 """
 
-import fastf1
-import fastf1.plotting
 import seaborn as sns
 from matplotlib import pyplot as plt
+
+import fastf1
+import fastf1.plotting
+
 
 # activate the fastf1 color scheme (and no other modifications)
 fastf1.plotting.setup_mpl(mpl_timedelta_support=False, misc_mpl_mods=False)
@@ -46,6 +48,7 @@ sns.boxplot(
     data=transformed_laps,
     x="Team",
     y="LapTime (s)",
+    hue="Team",
     order=team_order,
     palette=team_palette,
     whiskerprops=dict(color="white"),

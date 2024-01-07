@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Circuit Information" href="circuit_info.html" /><link rel="prev" title="F1 API - fastf1.api" href="api.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>Ergast API Interface - FastF1 3.1.6</title>
+        <title>Ergast API Interface - FastF1 3.2.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.6</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.2.0</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.6</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.2.0</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -179,8 +179,8 @@
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_strategy.html">Tyre strategies during a race</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_speed_trace.html">Plot speed traces with corner annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_qualifying_results.html">Qualifying results overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_laptimes_distribution.html">Driver Laptimes Distribution Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_speed_on_track.html">Speed visualization on track map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_corners.html">Draw a track map with numbered corners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_results_tracker.html">Plot driver standings in a heatmap</a></li>
@@ -209,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/contributing.html">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/devenv_setup.html">Setting up FastF1 for development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/testing.html#linting-code-style-tests">Linting - Code style tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/documenting_fastf1.html">Writing documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/coding_guide.html">Pull request guidelines</a></li>
 </ul>
@@ -427,6 +428,11 @@ and the data types for automatic type casting. Additionally, there is a
 result frame. This way it easy to see which keys are renamed.
 Additionally, both the “API Mapping” and the “DataFrame Description” will
 show the data type to which a value is cast when <code class="docutils literal notranslate"><span class="pre">auto_cast=True</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">-1</span></code> is used to indicate missing values for <code class="docutils literal notranslate"><span class="pre">int</span></code>-type values (<code class="docutils literal notranslate"><span class="pre">int</span></code>
+does not support a proper <code class="docutils literal notranslate"><span class="pre">NaN</span></code> value)</p>
+</div>
 </section>
 <section id="multiresponse-dataframes">
 <h4>MultiResponse DataFrames<a class="headerlink" href="#multiresponse-dataframes" title="Link to this heading">#</a></h4>
@@ -926,7 +932,7 @@ Defaults to 0 if not set. See also “Response Paging”,
 
 <dl class="py method">
 <dt class="sig sig-object py" id="fastf1.ergast.Ergast.get_race_results">
-<span class="sig-name descname"><span class="pre">get_race_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">season</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fastest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_cast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/ergast/interface.html#Ergast.get_race_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.ergast.Ergast.get_race_results" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_race_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">season</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fastest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_cast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/ergast/interface.html#Ergast.get_race_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.ergast.Ergast.get_race_results" title="Link to this definition">#</a></dt>
 <dd><p>Get race results for one or multiple races.</p>
 <p>See: <a class="reference external" href="https://ergast.com/mrd/methods/results/">https://ergast.com/mrd/methods/results/</a></p>
 <details><summary><a>API Mapping</a></summary>Structure of the raw response, renamed key names for flattening and dtypes for automatic type casting:</br></br><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[
@@ -1053,6 +1059,8 @@ fastestLapAvgSpeed                                       &lt;float&gt;
 (default: all)</p></li>
 <li><p><strong>driver</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – select a driver by its driver id (default: all)</p></li>
 <li><p><strong>grid_position</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – select a grid position by its number (default: all)</p></li>
+<li><p><strong>results_position</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – select a finishing result by its position
+(default: all)</p></li>
 <li><p><strong>fastest_rank</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – select fastest by rank number (default: all)</p></li>
 <li><p><strong>status</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – select by finishing status (default: all)</p></li>
 <li><p><strong>result_type</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'pandas'</span></code>, <code class="docutils literal notranslate"><span class="pre">'raw'</span></code>]]</span>) – Overwrites the default result type</p></li>
@@ -1196,7 +1204,7 @@ Defaults to 0 if not set. See also “Response Paging”,
 
 <dl class="py method">
 <dt class="sig sig-object py" id="fastf1.ergast.Ergast.get_sprint_results">
-<span class="sig-name descname"><span class="pre">get_sprint_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">season</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_cast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/ergast/interface.html#Ergast.get_sprint_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.ergast.Ergast.get_sprint_results" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_sprint_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">season</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_cast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/ergast/interface.html#Ergast.get_sprint_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.ergast.Ergast.get_sprint_results" title="Link to this definition">#</a></dt>
 <dd><p>Get sprint results for one or multiple sprints.</p>
 <p>See: <a class="reference external" href="https://ergast.com/mrd/methods/sprint/">https://ergast.com/mrd/methods/sprint/</a></p>
 <details><summary><a>API Mapping</a></summary>Structure of the raw response, renamed key names for flattening and dtypes for automatic type casting:</br></br><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[
@@ -1323,6 +1331,8 @@ fastestLapAvgSpeed                                       &lt;float&gt;
 (default: all)</p></li>
 <li><p><strong>driver</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – select a driver by its driver id (default: all)</p></li>
 <li><p><strong>grid_position</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – select a grid position by its number (default: all)</p></li>
+<li><p><strong>results_position</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – select a finishing result by its position
+(default: all)</p></li>
 <li><p><strong>status</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – select by finishing status (default: all)</p></li>
 <li><p><strong>result_type</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'pandas'</span></code>, <code class="docutils literal notranslate"><span class="pre">'raw'</span></code>]]</span>) – Overwrites the default result type</p></li>
 <li><p><strong>auto_cast</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]</span>) – Overwrites the default value for <code class="docutils literal notranslate"><span class="pre">auto_cast</span></code></p></li>
@@ -1858,13 +1868,6 @@ appropriate data type from their original string representation</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py property">
-<dt class="sig sig-object py" id="fastf1.ergast.interface.ErgastResultFrame.base_class_view">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_class_view</span></span><a class="headerlink" href="#fastf1.ergast.interface.ErgastResultFrame.base_class_view" title="Link to this definition">#</a></dt>
-<dd><p>For a nicer debugging experience; can view DataFrame through
-this property in various IDEs</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
@@ -1974,7 +1977,7 @@ specified in the request that is associated with this response.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, theOehrly
+                Copyright &#169; 2024, theOehrly
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -2043,10 +2046,7 @@ specified in the request that is associated with this response.</p>
 <li><a class="reference internal" href="#fastf1.ergast.interface.ErgastMultiResponse.content"><code class="docutils literal notranslate"><span class="pre">ErgastMultiResponse.content</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#fastf1.ergast.interface.ErgastResultFrame"><code class="docutils literal notranslate"><span class="pre">ErgastResultFrame</span></code></a><ul>
-<li><a class="reference internal" href="#fastf1.ergast.interface.ErgastResultFrame.base_class_view"><code class="docutils literal notranslate"><span class="pre">ErgastResultFrame.base_class_view</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#fastf1.ergast.interface.ErgastResultFrame"><code class="docutils literal notranslate"><span class="pre">ErgastResultFrame</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.ergast.interface.ErgastResponseMixin"><code class="docutils literal notranslate"><span class="pre">ErgastResponseMixin</span></code></a><ul>
 <li><a class="reference internal" href="#fastf1.ergast.interface.ErgastResponseMixin.total_results"><code class="docutils literal notranslate"><span class="pre">ErgastResponseMixin.total_results</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.ergast.interface.ErgastResponseMixin.is_complete"><code class="docutils literal notranslate"><span class="pre">ErgastResponseMixin.is_complete</span></code></a></li>
@@ -2075,7 +2075,7 @@ specified in the request that is associated with this response.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=b2e31178"></script>
+</div><script src="_static/documentation_options.js?v=4f6ddb47"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

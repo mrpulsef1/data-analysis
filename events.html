@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="F1 API - fastf1.api" href="api.html" /><link rel="prev" title="Timing and Telemetry Data - fastf1.core" href="core.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>Event Schedule - fastf1.events - FastF1 3.1.6</title>
+        <title>Event Schedule - fastf1.events - FastF1 3.2.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.6</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.2.0</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.6</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.2.0</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -179,8 +179,8 @@
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_strategy.html">Tyre strategies during a race</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_speed_trace.html">Plot speed traces with corner annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_qualifying_results.html">Qualifying results overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_laptimes_distribution.html">Driver Laptimes Distribution Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_speed_on_track.html">Speed visualization on track map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_corners.html">Draw a track map with numbered corners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_results_tracker.html">Plot driver standings in a heatmap</a></li>
@@ -209,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/contributing.html">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/devenv_setup.html">Setting up FastF1 for development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/testing.html#linting-code-style-tests">Linting - Code style tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/documenting_fastf1.html">Writing documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/coding_guide.html">Pull request guidelines</a></li>
 </ul>
@@ -280,7 +281,8 @@ no sponsor names. This name is required internally for proper api access.</p></l
 The events reference date and time. This is used mainly internally.
 Usually, this is the same as the date of the last session.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EventFormat</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> |
-The format of the event. One of ‘conventional’, ‘sprint’, ‘testing’.</p></li>
+The format of the event. One of ‘conventional’, ‘sprint’,
+‘sprint_shootout’, ‘testing’.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Session*</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> |
 The name of the session. One of ‘Practice 1’, ‘Practice 2’, ‘Practice 3’,
 ‘Qualifying’, ‘Sprint’, ‘Sprint Shootout’ or ‘Race’.
@@ -290,13 +292,12 @@ the session (1, 2, 3, 4, 5).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Session*Date</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">pd.Timestamp</span></code> |
 The date and time at which the session is scheduled to start or was
 scheduled to start as timezone-aware local timestamp.
-(Timezone information is not available when the <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code> backend
-is used.)
+(Timezone-aware local timestamps are not available when the <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code>
+backend is used.)
 <code class="docutils literal notranslate"><span class="pre">*</span></code> denotes the number of the session (1, 2, 3, 4, 5).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Session*DateUtc</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">pd.Timestamp</span></code> |
 The date and time at which the session is scheduled to start or was
 scheduled to start as non-timezone-aware UTC timestamp.
-(UTC timestamps are not available when the <code class="docutils literal notranslate"><span class="pre">'ergast'</span></code> backend is used.)
 <code class="docutils literal notranslate"><span class="pre">*</span></code> denotes the number of the session (1, 2, 3, 4, 5).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">F1ApiSupport</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code> |
 Denotes whether this session is supported by the official F1 API.
@@ -308,8 +309,8 @@ Lap timing data and telemetry data can only be loaded if this is true.</p></li>
 <p>FastF1 provides its own event schedule for the 2018 season and all later
 seasons. The schedule for the all seasons before 2018 is built using data from
 the Ergast API. Only limited data is available for these seasons. Usage of the
-Ergast API can be enforced for all seasons, in which case the same limitations
-apply for the more recent seasons too.</p>
+Ergast API can be enforced for all seasons by setting <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>,
+in which case the same limitations apply for the more recent seasons too.</p>
 <p><strong>Exact scheduled starting times for all sessions</strong>:
 Supported starting with the 2018 season.
 Starting dates for sessions before 2018 (or when enforcing usage of the Ergast
@@ -339,7 +340,7 @@ identifier to differentiate between the various sessions of one event.
 This identifier can currently be one of the following:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>session name abbreviation: <code class="docutils literal notranslate"><span class="pre">'FP1',</span> <span class="pre">'FP2',</span> <span class="pre">'FP3',</span> <span class="pre">'Q',</span> <span class="pre">'S',</span> <span class="pre">'SS',</span> <span class="pre">R'</span></code></p></li>
+<li><p>session name abbreviation: <code class="docutils literal notranslate"><span class="pre">'FP1',</span> <span class="pre">'FP2',</span> <span class="pre">'FP3',</span> <span class="pre">'Q',</span> <span class="pre">'S',</span> <span class="pre">'SS',</span> <span class="pre">'R'</span></code></p></li>
 <li><p>full session name: <code class="docutils literal notranslate"><span class="pre">'Practice</span> <span class="pre">1',</span> <span class="pre">'Practice</span> <span class="pre">2',</span>
 <span class="pre">'Practice</span> <span class="pre">3',</span> <span class="pre">'Sprint',</span> <span class="pre">'Sprint</span> <span class="pre">Shootout',</span> <span class="pre">'Qualifying',</span> <span class="pre">'Race'</span></code>;
 provided names will be normalized, so that the name is
@@ -378,8 +379,9 @@ instead of ‘Sprint’/’S’.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="fastf1.events.EventSchedule">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fastf1.events.</span></span><span class="sig-name descname"><span class="pre">EventSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_default_cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/events.html#EventSchedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.events.EventSchedule" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
-<p>This class implements a per-season event schedule.</p>
+<dd><p>This class implements a per-season event schedule.</p>
+<p>For detailed information about the information that is available for each
+event, see <a class="reference internal" href="#event-schedule-data">Event Schedule Data</a>.</p>
 <p>This class is usually not instantiated directly. You should use
 <a class="reference internal" href="fastf1.html#fastf1.get_event_schedule" title="fastf1.get_event_schedule"><code class="xref py py-func docutils literal notranslate"><span class="pre">fastf1.get_event_schedule()</span></code></a> to get an event schedule for a specific
 season.</p>
@@ -398,16 +400,6 @@ the default columns exist</p></li>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 2.2.</span></p>
 </div>
-<p><strong>Attributes:</strong></p>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.events.EventSchedule.base_class_view" title="fastf1.events.EventSchedule.base_class_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">base_class_view</span></code></a></p></td>
-<td><p>For a nicer debugging experience; can view DataFrame through this property in various IDEs</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <p><strong>Methods:</strong></p>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
@@ -424,13 +416,6 @@ the default columns exist</p></li>
 </tbody>
 </table>
 </div>
-<dl class="py property">
-<dt class="sig sig-object py" id="fastf1.events.EventSchedule.base_class_view">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_class_view</span></span><a class="headerlink" href="#fastf1.events.EventSchedule.base_class_view" title="Link to this definition">#</a></dt>
-<dd><p>For a nicer debugging experience; can view DataFrame through
-this property in various IDEs</p>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="fastf1.events.EventSchedule.is_testing">
 <span class="sig-name descname"><span class="pre">is_testing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/events.html#EventSchedule.is_testing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.events.EventSchedule.is_testing" title="Link to this definition">#</a></dt>
@@ -464,7 +449,7 @@ given name. Fuzzy matching is performed using the country, location,
 name and officialName of each event. This is not guaranteed to return
 the correct result. You should therefore always check if the function
 actually returns the event you had wanted.
-To gurantee the function returns the event queried, toggle
+To guarantee the function returns the event queried, toggle
 strict_search, which will only return an event if its event name
 matches (non case sensitive) the query string.</p>
 <div class="admonition warning">
@@ -483,7 +468,8 @@ Grand Prix” as <code class="docutils literal notranslate"><span class="pre">na
 event for the British Grand Prix.</p></li>
 <li><p><strong>strict_search</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Search only for exact query matches
 instead of using fuzzy search. For example,
-<code class="docutils literal notranslate"><span class="pre">.get_event_by_name(&quot;British</span> <span class="pre">Grand</span> <span class="pre">Prix&quot;,</span> <span class="pre">strict_search=True)</span></code> # noqa: E501
+<code class="docutils literal notranslate"><span class="pre">.get_event_by_name(&quot;British</span> <span class="pre">Grand</span> <span class="pre">Prix&quot;,</span>
+<span class="pre">strict_search=True)</span></code>
 will return the event for the British Grand Prix, whereas
 <code class="docutils literal notranslate"><span class="pre">.get_event_by_name(&quot;British&quot;,</span> <span class="pre">strict_search=True)</span></code>
 will return <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
@@ -500,10 +486,11 @@ will return <code class="docutils literal notranslate"><span class="pre">None</s
 <dl class="py class">
 <dt class="sig sig-object py" id="fastf1.events.Event">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fastf1.events.</span></span><span class="sig-name descname"><span class="pre">Event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/events.html#Event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.events.Event" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></p>
-<p>This class represents a single event (race weekend or testing event).</p>
+<dd><p>This class represents a single event (race weekend or testing event).</p>
 <p>Each event consists of one or multiple sessions, depending on the type
 of event and depending on the event format.</p>
+<p>For detailed information about the information that is available for each
+event, see <a class="reference internal" href="#event-schedule-data">Event Schedule Data</a>.</p>
 <p>This class is usually not instantiated directly. You should use
 <a class="reference internal" href="fastf1.html#fastf1.get_event" title="fastf1.get_event"><code class="xref py py-func docutils literal notranslate"><span class="pre">fastf1.get_event()</span></code></a> or similar to get a specific event.</p>
 <dl class="field-list simple">
@@ -715,7 +702,7 @@ of this event is or was held.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, theOehrly
+                Copyright &#169; 2024, theOehrly
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -753,7 +740,6 @@ of this event is or was held.</p>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#api-reference">API Reference</a><ul>
 <li><a class="reference internal" href="#fastf1.events.EventSchedule"><code class="docutils literal notranslate"><span class="pre">EventSchedule</span></code></a><ul>
-<li><a class="reference internal" href="#fastf1.events.EventSchedule.base_class_view"><code class="docutils literal notranslate"><span class="pre">EventSchedule.base_class_view</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.events.EventSchedule.is_testing"><code class="docutils literal notranslate"><span class="pre">EventSchedule.is_testing()</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.events.EventSchedule.get_event_by_round"><code class="docutils literal notranslate"><span class="pre">EventSchedule.get_event_by_round()</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.events.EventSchedule.get_event_by_name"><code class="docutils literal notranslate"><span class="pre">EventSchedule.get_event_by_name()</span></code></a></li>
@@ -786,7 +772,7 @@ of this event is or was held.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=b2e31178"></script>
+</div><script src="_static/documentation_options.js?v=4f6ddb47"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

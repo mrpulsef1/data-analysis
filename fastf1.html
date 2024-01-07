@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Timing and Telemetry Data - fastf1.core" href="core.html" /><link rel="prev" title="Plot driver standings in a heatmap" href="examples_gallery/plot_results_tracker.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>General Functions - fastf1 - FastF1 3.1.6</title>
+        <title>General Functions - fastf1 - FastF1 3.2.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.6</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.2.0</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.6</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.2.0</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -179,8 +179,8 @@
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_strategy.html">Tyre strategies during a race</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_speed_trace.html">Plot speed traces with corner annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_qualifying_results.html">Qualifying results overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_laptimes_distribution.html">Driver Laptimes Distribution Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_speed_on_track.html">Speed visualization on track map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_corners.html">Draw a track map with numbered corners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_results_tracker.html">Plot driver standings in a heatmap</a></li>
@@ -209,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/contributing.html">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/devenv_setup.html">Setting up FastF1 for development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/testing.html#linting-code-style-tests">Linting - Code style tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/documenting_fastf1.html">Writing documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/coding_guide.html">Pull request guidelines</a></li>
 </ul>
@@ -455,7 +456,8 @@ fuzzy search. If no event is found with
 <dl class="py function">
 <dt class="sig sig-object py" id="fastf1.get_events_remaining">
 <span class="sig-prename descclassname"><span class="pre">fastf1.</span></span><span class="sig-name descname"><span class="pre">get_events_remaining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_testing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_ergast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/events.html#get_events_remaining"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.get_events_remaining" title="Link to this definition">#</a></dt>
-<dd><p>Create an <a class="reference internal" href="events.html#fastf1.events.EventSchedule" title="fastf1.events.EventSchedule"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSchedule</span></code></a> object for remaining season.</p>
+<dd><p>Create an <a class="reference internal" href="events.html#fastf1.events.EventSchedule" title="fastf1.events.EventSchedule"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventSchedule</span></code></a> object for remaining
+season.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -571,7 +573,7 @@ from the ergast database to create the event schedule</p></li>
 <p>Fast-F1 will per default enable caching. While this can be disabled, it
 should almost always be left enabled to speed up the runtime of your
 0scripts and to prevent exceeding the rate limit of api servers.</p>
-<p>The default cache directory is defined, in order of precendence, in one
+<p>The default cache directory is defined, in order of precedence, in one
 of the following ways:</p>
 <ol class="arabic simple">
 <li><p>A call to <a class="reference internal" href="#fastf1.Cache.enable_cache" title="fastf1.Cache.enable_cache"><code class="xref py py-func docutils literal notranslate"><span class="pre">enable_cache()</span></code></a></p></li>
@@ -590,16 +592,19 @@ of the following ways:</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#fastf1.Cache.clear_cache" title="fastf1.Cache.clear_cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.clear_cache</span></code></a>([cache_dir, deep])</p></td>
 <td><p>Clear all cached data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.Cache.disabled" title="fastf1.Cache.disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.disabled</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.Cache.get_cache_info" title="fastf1.Cache.get_cache_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.get_cache_info</span></code></a>()</p></td>
+<td><p>Returns information about the cache directory and its size.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fastf1.Cache.disabled" title="fastf1.Cache.disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.disabled</span></code></a>()</p></td>
 <td><p>Returns a context manager object that creates a context within which the cache is temporarily disabled.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#fastf1.Cache.set_disabled" title="fastf1.Cache.set_disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.set_disabled</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.Cache.set_disabled" title="fastf1.Cache.set_disabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.set_disabled</span></code></a>()</p></td>
 <td><p>Disable the cache while keeping the configuration intact.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.Cache.set_enabled" title="fastf1.Cache.set_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.set_enabled</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#fastf1.Cache.set_enabled" title="fastf1.Cache.set_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.set_enabled</span></code></a>()</p></td>
 <td><p>Enable the cache after it has been disabled with <a class="reference internal" href="#fastf1.Cache.set_disabled" title="fastf1.Cache.set_disabled"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_disabled()</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#fastf1.Cache.offline_mode" title="fastf1.Cache.offline_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.offline_mode</span></code></a>(enabled)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.Cache.offline_mode" title="fastf1.Cache.offline_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fastf1.Cache.offline_mode</span></code></a>(enabled)</p></td>
 <td><p>Enable or disable offline mode.</p></td>
 </tr>
 </tbody>
@@ -621,7 +626,7 @@ expensive. Stage 2 caching is only used for some api functions.</p></li>
 <p>You can explicitly configure right at the beginning of your script:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fastf1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fastf1</span><span class="o">.</span><span class="n">Cache</span><span class="o">.</span><span class="n">enable_cache</span><span class="p">(</span><span class="s1">&#39;path/to/cache&#39;</span><span class="p">)</span>  
-<span class="go"># change cache directory to an exisitng empty directory on your machine</span>
+<span class="go"># change cache directory to an existing empty directory on your machine</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">session</span> <span class="o">=</span> <span class="n">fastf1</span><span class="o">.</span><span class="n">get_session</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># ...</span>
 </pre></div>
@@ -629,7 +634,7 @@ expensive. Stage 2 caching is only used for some api functions.</p></li>
 <p>An alternative way to set the cache directory is to configure an
 environment variable <cite>FASTF1_CACHE</cite>. However, this value will be
 ignored if <cite>Cache.enable_cache()</cite> is called.</p>
-<p>If no explicit location is provied, Fast-F1 will use a default location
+<p>If no explicit location is provided, Fast-F1 will use a default location
 depending on operating system.</p>
 <ul class="simple">
 <li><p>Windows: <cite>%LOCALAPPDATA%\Temp\fastf1</cite></p></li>
@@ -661,6 +666,9 @@ need which will lead to reduced performance.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#fastf1.Cache.offline_mode" title="fastf1.Cache.offline_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offline_mode</span></code></a>(enabled)</p></td>
 <td><p>Enable or disable offline mode.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.Cache.get_cache_info" title="fastf1.Cache.get_cache_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cache_info</span></code></a>()</p></td>
+<td><p>Returns information about the cache directory and its size.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -673,7 +681,7 @@ need which will lead to reduced performance.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cache_dir</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the directory which should be used to store
 cached data. Path needs to exist.</p></li>
-<li><p><strong>ignore_version</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Ignore if cached data was create with a different
+<li><p><strong>ignore_version</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Ignore if cached data was created with a different
 version of the API parser (not recommended: this can cause
 crashes or unrecognized errors as incompatible data may be
 loaded)</p></li>
@@ -781,6 +789,23 @@ or ‘disabled’ (<code class="docutils literal notranslate"><span class="pre">
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="fastf1.Cache.get_cache_info">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_cache_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/req.html#Cache.get_cache_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.Cache.get_cache_info" title="Link to this definition">#</a></dt>
+<dd><p>Returns information about the cache directory and its size.</p>
+<p>If the cache is not configured, None will be returned for both the
+cache path and the cache size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]</span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of <code class="docutils literal notranslate"><span class="pre">(path,</span> <span class="pre">size)</span></code> if the cache is configured, else
+<code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">None)</span></code>. The cache size is given in bytes.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -854,7 +879,7 @@ or the level as a string (e.g. ‘WARNING’).</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, theOehrly
+                Copyright &#169; 2024, theOehrly
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -901,6 +926,7 @@ or the level as a string (e.g. ‘WARNING’).</p>
 <li><a class="reference internal" href="#fastf1.Cache.set_disabled"><code class="docutils literal notranslate"><span class="pre">Cache.set_disabled()</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.Cache.set_enabled"><code class="docutils literal notranslate"><span class="pre">Cache.set_enabled()</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.Cache.offline_mode"><code class="docutils literal notranslate"><span class="pre">Cache.offline_mode()</span></code></a></li>
+<li><a class="reference internal" href="#fastf1.Cache.get_cache_info"><code class="docutils literal notranslate"><span class="pre">Cache.get_cache_info()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#fastf1.RateLimitExceededError"><code class="docutils literal notranslate"><span class="pre">RateLimitExceededError</span></code></a></li>
@@ -923,7 +949,7 @@ or the level as a string (e.g. ‘WARNING’).</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=b2e31178"></script>
+</div><script src="_static/documentation_options.js?v=4f6ddb47"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

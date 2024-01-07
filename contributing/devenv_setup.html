@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Testing" href="testing.html" /><link rel="prev" title="Contributing" href="contributing.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>Setting up FastF1 for development - FastF1 3.1.6</title>
+        <title>Setting up FastF1 for development - FastF1 3.2.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">FastF1 <small>3.1.6</small></div></a>
+      <a href="../index.html"><div class="brand">FastF1 <small>3.2.0</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.6</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.2.0</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -179,8 +179,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_strategy.html">Tyre strategies during a race</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_annotate_speed_trace.html">Plot speed traces with corner annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_qualifying_results.html">Qualifying results overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_laptimes_distribution.html">Driver Laptimes Distribution Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_speed_on_track.html">Speed visualization on track map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_annotate_corners.html">Draw a track map with numbered corners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_gallery/plot_results_tracker.html">Plot driver standings in a heatmap</a></li>
@@ -209,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Setting up FastF1 for development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#linting-code-style-tests">Linting - Code style tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documenting_fastf1.html">Writing documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coding_guide.html">Pull request guidelines</a></li>
 </ul>
@@ -297,16 +298,16 @@ of FastF1 without re-installing after every change.</p>
 <span id="install-pre-commit"></span><h2>Installing additional dependencies for development<a class="headerlink" href="#installing-additional-dependencies-for-development" title="Link to this heading">#</a></h2>
 <p>To install additional dependencies for development, testing and building of the
 documentation, run the following command within the <code class="file docutils literal notranslate"><span class="pre">Fast-F1</span></code> directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">dev</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">dev</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </section>
-<section id="optional-installing-pre-commit-hooks">
-<h2>[Optional] Installing pre-commit hooks<a class="headerlink" href="#optional-installing-pre-commit-hooks" title="Link to this heading">#</a></h2>
-<p>You can optionally install <a class="reference external" href="https://pre-commit.com/">pre-commit</a> hooks.
-These will automatically check flake8 and other style issues when you run
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>. The hooks are defined in the top level
-<code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file. To install the hooks</p>
+<section id="installing-pre-commit-hooks">
+<span id="pre-commit-hooks"></span><h2>Installing pre-commit hooks<a class="headerlink" href="#installing-pre-commit-hooks" title="Link to this heading">#</a></h2>
+<p>It is recommended to install <a class="reference external" href="https://pre-commit.com/">pre-commit</a> hooks.
+These will automatically check and partially fix code style issues (using the
+ruff linter and isort) when you run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>. The hooks are defined in
+the top level <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file. To install the hooks</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
 <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
 </pre></div>
@@ -343,7 +344,7 @@ These will automatically check flake8 and other style issues when you run
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, theOehrly
+                Copyright &#169; 2024, theOehrly
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -374,7 +375,7 @@ These will automatically check flake8 and other style issues when you run
 <li><a class="reference internal" href="#retrieving-the-latest-version-of-the-code">Retrieving the latest version of the code</a></li>
 <li><a class="reference internal" href="#installing-fastf1-in-editable-mode">Installing FastF1 in editable mode</a></li>
 <li><a class="reference internal" href="#installing-additional-dependencies-for-development">Installing additional dependencies for development</a></li>
-<li><a class="reference internal" href="#optional-installing-pre-commit-hooks">[Optional] Installing pre-commit hooks</a></li>
+<li><a class="reference internal" href="#installing-pre-commit-hooks">Installing pre-commit hooks</a></li>
 </ul>
 </li>
 </ul>
@@ -386,7 +387,7 @@ These will automatically check flake8 and other style issues when you run
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=b2e31178"></script>
+</div><script src="../_static/documentation_options.js?v=4f6ddb47"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>

@@ -21,15 +21,17 @@ Team Pace Comparison
 =============================================
 Rank team's race pace from the fastest to the slowest.
 
-.. GENERATED FROM PYTHON SOURCE LINES 5-14
+.. GENERATED FROM PYTHON SOURCE LINES 5-16
 
 .. code-block:: Python
 
 
-    import fastf1
-    import fastf1.plotting
     import seaborn as sns
     from matplotlib import pyplot as plt
+
+    import fastf1
+    import fastf1.plotting
+
 
     # activate the fastf1 color scheme (and no other modifications)
     fastf1.plotting.setup_mpl(mpl_timedelta_support=False, misc_mpl_mods=False)
@@ -41,13 +43,13 @@ Rank team's race pace from the fastest to the slowest.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-18
+.. GENERATED FROM PYTHON SOURCE LINES 17-20
 
 Load the race session.
 Pick all quick laps (within 107% of fastest lap).
 For races with mixed conditions, pick_wo_box() is better.
 
-.. GENERATED FROM PYTHON SOURCE LINES 18-22
+.. GENERATED FROM PYTHON SOURCE LINES 20-24
 
 .. code-block:: Python
 
@@ -62,14 +64,14 @@ For races with mixed conditions, pick_wo_box() is better.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-27
+.. GENERATED FROM PYTHON SOURCE LINES 25-29
 
 Convert the lap time column from timedelta to integer.
 This is a seaborn-specific modification.
 If plotting with matplotlib, set mpl_timedelta_support to true
 with plotting.setup_mpl.
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-43
+.. GENERATED FROM PYTHON SOURCE LINES 29-45
 
 .. code-block:: Python
 
@@ -104,7 +106,7 @@ with plotting.setup_mpl.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-64
+.. GENERATED FROM PYTHON SOURCE LINES 46-67
 
 .. code-block:: Python
 
@@ -113,6 +115,7 @@ with plotting.setup_mpl.
         data=transformed_laps,
         x="Team",
         y="LapTime (s)",
+        hue="Team",
         order=team_order,
         palette=team_palette,
         whiskerprops=dict(color="white"),
@@ -143,7 +146,7 @@ with plotting.setup_mpl.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 16.729 seconds)
+   **Total running time of the script:** (0 minutes 3.822 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_team_pace_ranking.py:

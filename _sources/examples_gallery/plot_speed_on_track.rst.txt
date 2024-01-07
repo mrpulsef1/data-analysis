@@ -26,12 +26,12 @@ Speed visualization on track map
 
 .. code-block:: Python
 
-    import fastf1 as ff1
-    import numpy as np
     import matplotlib as mpl
-
+    import numpy as np
     from matplotlib import pyplot as plt
     from matplotlib.collections import LineCollection
+
+    import fastf1 as ff1
 
 
 
@@ -116,7 +116,7 @@ line collection needs to be (numlines) x (points per line) x 2 (for x and y)
 
 After this, we can actually plot the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-81
+.. GENERATED FROM PYTHON SOURCE LINES 48-84
 
 .. code-block:: Python
 
@@ -132,11 +132,13 @@ After this, we can actually plot the data.
 
     # After this, we plot the data itself.
     # Create background track line
-    ax.plot(lap.telemetry['X'], lap.telemetry['Y'], color='black', linestyle='-', linewidth=16, zorder=0)
+    ax.plot(lap.telemetry['X'], lap.telemetry['Y'],
+            color='black', linestyle='-', linewidth=16, zorder=0)
 
     # Create a continuous norm to map from data points to colors
     norm = plt.Normalize(color.min(), color.max())
-    lc = LineCollection(segments, cmap=colormap, norm=norm, linestyle='-', linewidth=5)
+    lc = LineCollection(segments, cmap=colormap, norm=norm,
+                        linestyle='-', linewidth=5)
 
     # Set the values used for colormapping
     lc.set_array(color)
@@ -148,7 +150,8 @@ After this, we can actually plot the data.
     # Finally, we create a color bar as a legend.
     cbaxes = fig.add_axes([0.25, 0.05, 0.5, 0.05])
     normlegend = mpl.colors.Normalize(vmin=color.min(), vmax=color.max())
-    legend = mpl.colorbar.ColorbarBase(cbaxes, norm=normlegend, cmap=colormap, orientation="horizontal")
+    legend = mpl.colorbar.ColorbarBase(cbaxes, norm=normlegend, cmap=colormap,
+                                       orientation="horizontal")
 
 
     # Show the plot
@@ -168,7 +171,7 @@ After this, we can actually plot the data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 19.294 seconds)
+   **Total running time of the script:** (0 minutes 5.263 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_speed_on_track.py:

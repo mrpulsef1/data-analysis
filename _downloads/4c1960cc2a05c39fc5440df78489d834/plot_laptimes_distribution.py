@@ -3,10 +3,12 @@
 Visualizae different drivers' laptime distributions.
 """
 
-import fastf1
-import fastf1.plotting
 import seaborn as sns
 from matplotlib import pyplot as plt
+
+import fastf1
+import fastf1.plotting
+
 
 # enabling misc_mpl_mods will turn on minor grid lines that clutters the plot
 fastf1.plotting.setup_mpl(mpl_timedelta_support=False, misc_mpl_mods=False)
@@ -55,8 +57,9 @@ driver_laps["LapTime(s)"] = driver_laps["LapTime"].dt.total_seconds()
 sns.violinplot(data=driver_laps,
                x="Driver",
                y="LapTime(s)",
+               hue="Driver",
                inner=None,
-               scale="area",
+               density_norm="area",
                order=finishing_order,
                palette=driver_colors
                )
@@ -69,7 +72,7 @@ sns.swarmplot(data=driver_laps,
               palette=fastf1.plotting.COMPOUND_COLORS,
               hue_order=["SOFT", "MEDIUM", "HARD"],
               linewidth=0,
-              size=5,
+              size=4,
               )
 # sphinx_gallery_defer_figures
 

@@ -23,15 +23,15 @@ Tyre strategies during a race
 
 Plot all drivers' tyre strategies during a race.
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-12
+.. GENERATED FROM PYTHON SOURCE LINES 7-14
 
 .. code-block:: Python
 
 
-    import fastf1
-    import fastf1.plotting
     from matplotlib import pyplot as plt
 
+    import fastf1
+    import fastf1.plotting
 
 
 
@@ -39,11 +39,13 @@ Plot all drivers' tyre strategies during a race.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-14
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 15-16
 
 Load the race session
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-19
+.. GENERATED FROM PYTHON SOURCE LINES 16-21
 
 .. code-block:: Python
 
@@ -59,11 +61,11 @@ Load the race session
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-21
+.. GENERATED FROM PYTHON SOURCE LINES 22-23
 
 Get the list of driver numbers
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-24
+.. GENERATED FROM PYTHON SOURCE LINES 23-26
 
 .. code-block:: Python
 
@@ -83,11 +85,11 @@ Get the list of driver numbers
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-26
+.. GENERATED FROM PYTHON SOURCE LINES 27-28
 
 Convert the driver numbers to three letter abbreviations
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-29
+.. GENERATED FROM PYTHON SOURCE LINES 28-31
 
 .. code-block:: Python
 
@@ -107,7 +109,7 @@ Convert the driver numbers to three letter abbreviations
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-35
+.. GENERATED FROM PYTHON SOURCE LINES 32-37
 
 We need to find the stint length and compound used
 for every stint by every driver.
@@ -115,7 +117,7 @@ We do this by first grouping the laps by the driver,
 the stint number, and the compound.
 And then counting the number of laps in each group.
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-39
+.. GENERATED FROM PYTHON SOURCE LINES 37-41
 
 .. code-block:: Python
 
@@ -130,12 +132,12 @@ And then counting the number of laps in each group.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-42
+.. GENERATED FROM PYTHON SOURCE LINES 42-44
 
 The number in the LapNumber column now stands for the number of observations
 in that group aka the stint length.
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-45
+.. GENERATED FROM PYTHON SOURCE LINES 44-47
 
 .. code-block:: Python
 
@@ -168,11 +170,11 @@ in that group aka the stint length.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-47
+.. GENERATED FROM PYTHON SOURCE LINES 48-49
 
 Now we can plot the strategies for each driver
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-68
+.. GENERATED FROM PYTHON SOURCE LINES 49-70
 
 .. code-block:: Python
 
@@ -204,11 +206,11 @@ Now we can plot the strategies for each driver
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-71
+.. GENERATED FROM PYTHON SOURCE LINES 72-73
 
 Make the plot more readable and intuitive
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-78
+.. GENERATED FROM PYTHON SOURCE LINES 73-80
 
 .. code-block:: Python
 
@@ -226,11 +228,11 @@ Make the plot more readable and intuitive
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-81
+.. GENERATED FROM PYTHON SOURCE LINES 82-83
 
 Plot aesthetics
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-87
+.. GENERATED FROM PYTHON SOURCE LINES 83-89
 
 .. code-block:: Python
 
@@ -255,7 +257,7 @@ Plot aesthetics
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 17.967 seconds)
+   **Total running time of the script:** (0 minutes 11.222 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_strategy.py:

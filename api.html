@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Ergast API Interface" href="ergast.html" /><link rel="prev" title="Event Schedule - fastf1.events" href="events.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>F1 API - fastf1.api - FastF1 3.1.6</title>
+        <title>F1 API - fastf1.api - FastF1 3.2.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.6</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.2.0</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.6</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.2.0</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -179,8 +179,8 @@
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_strategy.html">Tyre strategies during a race</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_speed_trace.html">Plot speed traces with corner annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_qualifying_results.html">Qualifying results overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_laptimes_distribution.html">Driver Laptimes Distribution Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_speed_on_track.html">Speed visualization on track map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_corners.html">Draw a track map with numbered corners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_results_tracker.html">Plot driver standings in a heatmap</a></li>
@@ -209,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/contributing.html">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/devenv_setup.html">Setting up FastF1 for development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/testing.html#linting-code-style-tests">Linting - Code style tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/documenting_fastf1.html">Writing documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/coding_guide.html">Pull request guidelines</a></li>
 </ul>
@@ -375,10 +376,12 @@ to use as a source instead of the api</p></li>
 <li><p>Driver (str): Driver number</p></li>
 <li><p>NumberOfLaps (int): Number of laps driven by this driver including the lap in this row</p></li>
 <li><p>NumberOfPitStops (int): Number of pit stops of this driver</p></li>
-<li><p>PitInTime (pandas.Timedelta): Session time at which the driver entered the pits. Consequentially,
-if this value is not NaT the lap in this row is an inlap.</p></li>
-<li><p>PitOutTime (pandas.Timedelta): Session time at which the driver exited the pits. Consequentially,
-if this value is not NaT  the lap in this row is an outlap.</p></li>
+<li><p>PitInTime (pandas.Timedelta): Session time at which the
+driver entered the pits. Consequently, if this value is
+not NaT the lap in this row is an inlap.</p></li>
+<li><p>PitOutTime (pandas.Timedelta): Session time at which the
+driver exited the pits. Consequently, if this value is
+not NaT, the lap in this row is an outlap.</p></li>
 <li><p>Sector1/2/3Time (pandas.Timedelta): Sector times (one column for each sector time)</p></li>
 <li><p>Sector1/2/3SessionTime (pandas.Timedelta): Session time at which the corresponding sector time
 was set (one column for each sector’s session time)</p></li>
@@ -452,7 +455,7 @@ frequently (for example ‘Compound’ only after tire changes).</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A DataFrame contianing one column for each data channel as listed above.</p>
+<dd class="field-even"><p>A DataFrame containing one column for each data channel listed above.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#fastf1.api.SessionNotAvailableError" title="fastf1.api.SessionNotAvailableError"><strong>SessionNotAvailableError</strong></a> – in case the F1 livetiming api returns no data</p>
@@ -585,7 +588,11 @@ words (‘Yellow’, ‘AllClear’,…)</p></li>
 <p>Track status is indicated using single digit integer status codes (as string). List of known statuses:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>‘1’: Track clear (beginning of session ot to indicate the end of another status)</p></li>
+<li><dl class="simple">
+<dt>‘1’: Track clear (beginning of session or to indicate the end</dt><dd><p>of another status)</p>
+</dd>
+</dl>
+</li>
 <li><p>‘2’: Yellow flag (sectors are unknown)</p></li>
 <li><p>‘3’: ??? Never seen so far, does not exist?</p></li>
 <li><p>‘4’: Safety Car</p></li>
@@ -675,6 +682,7 @@ decisions and statuses of the session.</p>
 <li><p>Scope (str): Scope of message “Track”, “Sector”, “Driver”</p></li>
 <li><p>Sector (int): Affected track sector for sector-scoped messages</p></li>
 <li><p>RacingNumber (str): Affected driver for CarEvent messages</p></li>
+<li><p>Lap (int): Number of the lap in which the message was displayed</p></li>
 </ul>
 </div></blockquote>
 <dl class="field-list simple">
@@ -752,7 +760,7 @@ potentially be removed or changed.</p>
 <blockquote>
 <div><p><cite>[‘RacingNumber’, ‘BroadcastName’, ‘FullName’, ‘Tla’, ‘Line’,
 ‘TeamName’, ‘TeamColour’, ‘FirstName’, ‘LastName’, ‘Reference’,
-‘HeadshotUrl’]</cite></p>
+‘HeadshotUrl’, ‘CountryCode’]</cite></p>
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -925,7 +933,7 @@ A likely cause is that the session does not exist because it was cancelled.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, theOehrly
+                Copyright &#169; 2024, theOehrly
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -983,7 +991,7 @@ A likely cause is that the session does not exist because it was cancelled.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=b2e31178"></script>
+</div><script src="_static/documentation_options.js?v=4f6ddb47"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

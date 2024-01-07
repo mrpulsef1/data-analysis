@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Live Timing Client - fastf1.livetiming" href="livetiming.html" /><link rel="prev" title="Utils module - fastf1.utils" href="utils.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>Plotting - fastf1.plotting - FastF1 3.1.6</title>
+        <title>Plotting - fastf1.plotting - FastF1 3.2.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.6</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.2.0</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.6</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.2.0</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -179,8 +179,8 @@
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_strategy.html">Tyre strategies during a race</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_speed_trace.html">Plot speed traces with corner annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_qualifying_results.html">Qualifying results overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_laptimes_distribution.html">Driver Laptimes Distribution Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_speed_on_track.html">Speed visualization on track map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_corners.html">Draw a track map with numbered corners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_results_tracker.html">Plot driver standings in a heatmap</a></li>
@@ -209,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/contributing.html">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/devenv_setup.html">Setting up FastF1 for development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/testing.html#linting-code-style-tests">Linting - Code style tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/documenting_fastf1.html">Writing documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/coding_guide.html">Pull request guidelines</a></li>
 </ul>
@@ -251,8 +252,8 @@
           <section id="module-fastf1.plotting">
 <span id="plotting-fastf1-plotting"></span><h1>Plotting - <a class="reference internal" href="#module-fastf1.plotting" title="fastf1.plotting"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fastf1.plotting</span></code></a><a class="headerlink" href="#module-fastf1.plotting" title="Link to this heading">#</a></h1>
 <p>Helper functions for creating data plots.</p>
-<p><a class="reference internal" href="#module-fastf1.plotting" title="fastf1.plotting"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fastf1.plotting</span></code></a> provides optional functionality with the intention of making
-it easy to create nice plots.</p>
+<p><a class="reference internal" href="#module-fastf1.plotting" title="fastf1.plotting"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fastf1.plotting</span></code></a> provides optional functionality with the intention of
+making it easy to create nice plots.</p>
 <dl class="simple">
 <dt>This module offers mainly two things:</dt><dd><ul class="simple">
 <li><p>team names and colors</p></li>
@@ -328,10 +329,11 @@ formatting. The heavy lifting for this is done by an external
 package called ‘Timple’. See <a class="reference external" href="https://github.com/theOehrly/Timple">https://github.com/theOehrly/Timple</a> if
 you wish to customize the tick formatting for timedelta.</p>
 </p></li>
-<li><p><strong>color_scheme</strong> (<em>str</em><em>, </em><em>None</em>) – This enables the Fast-F1 color scheme that you can see in all example
-images.
+<li><p><strong>color_scheme</strong> (<em>str</em><em>, </em><em>None</em>) – This enables the Fast-F1 color scheme that you can see in all
+example images.
 Valid color scheme names are: [‘fastf1’, None]</p></li>
-<li><p><strong>misc_mpl_mods</strong> (<em>bool</em>) – <p>This enables a collection of patches for the following mpl features:</p>
+<li><p><strong>misc_mpl_mods</strong> (<em>bool</em>) – <p>This enables a collection of patches for the following mpl
+features:</p>
 <blockquote>
 <div><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">.savefig</span></code> (saving of figures)</p></li>
@@ -376,7 +378,8 @@ convert abbreviations to team names if necessary.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>identifier</strong> (<em>str</em>) – Abbreviation or uniquely identifying name of the driver.</p>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>str</em>) – Abbreviation or uniquely identifying name of the
+driver.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>hex color code</p>
@@ -422,7 +425,8 @@ convert abbreviations to team names if necessary.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>identifier</strong> (<em>str</em>) – Abbreviation or uniquely identifying name of the team.</p>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>str</em>) – Abbreviation or uniquely identifying name of the
+team.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>hex color code</p>
@@ -481,7 +485,7 @@ convert abbreviations to team names if necessary.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, theOehrly
+                Copyright &#169; 2024, theOehrly
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -529,7 +533,7 @@ convert abbreviations to team names if necessary.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=b2e31178"></script>
+</div><script src="_static/documentation_options.js?v=4f6ddb47"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

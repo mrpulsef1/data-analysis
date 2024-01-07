@@ -22,15 +22,17 @@ Driver Laptimes Scatterplot
 
 Plot a driver's lap times in a race, with color coding for the compounds.
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-15
+.. GENERATED FROM PYTHON SOURCE LINES 6-17
 
 .. code-block:: Python
 
 
-    import fastf1
-    import fastf1.plotting
     import seaborn as sns
     from matplotlib import pyplot as plt
+
+    import fastf1
+    import fastf1.plotting
+
 
     # The misc_mpl_mods option enables minor grid lines which clutter the plot
     fastf1.plotting.setup_mpl(misc_mpl_mods=False)
@@ -42,11 +44,11 @@ Plot a driver's lap times in a race, with color coding for the compounds.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-17
+.. GENERATED FROM PYTHON SOURCE LINES 18-19
 
 Load the race session.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-21
+.. GENERATED FROM PYTHON SOURCE LINES 19-23
 
 .. code-block:: Python
 
@@ -61,12 +63,12 @@ Load the race session.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-24
+.. GENERATED FROM PYTHON SOURCE LINES 24-26
 
 Get all the laps for a single driver.
 Filter out slow laps as they distort the graph axis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-27
+.. GENERATED FROM PYTHON SOURCE LINES 26-29
 
 .. code-block:: Python
 
@@ -80,14 +82,14 @@ Filter out slow laps as they distort the graph axis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-32
+.. GENERATED FROM PYTHON SOURCE LINES 30-34
 
 Make the scattterplot using lap number as x-axis and lap time as y-axis.
 Marker colors correspond to the compounds used.
 Note: as LapTime is represented by timedelta, calling setup_mpl earlier
 is required.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-45
+.. GENERATED FROM PYTHON SOURCE LINES 34-47
 
 .. code-block:: Python
 
@@ -117,11 +119,11 @@ is required.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-48
+.. GENERATED FROM PYTHON SOURCE LINES 49-50
 
 Make the plot more aesthetic.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-62
+.. GENERATED FROM PYTHON SOURCE LINES 50-64
 
 .. code-block:: Python
 
@@ -154,7 +156,7 @@ Make the plot more aesthetic.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 17.281 seconds)
+   **Total running time of the script:** (0 minutes 4.092 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_driver_laptimes.py:

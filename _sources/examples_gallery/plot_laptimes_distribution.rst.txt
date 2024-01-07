@@ -21,15 +21,17 @@ Driver Laptimes Distribution Visualization
 =============================================
 Visualizae different drivers' laptime distributions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 5-14
+.. GENERATED FROM PYTHON SOURCE LINES 5-16
 
 .. code-block:: Python
 
 
-    import fastf1
-    import fastf1.plotting
     import seaborn as sns
     from matplotlib import pyplot as plt
+
+    import fastf1
+    import fastf1.plotting
+
 
     # enabling misc_mpl_mods will turn on minor grid lines that clutters the plot
     fastf1.plotting.setup_mpl(mpl_timedelta_support=False, misc_mpl_mods=False)
@@ -41,11 +43,11 @@ Visualizae different drivers' laptime distributions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-16
+.. GENERATED FROM PYTHON SOURCE LINES 17-18
 
 Load the race session
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-20
+.. GENERATED FROM PYTHON SOURCE LINES 18-22
 
 .. code-block:: Python
 
@@ -60,13 +62,13 @@ Load the race session
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-24
+.. GENERATED FROM PYTHON SOURCE LINES 23-26
 
 Get all the laps for the point finishers only.
 Filter out slow laps (yellow flag, VSC, pitstops etc.)
 as they distort the graph axis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-29
+.. GENERATED FROM PYTHON SOURCE LINES 26-31
 
 .. code-block:: Python
 
@@ -88,12 +90,12 @@ as they distort the graph axis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-32
+.. GENERATED FROM PYTHON SOURCE LINES 32-34
 
 To plot the drivers by finishing order,
 we need to get their three-letter abbreviations in the finishing order.
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-35
+.. GENERATED FROM PYTHON SOURCE LINES 34-37
 
 .. code-block:: Python
 
@@ -113,14 +115,14 @@ we need to get their three-letter abbreviations in the finishing order.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-40
+.. GENERATED FROM PYTHON SOURCE LINES 38-42
 
 We need to modify the DRIVER_COLORS palette.
 Its keys are the driver's full names but we need the keys to be the drivers'
 three-letter abbreviations.
 We can do this with the DRIVER_TRANSLATE mapping.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-44
+.. GENERATED FROM PYTHON SOURCE LINES 42-46
 
 .. code-block:: Python
 
@@ -141,12 +143,12 @@ We can do this with the DRIVER_TRANSLATE mapping.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-47
+.. GENERATED FROM PYTHON SOURCE LINES 47-49
 
 First create the violin plots to show the distributions.
 Then use the swarm plot to show the actual laptimes.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-75
+.. GENERATED FROM PYTHON SOURCE LINES 49-78
 
 .. code-block:: Python
 
@@ -161,8 +163,9 @@ Then use the swarm plot to show the actual laptimes.
     sns.violinplot(data=driver_laps,
                    x="Driver",
                    y="LapTime(s)",
+                   hue="Driver",
                    inner=None,
-                   scale="area",
+                   density_norm="area",
                    order=finishing_order,
                    palette=driver_colors
                    )
@@ -175,7 +178,7 @@ Then use the swarm plot to show the actual laptimes.
                   palette=fastf1.plotting.COMPOUND_COLORS,
                   hue_order=["SOFT", "MEDIUM", "HARD"],
                   linewidth=0,
-                  size=5,
+                  size=4,
                   )
 
 
@@ -191,11 +194,11 @@ Then use the swarm plot to show the actual laptimes.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-78
+.. GENERATED FROM PYTHON SOURCE LINES 80-81
 
 Make the plot more aesthetic
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-85
+.. GENERATED FROM PYTHON SOURCE LINES 81-88
 
 .. code-block:: Python
 
@@ -221,7 +224,7 @@ Make the plot more aesthetic
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.893 seconds)
+   **Total running time of the script:** (0 minutes 2.992 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_laptimes_distribution.py:

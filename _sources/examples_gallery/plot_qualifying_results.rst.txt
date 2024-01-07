@@ -22,7 +22,7 @@ Qualifying results overview
 
 Plot the qualifying result with visualization the fastest times.
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-24
+.. GENERATED FROM PYTHON SOURCE LINES 6-25
 
 .. code-block:: Python
 
@@ -38,7 +38,8 @@ Plot the qualifying result with visualization the fastest times.
 
 
     # we only want support for timedelta plotting in this example
-    fastf1.plotting.setup_mpl(mpl_timedelta_support=True, color_scheme=None, misc_mpl_mods=False)
+    fastf1.plotting.setup_mpl(mpl_timedelta_support=True, color_scheme=None,
+                              misc_mpl_mods=False)
 
     session = fastf1.get_session(2021, 'Spanish Grand Prix', 'Q')
     session.load()
@@ -51,11 +52,11 @@ Plot the qualifying result with visualization the fastest times.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-26
+.. GENERATED FROM PYTHON SOURCE LINES 26-27
 
 First, we need to get an array of all drivers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-31
+.. GENERATED FROM PYTHON SOURCE LINES 27-32
 
 .. code-block:: Python
 
@@ -78,13 +79,13 @@ First, we need to get an array of all drivers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-35
+.. GENERATED FROM PYTHON SOURCE LINES 33-36
 
 After that we'll get each drivers fastest lap, create a new laps object
 from these laps, sort them by lap time and have pandas reindex them to
 number them nicely by starting position.
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-43
+.. GENERATED FROM PYTHON SOURCE LINES 36-46
 
 .. code-block:: Python
 
@@ -93,7 +94,9 @@ number them nicely by starting position.
     for drv in drivers:
         drvs_fastest_lap = session.laps.pick_driver(drv).pick_fastest()
         list_fastest_laps.append(drvs_fastest_lap)
-    fastest_laps = Laps(list_fastest_laps).sort_values(by='LapTime').reset_index(drop=True)
+    fastest_laps = Laps(list_fastest_laps) \
+        .sort_values(by='LapTime') \
+        .reset_index(drop=True)
 
 
 
@@ -103,13 +106,13 @@ number them nicely by starting position.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-47
+.. GENERATED FROM PYTHON SOURCE LINES 47-50
 
 The plot is nicer to look at and more easily understandable if we just plot
 the time differences. Therefore we subtract the fastest lap time from all
 other lap times.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-52
+.. GENERATED FROM PYTHON SOURCE LINES 50-55
 
 .. code-block:: Python
 
@@ -125,13 +128,13 @@ other lap times.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-56
+.. GENERATED FROM PYTHON SOURCE LINES 56-59
 
 We can take a quick look at the laps we have to check if everything
 looks all right. For this, we'll just check the 'Driver', 'LapTime'
 and 'LapTimeDelta' columns.
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-60
+.. GENERATED FROM PYTHON SOURCE LINES 59-63
 
 .. code-block:: Python
 
@@ -172,11 +175,11 @@ and 'LapTimeDelta' columns.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-62
+.. GENERATED FROM PYTHON SOURCE LINES 64-65
 
 Finally, we'll create a list of team colors per lap to color our plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-68
+.. GENERATED FROM PYTHON SOURCE LINES 65-71
 
 .. code-block:: Python
 
@@ -193,11 +196,11 @@ Finally, we'll create a list of team colors per lap to color our plot.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-70
+.. GENERATED FROM PYTHON SOURCE LINES 72-73
 
 Now, we can plot all the data
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-84
+.. GENERATED FROM PYTHON SOURCE LINES 73-87
 
 .. code-block:: Python
 
@@ -222,11 +225,11 @@ Now, we can plot all the data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-87
+.. GENERATED FROM PYTHON SOURCE LINES 89-90
 
 Finally, give the plot a meaningful title
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-94
+.. GENERATED FROM PYTHON SOURCE LINES 90-97
 
 .. code-block:: Python
 
@@ -252,7 +255,7 @@ Finally, give the plot a meaningful title
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.647 seconds)
+   **Total running time of the script:** (0 minutes 1.689 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_qualifying_results.py:

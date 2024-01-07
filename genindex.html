@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 --><title>Index - FastF1 3.1.6</title>
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 --><title>Index - FastF1 3.2.0</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -127,7 +127,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.1.6</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.2.0</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +150,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.1.6</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.2.0</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -177,8 +177,8 @@
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_strategy.html">Tyre strategies during a race</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_speed_trace.html">Plot speed traces with corner annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_qualifying_results.html">Qualifying results overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_laptimes_distribution.html">Driver Laptimes Distribution Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_who_can_still_win_wdc.html">Who can still win the drivers WDC?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_speed_on_track.html">Speed visualization on track map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_annotate_corners.html">Draw a track map with numbered corners</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_gallery/plot_results_tracker.html">Plot driver standings in a heatmap</a></li>
@@ -207,6 +207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributing/contributing.html">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/devenv_setup.html">Setting up FastF1 for development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing/testing.html#linting-code-style-tests">Linting - Code style tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/documenting_fastf1.html">Writing documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing/coding_guide.html">Pull request guidelines</a></li>
 </ul>
@@ -276,18 +277,8 @@
   <h2>B</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="core.html#fastf1.core.Laps.base_class_view">base_class_view (fastf1.core.Laps property)</a>
-
-        <ul>
-          <li><a href="core.html#fastf1.core.SessionResults.base_class_view">(fastf1.core.SessionResults property)</a>
+        <li><a href="core.html#fastf1.core.Telemetry.base_class_view">base_class_view (fastf1.core.Telemetry property)</a>
 </li>
-          <li><a href="core.html#fastf1.core.Telemetry.base_class_view">(fastf1.core.Telemetry property)</a>
-</li>
-          <li><a href="ergast.html#fastf1.ergast.interface.ErgastResultFrame.base_class_view">(fastf1.ergast.interface.ErgastResultFrame property)</a>
-</li>
-          <li><a href="events.html#fastf1.events.EventSchedule.base_class_view">(fastf1.events.EventSchedule property)</a>
-</li>
-        </ul></li>
     </ul></td>
   </tr></table>
 </section>
@@ -507,6 +498,8 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="livetiming.html#fastf1.livetiming.data.LiveTimingData.get">get() (fastf1.livetiming.data.LiveTimingData method)</a>
+</li>
+        <li><a href="fastf1.html#fastf1.Cache.get_cache_info">get_cache_info() (fastf1.Cache class method)</a>
 </li>
         <li><a href="core.html#fastf1.core.Lap.get_car_data">get_car_data() (fastf1.core.Lap method)</a>
 
@@ -779,6 +772,8 @@
 </li>
         <li><a href="core.html#fastf1.core.Laps.pick_accurate">pick_accurate() (fastf1.core.Laps method)</a>
 </li>
+        <li><a href="core.html#fastf1.core.Laps.pick_box_laps">pick_box_laps() (fastf1.core.Laps method)</a>
+</li>
         <li><a href="core.html#fastf1.core.Laps.pick_compounds">pick_compounds() (fastf1.core.Laps method)</a>
 </li>
         <li><a href="core.html#fastf1.core.Laps.pick_driver">pick_driver() (fastf1.core.Laps method)</a>
@@ -979,7 +974,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, theOehrly
+                Copyright &#169; 2024, theOehrly
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -999,7 +994,7 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=b2e31178"></script>
+</div><script src="_static/documentation_options.js?v=4f6ddb47"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>
