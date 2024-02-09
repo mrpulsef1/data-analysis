@@ -149,7 +149,7 @@ the track map is oriented correctly. After that, plot the rotated track map.
  .. code-block:: none
 
 
-    [<matplotlib.lines.Line2D object at 0x7f41f5bb8c70>]
+    [<matplotlib.lines.Line2D object at 0x7f3481291940>]
 
 
 
@@ -238,7 +238,7 @@ so that the track is not distorted and show the plot.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 12.878 seconds)
+   **Total running time of the script:** (0 minutes 3.861 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_annotate_corners.py:
