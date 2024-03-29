@@ -8,7 +8,6 @@ from typing import (
 from fastf1.core import Session
 from fastf1.plotting._constants import LEGACY_TEAM_TRANSLATE as _LGT
 from fastf1.plotting._constants import Constants as _Constants
-from fastf1.plotting._constants.base import Colormaps as _Colormaps
 from fastf1.plotting._constants.base import Compounds as _Compounds
 from fastf1.plotting._drivers import (  # noqa: F401
     _get_driver_team_mapping,
@@ -58,9 +57,9 @@ Mapping of tyre compound names to compound colors (hex color codes).
 @cached_property
 def _DEPR_DRIVER_TRANSLATE() -> Dict[str, str]:
     dtm = _get_driver_team_mapping(session=None)
-    abb_to_name = dtm.abbreviation_to_name
-    for abb in abb_to_name.keys():
-        abb_to_name[abb] = abb_to_name[abb].lower()
+    abb_to_name = dict()
+    for abbreviation, driver in dtm.drivers_by_abbreviation.items():
+        abb_to_name[abbreviation] = driver.normalized_value.lower()
     return abb_to_name
 
 
@@ -74,8 +73,10 @@ Mapping of driver names to theirs respective abbreviations.
 """
 
 _DEPR_TEAM_COLORS: Dict[str, str] = {
-    str(key.value): val for key, val
-    in _Constants['2024'].Colormaps[_Colormaps.Default].items()
+    # str(key.value): val for key, val
+    # in _Constants['2024'].Colormaps[_Colormaps.Default].items()
+    name: team.TeamColor.Default[0] for name, team
+    in _Constants['2024'].Teams.items()
 }
 TEAM_COLORS: Dict[str, str]
 """

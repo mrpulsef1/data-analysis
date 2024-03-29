@@ -1,80 +1,93 @@
-from enum import Enum
-from typing import (
-    Dict,
-    Sequence
-)
+from typing import Dict
 
 from fastf1.plotting._constants.base import (
-    BaseSeason,
-    Colormaps,
-    Compounds
+    Compounds,
+    Team,
+    TeamColors
 )
 
 
-class Teams(Enum):
-    Mercedes = 'mercedes'
-    Ferrari = 'ferrari'
-    RedBull = 'red bull'
-    McLaren = 'mclaren'
-    Alpine = 'alpine'
-    AstonMartin = 'aston martin'
-    AlfaRomeo = 'alfa romeo'
-    AlphaTauri = 'alphatauri'
-    Haas = 'haas'
-    Williams = 'williams'
-
-
-ShortTeamNames: Dict[Teams, str] = {
-    Teams.Mercedes: 'Mercedes',
-    Teams.Ferrari: 'Ferrari',
-    Teams.RedBull: 'Red Bull',
-    Teams.McLaren: 'McLaren',
-    Teams.Alpine: 'Alpine',
-    Teams.AstonMartin: 'Aston',
-    Teams.AlfaRomeo: 'Alfa Romeo',
-    Teams.AlphaTauri: 'AlphaTauri',
-    Teams.Haas: 'Haas',
-    Teams.Williams: 'Williams'
-}
-
-
-TeamColormaps: Dict[Colormaps, Dict[Teams, Sequence[str]]] = {
-    Colormaps.Classic: {
-        Teams.Mercedes: ['#00d2be', ],
-        Teams.Ferrari: ['#dc0000', ],
-        Teams.RedBull: ['#0600ef', ],
-        Teams.McLaren: ['#ff8700', ],
-        Teams.Alpine: ['#0090ff', ],
-        Teams.AstonMartin: ['#006f62', ],
-        Teams.AlfaRomeo: ['#900000', ],
-        Teams.AlphaTauri: ['#2b4562', ],
-        Teams.Haas: ['#ffffff', ],
-        Teams.Williams: ['#005aff', ]
-    },
-    Colormaps.Official: {
-        Teams.Mercedes: ['#6CD3BF', ],
-        Teams.Ferrari: ['#F91536', ],
-        Teams.RedBull: ['#3671C6', ],
-        Teams.McLaren: ['#F58020', ],
-        Teams.Alpine: ['#2293D1', ],
-        Teams.AstonMartin: ['#358C75', ],
-        Teams.AlfaRomeo: ['#900000', ],
-        Teams.AlphaTauri: ['#5E8FAA', ],
-        Teams.Haas: ['#B6BABD', ],
-        Teams.Williams: ['#37BEDD', ]
-    },
-    Colormaps.Default: {
-        Teams.Mercedes: ['#00f5d0', '#a8fff2'],
-        Teams.Ferrari: ['#da291c', '#e84d40'],
-        Teams.RedBull: ['#fcd700', '#ffec7b'],
-        Teams.McLaren: ['#ff8000', '#9d4d00'],
-        Teams.Alpine: ['#fe86bc', '#ff117c'],
-        Teams.AstonMartin: ['#00665e', '#00413b'],
-        Teams.AlfaRomeo: ['#900000', '#5f0000'],
-        Teams.AlphaTauri: ['#2b4562', '#406991'],
-        Teams.Haas: ['#ffffff', '#a7a7a7'],
-        Teams.Williams: ['#00a0dd', '#8cc8ff']
-    }
+Teams: Dict[str, Team] = {
+    'mercedes': Team(
+        ShortName='Mercedes',
+        TeamColor=TeamColors(
+            Classic='#00d2be',
+            Official='#6CD3BF',
+            Default=('#00f5d0', '#a8fff2')
+        )
+    ),
+    'ferrari': Team(
+        ShortName='Ferrari',
+        TeamColor=TeamColors(
+            Classic='#dc0000',
+            Official='#F91536',
+            Default=('#da291c', '#e84d40')
+        )
+    ),
+    'red bull': Team(
+        ShortName='Red Bull',
+        TeamColor=TeamColors(
+            Classic='#0600ef',
+            Official='#3671C6',
+            Default=('#fcd700', '#ffec7b')
+        )
+    ),
+    'mclaren': Team(
+        ShortName='McLaren',
+        TeamColor=TeamColors(
+            Classic='#ff8700',
+            Official='#F58020',
+            Default=('#ff8000', '#9d4d00')
+        )
+    ),
+    'alpine': Team(
+        ShortName='Alpine',
+        TeamColor=TeamColors(
+            Classic='#0090ff',
+            Official='#2293D1',
+            Default=('#fe86bc', '#ff117c')
+        )
+    ),
+    'aston martin': Team(
+        ShortName='Aston',
+        TeamColor=TeamColors(
+            Classic='#006f62',
+            Official='#358C75',
+            Default=('#00665e', '#00413b')
+        )
+    ),
+    'alfa romeo': Team(
+        ShortName='Alfa Romeo',
+        TeamColor=TeamColors(
+            Classic='#900000',
+            Official='#900000',
+            Default=('#900000', '#5f0000')
+        )
+    ),
+    'alphatauri': Team(
+        ShortName='AlphaTauri',
+        TeamColor=TeamColors(
+            Classic='#2b4562',
+            Official='#5E8FAA',
+            Default=('#2b4562', '#406991')
+        )
+    ),
+    'haas': Team(
+        ShortName='Haas',
+        TeamColor=TeamColors(
+            Classic='#ffffff',
+            Official='#B6BABD',
+            Default=('#ffffff', '#a7a7a7')
+        )
+    ),
+    'williams': Team(
+        ShortName='Williams',
+        TeamColor=TeamColors(
+            Classic='#005aff',
+            Official='#37BEDD',
+            Default=('#00a0dd', '#8cc8ff')
+        )
+    )
 }
 
 
@@ -88,9 +101,3 @@ CompoundColors: Dict[Compounds, str] = {
     Compounds.TestUnknown: "#434649"
 }
 
-
-class Season2023(BaseSeason):
-    Colormaps = TeamColormaps
-    CompoundColors = CompoundColors
-    ShortTeamNames = ShortTeamNames
-    Teams = Teams

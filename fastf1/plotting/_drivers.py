@@ -15,7 +15,6 @@ from thefuzz import fuzz
 import fastf1._api
 from fastf1.core import Session
 from fastf1.plotting._constants import Constants
-from fastf1.plotting._constants.base import Colormaps
 from fastf1.req import Cache
 
 
@@ -132,10 +131,10 @@ def _load_drivers_from_f1_livetiming(
 
         if team not in teams:
             normalized_full_team_name = _normalize_string(team_name).lower()
-            for ref in Constants[year].Teams:
+            for ref_team_name in Constants[year].Teams.keys():
                 # TODO: handle unknown teams
-                if ref.value in normalized_full_team_name:
-                    team.normalized_value = ref.value
+                if ref_team_name in normalized_full_team_name:
+                    team.normalized_value = ref_team_name
             teams[team_name] = team
 
     return list(teams.values())
@@ -250,19 +249,13 @@ def _get_team_color(
     if dtm.year not in Constants.keys():
         raise ValueError(f"No team colors for year '{dtm.year}'")
 
-    named_colormap = Colormaps(colormap)
-
-    colormaps = Constants[dtm.year].Colormaps
-    if named_colormap not in colormaps.keys():
-        raise ValueError(f"Invalid colormap '{colormap}'")
-
     team_name = _get_team(identifier, session=session).normalized_value
-    named_team = Constants[dtm.year].Teams(team_name)
+    team_consts = Constants[dtm.year].Teams[team_name]
 
-    if named_team not in colormaps[named_colormap].keys():
-        raise ValueError(f"Invalid team name '{team_name}'")
+    if colormap == 'default':
+        return team_consts.TeamColor.Default[_variant]
 
-    return colormaps[named_colormap][named_team][_variant]
+    return getattr(team_consts.TeamColor, colormap)
 
 
 def get_team_name(
@@ -288,8 +281,8 @@ def get_team_name(
 
     if short:
         dtm = _get_driver_team_mapping(session)
-        named_team = Constants[dtm.year].Teams(team.normalized_value)
-        return Constants[dtm.year].ShortTeamNames[named_team]
+        team_consts = Constants[dtm.year].Teams[team.normalized_value]
+        return team_consts.ShortName
 
     return team.value
 
@@ -318,8 +311,8 @@ def get_team_name_by_driver(
 
     if short:
         dtm = _get_driver_team_mapping(session)
-        named_team = Constants[dtm.year].Teams(team.normalized_value)
-        return Constants[dtm.year].ShortTeamNames[named_team]
+        team_consts = Constants[dtm.year].Teams[team.normalized_value]
+        return team_consts.ShortName
 
     return team.value
 

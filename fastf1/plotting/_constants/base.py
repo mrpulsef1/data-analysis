@@ -1,14 +1,9 @@
-from enum import (
-    Enum,
-    EnumType
+from dataclasses import dataclass
+from enum import Enum
+from typing import (
+    Dict,
+    Tuple
 )
-from typing import Dict
-
-
-class Colormaps(Enum):
-    Classic = 'classic'
-    Default = 'default'
-    Official = 'official'
 
 
 class Compounds(Enum):
@@ -21,8 +16,20 @@ class Compounds(Enum):
     TestUnknown = "TEST-UNKNOWN"
 
 
+@dataclass(frozen=True)
+class TeamColors:
+    Classic: str
+    Official: str
+    Default: Tuple[str, str]
+
+
+@dataclass(frozen=True)
+class Team:
+    ShortName: str
+    TeamColor: TeamColors
+
+
+@dataclass(frozen=True)
 class BaseSeason:
-    Colormaps: Dict[Colormaps, dict]
     CompoundColors: Dict[Compounds, str]
-    ShortTeamNames: Dict[EnumType, str]
-    Teams: EnumType
+    Teams: dict[str, Team]
