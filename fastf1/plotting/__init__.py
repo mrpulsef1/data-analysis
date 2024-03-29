@@ -9,7 +9,7 @@ from fastf1.core import Session
 from fastf1.plotting._constants import LEGACY_TEAM_TRANSLATE as _LGT
 from fastf1.plotting._constants import Constants as _Constants
 from fastf1.plotting._constants.base import Compounds as _Compounds
-from fastf1.plotting._drivers import (  # noqa: F401
+from fastf1.plotting._interface import (  # noqa: F401
     _get_driver_team_mapping,
     add_sorted_driver_legend,
     get_driver_abbreviation,

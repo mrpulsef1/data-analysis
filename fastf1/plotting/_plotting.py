@@ -42,7 +42,7 @@ except ImportError:
                   "Plotting of timedelta values will be restricted!",
                   UserWarning)
 
-from fastf1.plotting._drivers import (
+from fastf1.plotting._interface import (
     get_driver_color,
     get_team_color
 )
