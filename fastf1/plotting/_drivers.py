@@ -1,21 +1,65 @@
 import json
 import unicodedata
-from collections import defaultdict
 from typing import (
     Dict,
     List,
     Optional,
     Sequence,
+    Tuple,
     Union
 )
 
 import matplotlib.axes
 from thefuzz import fuzz
 
-from fastf1._api import driver_info
+import fastf1._api
 from fastf1.core import Session
 from fastf1.plotting._constants import Constants
+from fastf1.plotting._constants.base import Colormaps
 from fastf1.req import Cache
+
+
+class _Driver:
+    value: str
+    normalized_value: str
+    abbreviation: str
+    team: "_Team"
+
+
+class _Team:
+    value: str
+    normalized_value: str
+
+    def __init__(self):
+        super().__init__()
+        self.drivers: List["_Driver"] = list()
+
+    @property
+    def abbreviations(self) -> Tuple[str, ...]:
+        return tuple([drv.abbreviation for drv in self.drivers])
+
+
+class _DriverTeamMapping:
+    def __init__(
+            self,
+            year: str,
+            teams: List[_Team],
+    ):
+        self.year = year
+        self.teams = teams
+
+        self.drivers_by_normalized: Dict[str, _Driver] = dict()
+        self.drivers_by_abbreviation: Dict[str, _Driver] = dict()
+        self.teams_by_normalized: Dict[str, _Team] = dict()
+
+        for team in teams:
+            for driver in team.drivers:
+                self.drivers_by_normalized[driver.normalized_value] = driver
+                self.drivers_by_abbreviation[driver.abbreviation] = driver
+            self.teams_by_normalized[team.normalized_value] = team
+
+
+_DRIVER_TEAM_MAPPINGS = dict()
 
 
 def _get_latest_api_path() -> (str, str):
@@ -58,46 +102,43 @@ def _get_latest_api_path() -> (str, str):
 
 def _load_drivers_from_f1_livetiming(
         *, api_path: str, year: str
-) -> Sequence[Dict[str, str]]:
+) -> List[_Team]:
     # load the driver information for the determined session
-    drivers = driver_info(api_path)
+    driver_info = fastf1._api.driver_info(api_path)
 
     # parse the data into the required format
-    abb_to_name: Dict[str, str] = dict()
-    abb_to_full_team_name: Dict[str, str] = dict()
-    name_normalized_to_abb: Dict[str, str] = dict()
+    teams: Dict[str, _Team] = dict()
 
-    for num, driver in drivers.items():
-        abb = driver.get('Tla')
-        name = driver.get('FirstName') + ' ' + driver.get('LastName')
-        team = driver.get('TeamName')
+    for num, driver_entry in driver_info.items():
+        team_name = driver_entry.get('TeamName')
 
-        abb_to_name[abb] = name
-        abb_to_full_team_name[abb] = team
-        name_normalized_to_abb[_normalize_name(name)] = abb
+        if team_name in teams:
+            team = teams[team_name]
+        else:
+            team = _Team()
+            team.value = team_name
 
-    team_name_to_full_team_name: Dict[str, str] = dict()
-    full_team_name_to_team_name: Dict[str, str] = dict()
-    for full_team_name in abb_to_full_team_name.values():
-        normalized_full_team_name = _normalize_name(full_team_name).lower()
-        for team in Constants[year].Teams:
-            if team in normalized_full_team_name:
-                team_name_to_full_team_name[team] = full_team_name
-                full_team_name_to_team_name[full_team_name] = team
+        abbreviation = driver_entry.get('Tla')
 
-    abb_to_team: Dict[str, str] = dict()
-    for abb, full_team_name in abb_to_full_team_name.items():
-        abb_to_team[abb] = full_team_name_to_team_name[full_team_name]
+        name = ' '.join((driver_entry.get('FirstName'),
+                         driver_entry.get('LastName')))
+        driver = _Driver()
+        driver.value = name
+        driver.normalized_value = _normalize_string(name)
+        driver.abbreviation = abbreviation
+        driver.team = team
 
-    ret_data = (abb_to_name,
-                abb_to_team,
-                name_normalized_to_abb,
-                team_name_to_full_team_name)
+        team.drivers.append(driver)
 
-    return ret_data
+        if team not in teams:
+            normalized_full_team_name = _normalize_string(team_name).lower()
+            for ref in Constants[year].Teams:
+                # TODO: handle unknown teams
+                if ref.value in normalized_full_team_name:
+                    team.normalized_value = ref.value
+            teams[team_name] = team
 
-
-_DRIVER_TEAM_MAPPINGS = dict()
+    return list(teams.values())
 
 
 def _get_driver_team_mapping(
@@ -111,22 +152,19 @@ def _get_driver_team_mapping(
         year = str(session.event['EventDate'].year)
 
     if api_path not in _DRIVER_TEAM_MAPPINGS:
-        datas = _load_drivers_from_f1_livetiming(
+        teams = _load_drivers_from_f1_livetiming(
             api_path=api_path, year=year
         )
-        mapping = _DriverTeamMapping(year, *datas)
+        mapping = _DriverTeamMapping(year, teams)
         _DRIVER_TEAM_MAPPINGS[api_path] = mapping
 
     return _DRIVER_TEAM_MAPPINGS[api_path]
 
 
-def _fuzzy_matcher(
-        identifier: str,
-        reference: Dict[str, str]
-) -> str:
+def _fuzzy_matcher[S: str](identifier: str, reference: Sequence[S]) -> S:
     # do fuzzy string matching
     key_ratios = list()
-    for existing_key in reference.keys():
+    for existing_key in reference:
         ratio = fuzz.ratio(identifier, existing_key)
         key_ratios.append((ratio, existing_key))
     key_ratios.sort(reverse=True)
@@ -137,11 +175,10 @@ def _fuzzy_matcher(
         # better than second best)
         raise KeyError
     best_matched_key = key_ratios[0][1]
-    team_name = reference[best_matched_key]
-    return team_name
+    return best_matched_key
 
 
-def _normalize_name(name: str) -> str:
+def _normalize_string(name: str) -> str:
     # removes accents from a string and returns the closest possible
     # ascii representation (https://stackoverflow.com/a/518232)
     stripped = ''.join(c for c in unicodedata.normalize('NFD', name)
@@ -149,49 +186,83 @@ def _normalize_name(name: str) -> str:
     return stripped
 
 
-class _DriverTeamMapping:
-    def __init__(
-            self,
-            year: str,
-            abb_to_name: Dict[str, str],
-            abb_to_team: Dict[str, str],
-            name_normalized_to_abb: Dict[str, str],
-            team_name_to_full_team_name: Dict[str, str]
-    ):
-        self.year = year
-        self.abbreviation_to_name = abb_to_name
-        self.abbreviation_to_team = abb_to_team
-        self.name_normalized_to_abbreviation = name_normalized_to_abb
-        self.team_name_to_full_team_name = team_name_to_full_team_name
+def _get_driver(identifier, *, session: Session) -> _Driver:
+    dtm = _get_driver_team_mapping(session)
+    identifier = _normalize_string(identifier).lower()
 
-        self.team_to_abbreviations: Dict[str, List[str]] = defaultdict(list)
-        for abb, team in self.abbreviation_to_team.items():
-            self.team_to_abbreviations[team].append(abb)
+    # try driver abbreviation first
+    if (abb := identifier.upper()) in dtm.drivers_by_abbreviation:
+        return dtm.drivers_by_abbreviation[abb]
+
+    # check for an exact driver name match
+    if identifier in dtm.drivers_by_normalized:
+        return dtm.drivers_by_normalized[identifier]
+
+    # check for exact partial string match
+    for normalized_driver in dtm.drivers_by_normalized.keys():
+        if identifier in normalized_driver:
+            return dtm.drivers_by_normalized[normalized_driver]
+
+    # do fuzzy string matching
+    normalized_driver = _fuzzy_matcher(identifier,
+                                       list(dtm.drivers_by_normalized.keys()))
+    return dtm.drivers_by_normalized[normalized_driver]
 
 
-def _get_normalized_team_name(
+def _get_team(
         identifier: str,
         *,
         session: Session
-) -> str:
-    dti = _get_driver_team_mapping(session)
-    identifier = _normalize_name(identifier).lower()
+) -> _Team:
+    dtm = _get_driver_team_mapping(session)
+    identifier = _normalize_string(identifier).lower()
+
     team_name: Optional[str] = None
+
     # check for an exact team name match
-    if identifier in dti.team_name_to_full_team_name:
-        team_name = identifier
+    if identifier in dtm.teams_by_normalized.keys():
+        return dtm.teams_by_normalized[identifier]
+
     # check for exact partial string match
-    if team_name is None:
-        for _team_name in dti.team_name_to_full_team_name.keys():
-            if identifier in _team_name:
-                team_name = _team_name
-                break
+    for normalized_team in dtm.teams_by_normalized.keys():
+        if identifier in normalized_team:
+            return dtm.teams_by_normalized[normalized_team]
+
     # do fuzzy string match
-    if team_name is None:
-        team_name = _fuzzy_matcher(
-            identifier, dti.team_name_to_full_team_name
-        )
-    return team_name
+    team_name = _fuzzy_matcher(identifier,
+                               list(dtm.teams_by_normalized.keys()))
+    return dtm.teams_by_normalized[team_name]
+
+
+def _get_team_color(
+            identifier: str,
+            *,
+            session: Session,
+            colormap: str = 'default',
+            _variant: int = 0  # internal use only
+    ):
+    if (_variant != 0) and (colormap != 'default'):
+        raise ValueError("Color variants are only supported on the "
+                         "'default' colormap.")
+
+    dtm = _get_driver_team_mapping(session)
+
+    if dtm.year not in Constants.keys():
+        raise ValueError(f"No team colors for year '{dtm.year}'")
+
+    named_colormap = Colormaps(colormap)
+
+    colormaps = Constants[dtm.year].Colormaps
+    if named_colormap not in colormaps.keys():
+        raise ValueError(f"Invalid colormap '{colormap}'")
+
+    team_name = _get_team(identifier, session=session).normalized_value
+    named_team = Constants[dtm.year].Teams(team_name)
+
+    if named_team not in colormaps[named_colormap].keys():
+        raise ValueError(f"Invalid team name '{team_name}'")
+
+    return colormaps[named_colormap][named_team][_variant]
 
 
 def get_team_name(
@@ -213,20 +284,21 @@ def get_team_name(
         session: the session for which the data should be obtained
         short: if True, a shortened version of the team name will be returned
     """
-    dti = _get_driver_team_mapping(session)
-    team_name = _get_normalized_team_name(identifier, session=session)
+    team = _get_team(identifier, session=session)
 
     if short:
-        return Constants[dti.year].ShortTeamNames[team_name]
+        dtm = _get_driver_team_mapping(session)
+        named_team = Constants[dtm.year].Teams(team.normalized_value)
+        return Constants[dtm.year].ShortTeamNames[named_team]
 
-    return dti.team_name_to_full_team_name[team_name]
+    return team.value
 
 
 def get_team_name_by_driver(
         identifier: str,
         *,
         session: Session,
-        short: bool = False
+        short: bool = False,
 ) -> str:
     """
     Get a full team name based on a driver's abbreviation or based on a
@@ -241,41 +313,15 @@ def get_team_name_by_driver(
         session: the session for which the data should be obtained
         short: if True, a shortened version of the team name will be returned
     """
-    dti = _get_driver_team_mapping(session)
-    abb = get_driver_abbreviation(identifier, session=session)
-    team = dti.abbreviation_to_team[abb]
+    driver = _get_driver(identifier, session=session)
+    team = driver.team
+
     if short:
-        return Constants[dti.year].ShortTeamNames[team]
-    else:
-        return dti.team_name_to_full_team_name[team]
+        dtm = _get_driver_team_mapping(session)
+        named_team = Constants[dtm.year].Teams(team.normalized_value)
+        return Constants[dtm.year].ShortTeamNames[named_team]
 
-
-def _get_team_color(
-            identifier: str,
-            *,
-            session: Session,
-            colormap: str = 'default',
-            _variant: int = 0  # internal use only
-    ):
-    if (_variant != 0) and (colormap != 'default'):
-        raise ValueError("Color variants are only supported on the "
-                         "'default' colormap.")
-
-    dti = _get_driver_team_mapping(session)
-
-    team_name = _get_normalized_team_name(identifier, session=session)
-
-    if dti.year not in Constants.keys():
-        raise ValueError(f"No team colors for year '{dti.year}'")
-
-    colormaps = Constants[dti.year].Colormaps
-    if colormap not in colormaps.keys():
-        raise ValueError(f"Invalid colormap '{colormap}'")
-
-    if team_name not in colormaps[colormap].keys():
-        raise ValueError(f"Invalid team name '{team_name}'")
-
-    return colormaps[colormap][team_name][_variant]
+    return team.value
 
 
 def get_team_color(
@@ -307,12 +353,11 @@ def get_driver_name(identifier: str, *, session: Session) -> str:
         identifier: driver abbreviation or recognizable part of the driver name
         session: the session for which the data should be obtained
     """
-    dti = _get_driver_team_mapping(session)
-    abb = get_driver_abbreviation(identifier, session=session)
-    return dti.abbreviation_to_name[abb]
+    driver = _get_driver(identifier, session=session)
+    return driver.value
 
 
-def get_driver_abbreviation(identifier, *, session: Session):
+def get_driver_abbreviation(identifier, *, session: Session) -> str:
     """
     Get a driver's abbreviation based on a recognizable and identifiable
     part of the driver's name.
@@ -326,26 +371,8 @@ def get_driver_abbreviation(identifier, *, session: Session):
             driver's abbreviation)
         session: the session for which the data should be obtained
     """
-    identifier = _normalize_name(identifier).lower()
-    dti = _get_driver_team_mapping(session)
-
-    # try driver abbreviation first
-    if (abb := identifier.upper()) in dti.abbreviation_to_name:
-        return abb
-
-    # check for an exact driver name match
-    if identifier in dti.name_normalized_to_abbreviation:
-        return dti.name_normalized_to_abbreviation[identifier]
-
-    # check for exact partial string match
-    for name, abb in dti.name_normalized_to_abbreviation.items():
-        if identifier in name:
-            return abb
-
-    # do fuzzy string matching
-    return _fuzzy_matcher(
-        identifier, dti.name_normalized_to_abbreviation
-    )
+    driver = _get_driver(identifier, session=session)
+    return driver.abbreviation
 
 
 def get_driver_names_by_team(
@@ -359,12 +386,8 @@ def get_driver_names_by_team(
         identifier: a recognizable part of the team name
         session: the session for which the data should be obtained
     """
-    dti = _get_driver_team_mapping(session)
-    team = get_team_name(identifier, session=session)
-    names = list()
-    for abb in dti.team_to_abbreviations[team]:
-        names.append(dti.abbreviation_to_name[abb])
-    return names
+    team = _get_team(identifier, session=session)
+    return [driver.value for driver in team.drivers]
 
 
 def get_driver_abbreviations_by_team(
@@ -378,9 +401,8 @@ def get_driver_abbreviations_by_team(
         identifier: a recognizable part of the team name
         session: the session for which the data should be obtained
     """
-    dti = _get_driver_team_mapping(session)
-    team = get_team_name(identifier, session=session)
-    return dti.team_to_abbreviations[team].copy()
+    team = _get_team(identifier, session=session)
+    return [driver.abbreviation for driver in team.drivers]
 
 
 def _get_driver_color(
@@ -390,18 +412,19 @@ def _get_driver_color(
         colormap: str = 'default',
         _variants: bool = False
 ):
-    dti = _get_driver_team_mapping(session)
-    abb = get_driver_abbreviation(identifier, session=session)
-    team = dti.abbreviation_to_team[abb]
+    driver = _get_driver(identifier, session=session)
+    team_name = driver.team.normalized_value
 
     if _variants:
-        idx = dti.team_to_abbreviations[team].index(abb)
+        dtm = _get_driver_team_mapping(session)
+        driver_ref = dtm.teams_by_normalized[team_name].drivers
+        idx = driver_ref.index(driver)
         if idx > 1:
             idx = 1  # we only have two colors, limit to 0 or 1
-        return _get_team_color(team, session=session, colormap='default',
+        return _get_team_color(team_name, session=session, colormap='default',
                                _variant=idx)
     else:
-        return _get_team_color(team, session=session, colormap=colormap)
+        return _get_team_color(team_name, session=session, colormap=colormap)
 
 
 def get_driver_color(
@@ -569,13 +592,13 @@ def get_driver_style(
         *additional_color_kws
     )
 
-    dti = _get_driver_team_mapping(session)
-    abb = get_driver_abbreviation(identifier, session=session)
-    team = dti.abbreviation_to_team[abb]
-    idx = dti.team_to_abbreviations[team].index(abb)
+    driver = _get_driver(identifier, session=session)
+    team = driver.team
+    idx = team.drivers.index(driver)
 
-    if isinstance(style, (list, tuple)) and (len(style) == 0):
-        raise ValueError
+    if not style:
+        # catches empty list, tuple, str
+        raise ValueError("The provided style info is empty!")
 
     if isinstance(style, str):
         style = [style]
@@ -587,7 +610,8 @@ def get_driver_style(
         # arguments
         for opt in style:
             if opt in color_kwargs:
-                value = get_team_color(team, colormap=colormap,
+                value = get_team_color(team.normalized_value,
+                                       colormap=colormap,
                                        session=session)
             elif opt in stylers:
                 value = stylers[opt][idx]
@@ -596,13 +620,24 @@ def get_driver_style(
                                  f"option")
             plot_style[opt] = value
 
-    elif isinstance(style[0], dict):
+    else:
+        try:
+            custom_style = style[idx]
+        except IndexError:
+            raise ValueError(f"The provided custom style info does not "
+                             f"contain enough variants! (Has: {len(style)}, "
+                             f"Required: {idx})")
+
+        if not isinstance(custom_style, dict):
+            raise ValueError("The provided style info has an invalid format!")
+
         # copy the correct user provided style and replace any 'auto'
         # colors with the correct color value
-        plot_style = style[idx].copy()
+        plot_style = custom_style.copy()
         for kwarg in color_kwargs:
             if plot_style.get(kwarg, None) == 'auto':
-                color = get_team_color(team, colormap=colormap,
+                color = get_team_color(team.normalized_value,
+                                       colormap=colormap,
                                        session=session)
                 plot_style[kwarg] = color
 
@@ -628,10 +663,11 @@ def add_sorted_driver_legend(ax: matplotlib.axes.Axes, *, session: Session):
         ax: An instance of a Matplotlib ``Axes`` object
         session: the session for which the data should be obtained
     """
-    dti = _get_driver_team_mapping(session)
+    dtm = _get_driver_team_mapping(session)
     handles, labels = ax.get_legend_handles_labels()
 
-    teams_list = list(dti.team_to_abbreviations.keys())
+    teams_list = list(dtm.teams_by_normalized.values())
+    driver_list = list(dtm.drivers_by_normalized.values())
 
     # create an intermediary list where each element is a tuple that
     # contains (team_idx, driver_idx, handle, label). Then sort this list
@@ -640,10 +676,12 @@ def add_sorted_driver_legend(ax: matplotlib.axes.Axes, *, session: Session):
     # styles are cycled.
     ref = list()
     for hdl, lbl in zip(handles, labels):
-        abb = get_driver_abbreviation(identifier=lbl, session=session)
-        team = dti.abbreviation_to_team[abb]
+        driver = _get_driver(lbl, session=session)
+        team = driver.team
+
         team_idx = teams_list.index(team)
-        driver_idx = dti.team_to_abbreviations[team].index(abb)
+        driver_idx = driver_list.index(driver)
+
         ref.append((team_idx, driver_idx, hdl, lbl))
 
     # sort based only on team_idx and driver_idx (i.e. first two entries)

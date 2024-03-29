@@ -1,4 +1,7 @@
-from enum import Enum
+from enum import (
+    Enum,
+    EnumType
+)
 from typing import Dict
 
 
@@ -21,5 +24,5 @@ class Compounds(Enum):
 class BaseSeason:
     Colormaps: Dict[Colormaps, dict]
     CompoundColors: Dict[Compounds, str]
-    ShortTeamNames: Dict[str, str]
-    Teams: Enum
+    ShortTeamNames: Dict[EnumType, str]
+    Teams: EnumType
