@@ -7,9 +7,13 @@ from typing import (
 
 
 class Compounds(Enum):
+    HyperSoft = "HYPERSOFT"
+    UltraSoft = "ULTRASOFT"
+    SuperSoft = "SUPERSOFT"
     Soft = "SOFT"
     Medium = "MEDIUM"
     Hard = "HARD"
+    SuperHard = "SUPERHARD"
     Intermediate = "INTERMEDIATE"
     Wet = "WET"
     Unknown = "UNKNOWN"

@@ -7,15 +7,12 @@ from fastf1.plotting._constants.base import (
 )
 
 
-# TODO: sort all alphabetically
-
-
-Teams: Dict[str, Team] = {  # TODO: update official colors
+Teams: Dict[str, Team] = {
     'mercedes': Team(
         ShortName='Mercedes',
         TeamColor=TeamColors(
             # Classic='#00d2be',
-            Official='#27f4d2',
+            Official='#00d2be',
             # Default=('#00f5d0', '#a8fff2')
         )
     ),
@@ -23,15 +20,15 @@ Teams: Dict[str, Team] = {  # TODO: update official colors
         ShortName='Ferrari',
         TeamColor=TeamColors(
             # Classic='#dc0000',
-            Official='#e8002d',
-            # Default=('#da291c', '#8c1a11')
+            Official='#dc0000',
+            # Default=('#da291c', '#e84d40')
         )
     ),
     'red bull': Team(
         ShortName='Red Bull',
         TeamColor=TeamColors(
             # Classic='#0600ef',
-            Official='#3671c6',
+            Official='#1e41ff',
             # Default=('#fcd700', '#ffec7b')
         )
     ),
@@ -39,47 +36,47 @@ Teams: Dict[str, Team] = {  # TODO: update official colors
         ShortName='McLaren',
         TeamColor=TeamColors(
             # Classic='#ff8700',
-            Official='#ff8000',
+            Official='#ff8700',
             # Default=('#ff8000', '#9d4d00')
         )
     ),
-    'alpine': Team(
-        ShortName='Alpine',
+    'renault': Team(
+        ShortName='Renault',
         TeamColor=TeamColors(
             # Classic='#0090ff',
-            Official='#ff87bc',
+            Official='#fff500',
             # Default=('#fe86bc', '#ff117c')
         )
     ),
-    'aston martin': Team(
-        ShortName='Aston',
+    'racing point': Team(
+        ShortName='Racing Point',
         TeamColor=TeamColors(
             # Classic='#006f62',
-            Official='#229971',
+            Official='#f596c8',
             # Default=('#00665e', '#00413b')
         )
     ),
-    'sauber': Team(
-        ShortName='Sauber',
+    'alfa romeo': Team(
+        ShortName='Alfa Romeo',
         TeamColor=TeamColors(
-            # Classic='#00e701',
-            Official='#52e252',
-            # Default=('#00e701', '#008d01')
+            # Classic='#900000',
+            Official='#9b0000',
+            # Default=('#900000', '#5f0000')
         )
     ),
-    'rb visa': Team(  # TODO: name?
-        ShortName='RB',
+    'toro rosso': Team(
+        ShortName='Toro Rosso',
         TeamColor=TeamColors(
-            # Classic='#1434CB',  # TODO: update
-            Official='#6692ff',
-            # Default=('#1634cb', '#0c207e')  # TODO: update
+            # Classic='#2b4562',
+            Official='#469bff',
+            # Default=('#2b4562', '#406991')
         )
     ),
     'haas': Team(
         ShortName='Haas',
         TeamColor=TeamColors(
             # Classic='#ffffff',
-            Official='#b6babd',
+            Official='#bd9e57',
             # Default=('#ffffff', '#a7a7a7')
         )
     ),
@@ -87,14 +84,13 @@ Teams: Dict[str, Team] = {  # TODO: update official colors
         ShortName='Williams',
         TeamColor=TeamColors(
             # Classic='#005aff',
-            Official='#64c4ff',
+            Official='#ffffff',
             # Default=('#00a0dd', '#8cc8ff')
         )
     )
 }
 
 
-# TODO: future proofing?
 CompoundColors: Dict[Compounds, str] = {
     Compounds.Soft: "#da291c",
     Compounds.Medium: "#ffd12e",
