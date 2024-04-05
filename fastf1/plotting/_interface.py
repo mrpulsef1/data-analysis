@@ -44,7 +44,7 @@ def _get_driver_team_mapping(
     return _DRIVER_TEAM_MAPPINGS[api_path]
 
 
-def _get_driver(identifier, *, session: Session) -> _Driver:
+def _get_driver(identifier, *, session: Optional[Session]) -> _Driver:
     dtm = _get_driver_team_mapping(session)
     identifier = _normalize_string(identifier).lower()
 
@@ -70,7 +70,7 @@ def _get_driver(identifier, *, session: Session) -> _Driver:
 def _get_team(
         identifier: str,
         *,
-        session: Session
+        session: Optional[Session]
 ) -> _Team:
     dtm = _get_driver_team_mapping(session)
     identifier = _normalize_string(identifier).lower()
@@ -95,7 +95,7 @@ def _get_team(
 def _get_driver_color(
         identifier: str,
         *,
-        session: Session,
+        session: Optional[Session],
         colormap: str = 'default',
         _variants: bool = False
 ):
@@ -117,7 +117,7 @@ def _get_driver_color(
 def _get_team_color(
             identifier: str,
             *,
-            session: Session,
+            session: Optional[Session],
             colormap: str = 'default',
             _variant: int = 0  # internal use only
     ):

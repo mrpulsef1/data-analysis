@@ -10,15 +10,15 @@ from thefuzz import fuzz
 
 
 class _Driver:
-    value: str
-    normalized_value: str
-    abbreviation: str
+    value: str = ''
+    normalized_value: str = ''
+    abbreviation: str = ''
     team: "_Team"
 
 
 class _Team:
-    value: str
-    normalized_value: str
+    value: str = ''
+    normalized_value: str = ''
 
     def __init__(self):
         super().__init__()

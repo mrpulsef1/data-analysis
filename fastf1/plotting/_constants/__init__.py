@@ -7,6 +7,14 @@ from fastf1.plotting._constants import (
 from fastf1.plotting._constants.base import BaseSeason
 
 
+Constants: Dict[str, BaseSeason] = {
+    '2023': BaseSeason(CompoundColors=season2023.CompoundColors,
+                       Teams=season2023.Teams),
+    '2024': BaseSeason(CompoundColors=season2024.CompoundColors,
+                       Teams=season2024.Teams),
+}
+
+
 # Deprecated, will be removed for 2025
 LEGACY_TEAM_TRANSLATE: Dict[str, str] = {
     'MER': 'mercedes',
@@ -16,16 +24,7 @@ LEGACY_TEAM_TRANSLATE: Dict[str, str] = {
     'APN': 'alpine',
     'AMR': 'aston martin',
     'SAU': 'sauber',
-    'VIS': 'visa',  # TODO: update
+    'RB': 'rb',
     'HAA': 'haas',
     'WIL': 'williams'
 }
-
-
-Constants: Dict[str, BaseSeason] = {
-    '2023': BaseSeason(CompoundColors=season2023.CompoundColors,
-                       Teams=season2023.Teams),
-    '2024': BaseSeason(CompoundColors=season2024.CompoundColors,
-                       Teams=season2024.Teams),
-}
-

@@ -53,7 +53,7 @@ Teams: Dict[str, Team] = {  # TODO: update official colors
             Default=('#00f5d0', '#a8fff2')
         )
     ),
-    'rb visa': Team(  # TODO: name?
+    'rb': Team(  # TODO: name?
         ShortName='RB',
         TeamColor=TeamColors(
             Official='#6692ff',

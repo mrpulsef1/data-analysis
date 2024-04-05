@@ -88,6 +88,10 @@ def _load_drivers_from_f1_livetiming(
                 # TODO: handle unknown teams
                 if ref_team_name in normalized_full_team_name:
                     team.normalized_value = ref_team_name
+                    break
+            else:
+                raise ValueError  # TODO: log
+
             teams[team_name] = team
 
     return list(teams.values())

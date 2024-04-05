@@ -34,17 +34,18 @@ try:
     from matplotlib import pyplot as plt
 except ImportError:
     warnings.warn("Failed to import optional dependency 'matplotlib'!"
-                  "Plotting functionality will be unavailable!", UserWarning)
+                  "Plotting functionality will be unavailable!",
+                  RuntimeWarning)
 try:
     import timple
 except ImportError:
     warnings.warn("Failed to import optional dependency 'timple'!"
                   "Plotting of timedelta values will be restricted!",
-                  UserWarning)
+                  RuntimeWarning)
 
 from fastf1.plotting._interface import (
-    get_driver_color,
-    get_team_color
+    _get_driver_color,
+    _get_team_color
 )
 
 
@@ -97,7 +98,7 @@ def driver_color(identifier: str) -> str:
     """
     Get a driver's color from a driver name or abbreviation.
 
-    .. deprecated::
+    .. deprecated:: 3.3.0
         This function is deprecated and will be removed in a future version.
         Use :func:`~fastf1.plotting.get_driver_color` instead.
 
@@ -133,15 +134,16 @@ def driver_color(identifier: str) -> str:
     """
     warnings.warn("The function `driver_color` is deprecated and will be "
                   "removed in a future version. Use "
-                  "`fastf1.plotting.get_driver_color` instead.")
-    return get_driver_color(identifier, session=None, _variants=True)
+                  "`fastf1.plotting.get_driver_color` instead.",
+                  FutureWarning)
+    return _get_driver_color(identifier, session=None, _variants=True)
 
 
 def team_color(identifier: str) -> str:
     """
     Get a team's color from a team name or abbreviation.
 
-    .. deprecated::
+    .. deprecated:: 3.3.0
         This function is deprecated and will be removed in a future version.
         Use :func:`~fastf1.plotting.get_team_color` instead.
 
@@ -181,8 +183,9 @@ def team_color(identifier: str) -> str:
     """
     warnings.warn("The function `team_color` is deprecated and will be "
                   "removed in a future version. Use "
-                  "`fastf1.plotting.get_team_color` instead.")
-    return get_team_color(identifier, session=None)
+                  "`fastf1.plotting.get_team_color` instead.",
+                  FutureWarning)
+    return _get_team_color(identifier, session=None)
 
 
 def _enable_timple():
@@ -287,3 +290,27 @@ def _enable_fastf1_color_scheme():
     plt.rcParams['legend.edgecolor'] = (0.1, 0.1, 0.1, 0.9)
     plt.rcParams['savefig.transparent'] = False
     plt.rcParams['axes.axisbelow'] = True
+
+
+def lapnumber_axis(ax, axis='xaxis'):
+    """
+    Set axis to integer ticks only.
+
+    .. deprecated:: 3.3.0
+        The function ``lapnumber_axis`` is deprecated and will ber removed in a
+        future version without replacement.
+
+    Args:
+        ax: matplotlib axis
+        axis: can be 'xaxis' or 'yaxis'
+
+    Returns:
+        the modified axis instance
+    """
+    warnings.warn("The function `lapnumber_axis` is deprecated and will be "
+                  "removed without replacement in a future version.",
+                  FutureWarning)
+    getattr(ax, axis).get_major_locator().set_params(integer=True,
+                                                     min_n_ticks=0)
+
+    return ax
