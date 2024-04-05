@@ -35,8 +35,8 @@ ham_tel = ham_lap.get_car_data().add_distance()
 # Finally, we create a plot and plot both speed traces.
 # We color the individual lines with the driver's team colors.
 
-rbr_color = fastf1.plotting.team_color('RBR')
-mer_color = fastf1.plotting.team_color('MER')
+rbr_color = fastf1.plotting.get_team_color(ver_lap['Team'], session=session)
+mer_color = fastf1.plotting.get_team_color(ham_lap['Team'], session=session)
 
 fig, ax = plt.subplots()
 ax.plot(ver_tel['Distance'], ver_tel['Speed'], color=rbr_color, label='VER')

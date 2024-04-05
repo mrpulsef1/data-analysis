@@ -1,18 +1,23 @@
 from typing import Dict
 
-from fastf1.plotting._constants import (
+from fastf1.plotting._constants import (  # noqa: F401, unused import used through globals()
+    season2018,
+    season2019,
+    season2020,
+    season2021,
+    season2022,
     season2023,
     season2024
 )
 from fastf1.plotting._constants.base import BaseSeason
 
 
-Constants: Dict[str, BaseSeason] = {
-    '2023': BaseSeason(CompoundColors=season2023.CompoundColors,
-                       Teams=season2023.Teams),
-    '2024': BaseSeason(CompoundColors=season2024.CompoundColors,
-                       Teams=season2024.Teams),
-}
+Constants: Dict[str, BaseSeason] = dict()
+
+for year in range(2018, 2025):
+    season = globals()[f"season{year}"]
+    Constants[str(year)] = BaseSeason(CompoundColors=season.CompoundColors,
+                                      Teams=season.Teams)
 
 
 # Deprecated, will be removed for 2025

@@ -35,7 +35,8 @@ circuit_info = session.get_circuit_info()
 # Finally, we create a plot and plot the speed trace as well as the corner
 # markers.
 
-team_color = fastf1.plotting.team_color(fastest_lap['Team'])
+team_color = fastf1.plotting.get_team_color(fastest_lap['Team'],
+                                            session=session)
 
 fig, ax = plt.subplots()
 ax.plot(car_data['Distance'], car_data['Speed'],

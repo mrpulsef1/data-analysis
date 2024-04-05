@@ -39,7 +39,7 @@ sns.scatterplot(data=driver_laps,
                 y="LapTime",
                 ax=ax,
                 hue="Compound",
-                palette=fastf1.plotting.COMPOUND_COLORS,
+                palette=fastf1.plotting.get_compound_mapping(session=race),
                 s=80,
                 linewidth=0,
                 legend='auto')

@@ -40,7 +40,8 @@ team_order = (
 print(team_order)
 
 # make a color palette associating team names to hex codes
-team_palette = {team: fastf1.plotting.team_color(team) for team in team_order}
+team_palette = {team: fastf1.plotting.get_team_color(team, session=race)
+                for team in team_order}
 
 ###############################################################################
 fig, ax = plt.subplots(figsize=(15, 10))

@@ -1,12 +1,11 @@
 from dataclasses import dataclass
-from enum import Enum
 from typing import (
     Dict,
     Tuple
 )
 
 
-class Compounds(Enum):
+class Compounds:
     HyperSoft = "HYPERSOFT"
     UltraSoft = "ULTRASOFT"
     SuperSoft = "SUPERSOFT"
@@ -34,5 +33,5 @@ class Team:
 
 @dataclass(frozen=True)
 class BaseSeason:
-    CompoundColors: Dict[Compounds, str]
+    CompoundColors: Dict[str, str]
     Teams: dict[str, Team]

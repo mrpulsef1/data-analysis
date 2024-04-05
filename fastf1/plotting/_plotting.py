@@ -22,7 +22,10 @@ and colors which are provided below.
     release.
 """
 import warnings
-from typing import List
+from typing import (
+    List,
+    Optional
+)
 
 import numpy as np
 import pandas as pd
@@ -55,7 +58,8 @@ _COLOR_PALETTE: List[str] = ['#FF79C6', '#50FA7B', '#8BE9FD', '#BD93F9',
 
 
 def setup_mpl(
-        mpl_timedelta_support: bool = True, color_scheme: str = 'fastf1',
+        mpl_timedelta_support: bool = True,
+        color_scheme: Optional[str] = 'fastf1',
         misc_mpl_mods: bool = True):
     """Setup matplotlib for use with fastf1.
 
