@@ -5,7 +5,12 @@ from typing import (
 )
 
 from fastf1.core import Session
-from fastf1.plotting._constants import LEGACY_TEAM_TRANSLATE as _LTT
+from fastf1.plotting._constants import \
+    LEGACY_DRIVER_COLORS as _LEGACY_DRIVER_COLORS
+from fastf1.plotting._constants import \
+    LEGACY_DRIVER_TRANSLATE as _LEGACY_DRIVER_TRANSLATE
+from fastf1.plotting._constants import \
+    LEGACY_TEAM_TRANSLATE as _LEGACY_TEAM_TRANSLATE
 from fastf1.plotting._constants import Constants as _Constants
 from fastf1.plotting._constants.base import Compounds as _Compounds
 from fastf1.plotting._interface import (  # noqa: F401
@@ -36,14 +41,6 @@ def __getattr__(name):
         warnings.warn(f"{name} is deprecated and will be removed in a future"
                       f"version.", FutureWarning)
 
-        if ((name == 'DRIVER_TRANSLATE')
-                and ('_DEPR_DRIVER_TRANSLATE' not in globals())):
-            _load_depr_driver_translate()
-
-        if ((name == 'DRIVER_COLORS')
-                and ('_DEPR_DRIVER_COLORS' not in globals())):
-            _load_depr_driver_colors()
-
         return globals()[f"_DEPR_{name}"]
 
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
@@ -64,26 +61,14 @@ Mapping of tyre compound names to compound colors (hex color codes).
 """
 
 
-def _load_depr_driver_colors():
-    global _DEPR_DRIVER_COLORS
-
-    dtm = _get_driver_team_mapping(session=None)
-    name_to_color = dict()
-    for driver in dtm.drivers_by_abbreviation.values():
-        name_to_color[driver.normalized_value.lower()] \
-            = get_driver_color(driver.abbreviation, session=None)
-    _DEPR_DRIVER_COLORS = name_to_color
-
-
-_DEPR_DRIVER_COLORS: Dict[str, str]
+_DEPR_DRIVER_COLORS: Dict[str, str] = _LEGACY_DRIVER_COLORS.copy()
 DRIVER_COLORS: Dict[str, str]
 """
 Mapping of driver names to driver colors (hex color codes).
 
 .. warning::
-    This dictionary is created based on the drivers that participated in the
-    latest session. Therefore, it is not static and not fully backwards
-    compatible with FastF1 before v3.4.0.
+    This dictionary will no longer be updated to include new drivers. Use
+    the new API instead.
 
 .. deprecated:: 3.3.0
     The ``DRIVER_COLORS`` dictionary is deprecated and will ber removed in a
@@ -91,20 +76,15 @@ Mapping of driver names to driver colors (hex color codes).
 """
 
 
-def _load_depr_driver_translate():
-    global _DEPR_DRIVER_TRANSLATE
-
-    dtm = _get_driver_team_mapping(session=None)
-    abb_to_name = dict()
-    for abbreviation, driver in dtm.drivers_by_abbreviation.items():
-        abb_to_name[abbreviation] = driver.normalized_value.lower()
-    _DEPR_DRIVER_TRANSLATE = abb_to_name
-
-
-_DEPR_DRIVER_TRANSLATE: Dict[str, str]
+_DEPR_DRIVER_TRANSLATE: Dict[str, str] = _LEGACY_DRIVER_TRANSLATE.copy()
 DRIVER_TRANSLATE: Dict[str, str]
 """
 Mapping of driver names to theirs respective abbreviations.
+
+.. warning::
+    This dictionary will no longer be updated to include new drivers. Use
+    the new API instead.
+
 
 .. deprecated:: 3.3.0
     The ``DRIVER_TRANSLATE`` dictionary is deprecated and will be removed in a
@@ -127,9 +107,7 @@ Mapping of team names to team colors (hex color codes).
     future version. Use :func:`~fastf1.plotting.get_team_color` instead.
 """
 
-_DEPR_TEAM_TRANSLATE: Dict[str, str] = {
-    str(key): val for key, val in _LTT.items()
-}
+_DEPR_TEAM_TRANSLATE: Dict[str, str] = _LEGACY_TEAM_TRANSLATE.copy()
 TEAM_TRANSLATE: Dict[str, str]
 """
 Mapping of team names to theirs respective abbreviations.
