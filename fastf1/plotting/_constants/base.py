@@ -22,7 +22,6 @@ class Compounds(Enum):
 
 @dataclass(frozen=True)
 class TeamColors:
-    Classic: str
     Official: str
     Default: Tuple[str, str]
 
