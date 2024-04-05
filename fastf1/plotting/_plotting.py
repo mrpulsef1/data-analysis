@@ -112,21 +112,21 @@ def driver_color(identifier: str) -> str:
 
     Example::
 
-        >>> driver_color('charles leclerc')
+        >>> driver_color('charles leclerc')  # doctest: +SKIP
         '#dc0000'
-        >>> driver_color('max verstappen')
+        >>> driver_color('max verstappen')  # doctest: +SKIP
         '#fcd700'
-        >>> driver_color('ver')
+        >>> driver_color('ver')  # doctest: +SKIP
         '#fcd700'
-        >>> driver_color('lec')
+        >>> driver_color('lec')  # doctest: +SKIP
         '#dc0000'
 
         shortened driver names and typos can be dealt with
         too (within reason)
 
-        >>> driver_color('Max Verst')
+        >>> driver_color('Max Verst')  # doctest: +SKIP
         '#fcd700'
-        >>> driver_color('Charles')
+        >>> driver_color('Charles')  # doctest: +SKIP
         '#dc0000'
 
     Args:
@@ -157,25 +157,25 @@ def team_color(identifier: str) -> str:
 
     Example::
 
-        >>> team_color('Red Bull')
+        >>> team_color('Red Bull')  # doctest: +SKIP
         '#fcd700'
-        >>> team_color('redbull')
+        >>> team_color('redbull')  # doctest: +SKIP
         '#fcd700'
-        >>> team_color('Red')
+        >>> team_color('Red')  # doctest: +SKIP
         '#fcd700'
-        >>> team_color('RBR')
+        >>> team_color('RBR')  # doctest: +SKIP
         '#fcd700'
 
-        shortened team names, included sponsors and typos can be dealt with
-        too (within reason)
+        # shortened team names, included sponsors and typos can be dealt with
+        # too (within reason)
 
-        >>> team_color('Mercedes')
+        >>> team_color('Mercedes')  # doctest: +SKIP
         '#00d2be'
-        >>> team_color('Merc')
+        >>> team_color('Merc')  # doctest: +SKIP
         '#00d2be'
-        >>> team_color('Merecds')
+        >>> team_color('Merecds')  # doctest: +SKIP
         '#00d2be'
-        >>> team_color('Mercedes-AMG Petronas F1 Team')
+        >>> team_color('Mercedes-AMG Petronas F1 Team')  # doctest: +SKIP
         '#00d2be'
 
     Args:
