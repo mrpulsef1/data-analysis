@@ -61,7 +61,14 @@ def _load_drivers_from_f1_livetiming(
     # parse the data into the required format
     teams: Dict[str, _Team] = dict()
 
-    for num, driver_entry in driver_info.items():
+    # Sorting by driver number here will directly guarantee that drivers
+    # are sorted by driver number within each team. This has two advantages:
+    # - the driver index in a team is consistent as long as the drivers don't
+    #   change/reserver drivers are used/...
+    # - the reigning champion (number 1) always has index 0, i.e. gets the
+    #   primary style
+    for num in sorted(driver_info.keys()):
+        driver_entry = driver_info[num]
         team_name = driver_entry.get('TeamName')
 
         if team_name in teams:

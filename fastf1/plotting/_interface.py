@@ -395,9 +395,9 @@ def get_driver_style(
         >>> from fastf1.plotting import get_driver_style
         >>> session = get_session(2023, 10, 'R')
         >>> get_driver_style('ALO', style=['color', 'marker'], session=session)
-        {'color': '#00665e', 'marker': 'o'}
-        >>> get_driver_style('STR', style=['color', 'marker'], session=session)
         {'color': '#00665e', 'marker': 'x'}
+        >>> get_driver_style('STR', style=['color', 'marker'], session=session)
+        {'color': '#00665e', 'marker': 'o'}
 
     **Option 2**: Provide a custom list of styling variants
 
@@ -438,9 +438,9 @@ def get_driver_style(
                 {'linestyle': 'dotted', 'color': '#FF0060', 'other_arg': 10} \
             ]
         >>> get_driver_style('ALO', style=my_styles, session=session)
-        {'linestyle': 'dotted', 'color': '#FF0060', 'other_arg': 10}
-        >>> get_driver_style('STR', style=my_styles, session=session)
         {'linestyle': 'solid', 'color': '#00665e', 'custom_arg': True}
+        >>> get_driver_style('STR', style=my_styles, session=session)
+        {'linestyle': 'dotted', 'color': '#FF0060', 'other_arg': 10}
 
     .. seealso::
         :ref:`sphx_glr_examples_gallery_plot_driver_styling.py`
