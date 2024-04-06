@@ -3,7 +3,8 @@ from typing import (
     Dict,
     List,
     Sequence,
-    Tuple
+    Tuple,
+    TypeVar
 )
 
 from thefuzz import fuzz
@@ -49,7 +50,10 @@ class _DriverTeamMapping:
             self.teams_by_normalized[team.normalized_value] = team
 
 
-def _fuzzy_matcher[S: str](identifier: str, reference: Sequence[S]) -> S:
+S = TypeVar('S', bound=str)
+
+
+def _fuzzy_matcher(identifier: str, reference: Sequence[S]) -> S:
     # do fuzzy string matching
     key_ratios = list()
     for existing_key in reference:
