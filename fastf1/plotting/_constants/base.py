@@ -34,4 +34,4 @@ class Team:
 @dataclass(frozen=True)
 class BaseSeason:
     CompoundColors: Dict[str, str]
-    Teams: dict[str, Team]
+    Teams: Dict[str, Team]
