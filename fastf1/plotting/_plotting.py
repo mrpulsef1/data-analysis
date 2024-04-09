@@ -102,7 +102,7 @@ def driver_color(identifier: str) -> str:
     """
     Get a driver's color from a driver name or abbreviation.
 
-    .. deprecated:: 3.3.0
+    .. deprecated:: 3.4.0
         This function is deprecated and will be removed in a future version.
         Use :func:`~fastf1.plotting.get_driver_color` instead.
 
@@ -147,7 +147,7 @@ def team_color(identifier: str) -> str:
     """
     Get a team's color from a team name or abbreviation.
 
-    .. deprecated:: 3.3.0
+    .. deprecated:: 3.4.0
         This function is deprecated and will be removed in a future version.
         Use :func:`~fastf1.plotting.get_team_color` instead.
 
@@ -300,7 +300,7 @@ def lapnumber_axis(ax, axis='xaxis'):
     """
     Set axis to integer ticks only.
 
-    .. deprecated:: 3.3.0
+    .. deprecated:: 3.4.0
         The function ``lapnumber_axis`` is deprecated and will ber removed in a
         future version without replacement.
 

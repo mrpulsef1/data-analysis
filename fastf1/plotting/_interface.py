@@ -442,9 +442,6 @@ def get_driver_style(
         >>> get_driver_style('STR', style=my_styles, session=session)
         {'linestyle': 'dotted', 'color': '#FF0060', 'other_arg': 10}
 
-    .. seealso::
-        :ref:`sphx_glr_examples_gallery_plot_driver_styling.py`
-
     Args:
         identifier: driver abbreviation or recognizable part of the driver name
         style: list of matplotlib plot arguments that should be used for
@@ -457,6 +454,10 @@ def get_driver_style(
 
     Returns: a dictionary of plot style arguments that can be directly passed
         to a matplotlib plot function using the ``**`` expansion operator
+
+
+    .. minigallery:: fastf1.plotting.get_driver_style
+        :add-heading:
     """
     if session is None:
         raise ValueError('`session` must not be None')
@@ -641,12 +642,14 @@ def add_sorted_driver_legend(ax: matplotlib.axes.Axes, *, session: Session):
     There is no particular need to use this function except to make the
     legend more visually pleasing.
 
-    .. seealso::
-        :ref:`sphx_glr_examples_gallery_plot_driver_styling.py`
-
     Args:
         ax: An instance of a Matplotlib ``Axes`` object
         session: the session for which the data should be obtained
+
+
+    .. minigallery:: fastf1.plotting.add_sorted_driver_legend
+        :add-heading:
+
     """
     if session is None:
         raise ValueError('`session` must not be None')

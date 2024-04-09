@@ -41,6 +41,43 @@ from fastf1.plotting._plotting import (  # noqa: F401
 )
 
 
+__all__ = [
+    # imported, current
+    'add_sorted_driver_legend',
+    'get_compound_color',
+    'get_compound_mapping',
+    'get_driver_abbreviation',
+    'get_driver_abbreviations_by_team',
+    'get_driver_color',
+    'get_driver_color_mapping',
+    'get_driver_name',
+    'get_driver_names_by_team',
+    'get_driver_style',
+    'get_team_color',
+    'get_team_name',
+    'get_team_name_by_driver',
+    'list_driver_abbreviations',
+    'list_driver_names',
+    'list_full_team_names',
+    'list_short_team_names',
+    'list_team_names',
+    'setup_mpl',
+
+    # imported, legacy
+    'driver_color',
+    'lapnumber_axis',
+    'team_color',
+
+    # legacy
+    'COMPOUND_COLORS',
+    'DRIVER_COLORS',
+    'DRIVER_TRANSLATE',
+    'TEAM_COLORS',
+    'TEAM_TRANSLATE',
+    'COLOR_PALETTE'
+]
+
+
 def __getattr__(name):
     if name in ('COMPOUND_COLORS', 'DRIVER_TRANSLATE', 'DRIVER_COLORS',
                 'TEAM_COLORS', 'TEAM_TRANSLATE', 'COLOR_PALETTE'):
@@ -61,10 +98,10 @@ COMPOUND_COLORS: Dict[str, str]
 Mapping of tyre compound names to compound colors (hex color codes).
 (current season only)
 
-.. deprecated:: 3.3.0
+.. deprecated:: 3.4.0
     The ``COMPOUND_COLORS`` dictionary is deprecated and will be removed in a
     future version. Use :func:`~fastf1.plotting.get_compound_color` or
-    :func:`~fastf1.plotting.get_compound_color_mapping` instead.
+    :func:`~fastf1.plotting.get_compound_mapping` instead.
 """
 
 
@@ -77,7 +114,7 @@ Mapping of driver names to driver colors (hex color codes).
     This dictionary will no longer be updated to include new drivers. Use
     the new API instead.
 
-.. deprecated:: 3.3.0
+.. deprecated:: 3.4.0
     The ``DRIVER_COLORS`` dictionary is deprecated and will ber removed in a
     future version. Use :func:`~fastf1.plotting.get_driver_color` or
     :func:`~fastf1.plotting.get_driver_color_mapping` instead.
@@ -94,7 +131,7 @@ Mapping of driver names to theirs respective abbreviations.
     the new API instead.
 
 
-.. deprecated:: 3.3.0
+.. deprecated:: 3.4.0
     The ``DRIVER_TRANSLATE`` dictionary is deprecated and will be removed in a
     future version. Use :func:`~fastf1.plotting.get_driver_name` instead.
 """
@@ -110,7 +147,7 @@ TEAM_COLORS: Dict[str, str]
 Mapping of team names to team colors (hex color codes).
 (current season only)
 
-.. deprecated:: 3.3.0
+.. deprecated:: 3.4.0
     The ``TEAM_COLORS`` dictionary is deprecated and will be removed in a
     future version. Use :func:`~fastf1.plotting.get_team_color` instead.
 """
@@ -120,7 +157,7 @@ TEAM_TRANSLATE: Dict[str, str]
 """
 Mapping of team names to theirs respective abbreviations.
 
-.. deprecated:: 3.3.0
+.. deprecated:: 3.4.0
     The ``TEAM_TRANSLATE`` dictionary is deprecated and will be removed in a
     future version. Use :func:`~fastf1.plotting.get_team_name` instead.
 """
@@ -130,7 +167,7 @@ COLOR_PALETTE: List[str]
 """
 The default color palette for matplotlib plot lines in fastf1's color scheme.
 
-.. deprecated:: 3.3.0
+.. deprecated:: 3.4.0
     The ``COLOR_PALETTE`` list is deprecated and will be removed in a
     future version with no replacement.
 """

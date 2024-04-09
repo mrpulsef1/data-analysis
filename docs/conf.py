@@ -152,13 +152,19 @@ def sphinx_gallery_setup(gallery_conf, fname):
 
 sphinx_gallery_conf = {
     'examples_dirs': '../examples',
-    'gallery_dirs': 'examples_gallery',
+    'gallery_dirs': 'gen_modules/examples_gallery',
     'download_all_examples': False,
     'remove_config_comments': True,
     'image_scrapers': ('matplotlib',  # default
                        plotly_sg_scraper),  # for plotly thumbnail
     'reset_modules': ('matplotlib', 'seaborn',  # defaults
                       sphinx_gallery_setup),  # custom setup
+    # directory where function/class granular galleries are stored
+    'backreferences_dir': 'gen_modules/backreferences',
+
+    # Modules for which function/class level galleries are created. In
+    # this case sphinx_gallery and numpy in a tuple of strings.
+    'doc_module': ('fastf1', ),
     'expected_failing_examples': ('../examples/plot_qualifying_results.py',
                                   '../examples/plot_team_pace_ranking.py'),
 }
