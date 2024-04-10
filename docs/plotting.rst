@@ -2,6 +2,9 @@ Plotting - :mod:`fastf1.plotting`
 =================================
 
 
+:ref:`Colormaps Overview`
+
+
 Overview
 --------
 
