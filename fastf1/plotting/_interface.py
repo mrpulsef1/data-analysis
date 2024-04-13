@@ -32,7 +32,7 @@ _DRIVER_TEAM_MAPPINGS = dict()
 #  static dict instead? Better for consistency anyway
 
 def _get_driver_team_mapping(
-        session: Optional[Session] = None
+        session: Session = None
 ) -> "_DriverTeamMapping":
 
     if session is None:
@@ -51,7 +51,7 @@ def _get_driver_team_mapping(
     return _DRIVER_TEAM_MAPPINGS[api_path]
 
 
-def _get_driver(identifier: str, session: Optional[Session]) -> _Driver:
+def _get_driver(identifier: str, session: Session) -> _Driver:
     dtm = _get_driver_team_mapping(session)
     identifier = _normalize_string(identifier).lower()
 
@@ -74,7 +74,7 @@ def _get_driver(identifier: str, session: Optional[Session]) -> _Driver:
     return dtm.drivers_by_normalized[normalized_driver]
 
 
-def _get_team(identifier: str, session: Optional[Session]) -> _Team:
+def _get_team(identifier: str, session: Session) -> _Team:
     dtm = _get_driver_team_mapping(session)
     identifier = _normalize_string(identifier).lower()
 
@@ -98,7 +98,7 @@ def _get_team(identifier: str, session: Optional[Session]) -> _Team:
 
 def _get_driver_color(
         identifier: str,
-        session: Optional[Session],
+        session: Session,
         *,
         colormap: str = 'default',
         _variants: bool = False
@@ -120,7 +120,7 @@ def _get_driver_color(
 
 def _get_team_color(
             identifier: str,
-            session: Optional[Session],
+            session: Session,
             *,
             colormap: str = 'default',
             _variant: int = 0  # internal use only

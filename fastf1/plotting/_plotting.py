@@ -46,14 +46,18 @@ except ImportError:
                   "Plotting of timedelta values will be restricted!",
                   RuntimeWarning)
 
-from fastf1.plotting._interface import (
-    _get_driver_color,
-    _get_team_color
+from thefuzz import fuzz
+
+from fastf1.plotting._constants import (
+    LEGACY_DRIVER_COLORS,
+    LEGACY_DRIVER_TRANSLATE,
+    LEGACY_TEAM_COLORS,
+    LEGACY_TEAM_TRANSLATE
 )
 
 
 _COLOR_PALETTE: List[str] = ['#FF79C6', '#50FA7B', '#8BE9FD', '#BD93F9',
-                            '#FFB86C', '#FF5555', '#F1FA8C']
+                             '#FFB86C', '#FF5555', '#F1FA8C']
 # The default color palette for matplotlib plot lines in fastf1's color scheme
 
 
@@ -140,7 +144,38 @@ def driver_color(identifier: str) -> str:
                   "removed in a future version. Use "
                   "`fastf1.plotting.get_driver_color` instead.",
                   FutureWarning)
-    return _get_driver_color(identifier, None, _variants=True)
+
+    if identifier.upper() in LEGACY_DRIVER_TRANSLATE:
+        # try short team abbreviations first
+        return LEGACY_DRIVER_COLORS[
+            LEGACY_DRIVER_TRANSLATE[identifier.upper()]
+        ]
+    else:
+        identifier = identifier.lower()
+
+        # check for an exact team name match
+        if identifier in LEGACY_DRIVER_COLORS:
+            return LEGACY_DRIVER_COLORS[identifier]
+
+        # check for exact partial string match
+        for team_name, color in LEGACY_DRIVER_COLORS.items():
+            if identifier in team_name:
+                return color
+
+        # do fuzzy string matching
+        key_ratios = list()
+        for existing_key in LEGACY_DRIVER_COLORS:
+            ratio = fuzz.ratio(identifier, existing_key)
+            key_ratios.append((ratio, existing_key))
+        key_ratios.sort(reverse=True)
+        if ((key_ratios[0][0] < 35)
+                or (key_ratios[0][0] / key_ratios[1][0] < 1.2)):
+            # ensure that the best match has a minimum accuracy (35 out of
+            # 100) and that it has a minimum confidence (at least 20% better
+            # than second best)
+            raise KeyError
+        best_matched_key = key_ratios[0][1]
+        return LEGACY_DRIVER_COLORS[best_matched_key]
 
 
 def team_color(identifier: str) -> str:
@@ -189,7 +224,39 @@ def team_color(identifier: str) -> str:
                   "removed in a future version. Use "
                   "`fastf1.plotting.get_team_color` instead.",
                   FutureWarning)
-    return _get_team_color(identifier, None)
+
+    if identifier.upper() in LEGACY_TEAM_TRANSLATE:
+        # try short team abbreviations first
+        return LEGACY_TEAM_COLORS[LEGACY_TEAM_TRANSLATE[identifier.upper()]]
+    else:
+        identifier = identifier.lower()
+        # remove common non-unique words
+        for word in ('racing', 'team', 'f1', 'scuderia'):
+            identifier = identifier.replace(word, "")
+
+        # check for an exact team name match
+        if identifier in LEGACY_TEAM_COLORS:
+            return LEGACY_TEAM_COLORS[identifier]
+
+        # check for exact partial string match
+        for team_name, color in LEGACY_TEAM_COLORS.items():
+            if identifier in team_name:
+                return color
+
+        # do fuzzy string matching
+        key_ratios = list()
+        for existing_key in LEGACY_TEAM_COLORS.keys():
+            ratio = fuzz.ratio(identifier, existing_key)
+            key_ratios.append((ratio, existing_key))
+        key_ratios.sort(reverse=True)
+        if ((key_ratios[0][0] < 35)
+                or (key_ratios[0][0] / key_ratios[1][0] < 1.2)):
+            # ensure that the best match has a minimum accuracy (35 out of
+            # 100) and that it has a minimum confidence (at least 20% better
+            # than second best)
+            raise KeyError
+        best_matched_key = key_ratios[0][1]
+        return LEGACY_TEAM_COLORS[best_matched_key]
 
 
 def _enable_timple():

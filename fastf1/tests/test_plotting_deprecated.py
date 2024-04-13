@@ -18,8 +18,6 @@ with warnings.catch_warnings():
 
 import matplotlib.pyplot as plt
 
-from fastf1.plotting._interface import _get_driver_team_mapping
-
 
 @pytest.mark.parametrize(
     "property_name",
@@ -91,11 +89,8 @@ def test_functions_exist(func_name):
 
 
 def test_driver_color():
-    # TODO: use an old session that is supported by static dicts
-    dtm = _get_driver_team_mapping(session=None)
-    any_abb = list(dtm.drivers_by_abbreviation.keys())[0]
     with pytest.warns(FutureWarning, match="is deprecated"):
-        color = fastf1.plotting.driver_color(any_abb)
+        color = fastf1.plotting.driver_color('VER')
 
     assert color.startswith('#')
     assert len(color) == 7
@@ -103,11 +98,8 @@ def test_driver_color():
 
 
 def test_team_color():
-    # TODO: use an old session that is supported by static dicts
-    dtm = _get_driver_team_mapping(session=None)
-    any_team = dtm.teams[0].normalized_value
     with pytest.warns(FutureWarning, match="is deprecated"):
-        color = fastf1.plotting.team_color(any_team)
+        color = fastf1.plotting.team_color('ferrari')
 
     assert color.startswith('#')
     assert len(color) == 7

@@ -21,6 +21,15 @@ for year in range(2018, 2025):
 
 
 # Deprecated, will be removed for 2025
+LEGACY_TEAM_COLORS = {
+    'mercedes': '#00d2be', 'ferrari': '#dc0000',
+    'red bull': '#fcd700', 'mclaren': '#ff8700',
+    'alpine': '#fe86bc', 'aston martin': '#006f62',
+    'sauber': '#00e701', 'visa rb': '#1634cb',
+    'haas': '#ffffff', 'williams': '#00a0dd'
+}
+
+
 LEGACY_TEAM_TRANSLATE: Dict[str, str] = {
     'MER': 'mercedes',
     'FER': 'ferrari',
