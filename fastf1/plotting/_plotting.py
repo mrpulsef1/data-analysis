@@ -140,7 +140,7 @@ def driver_color(identifier: str) -> str:
                   "removed in a future version. Use "
                   "`fastf1.plotting.get_driver_color` instead.",
                   FutureWarning)
-    return _get_driver_color(identifier, session=None, _variants=True)
+    return _get_driver_color(identifier, None, _variants=True)
 
 
 def team_color(identifier: str) -> str:
@@ -189,7 +189,7 @@ def team_color(identifier: str) -> str:
                   "removed in a future version. Use "
                   "`fastf1.plotting.get_team_color` instead.",
                   FutureWarning)
-    return _get_team_color(identifier, session=None)
+    return _get_team_color(identifier, None)
 
 
 def _enable_timple():

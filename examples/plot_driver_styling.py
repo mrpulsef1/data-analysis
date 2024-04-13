@@ -62,7 +62,7 @@ for driver in ('HAM', 'PER', 'VER', 'RUS'):
 # add axis labels and a legend
 ax.set_xlabel("Lap Number")
 ax.set_ylabel("Lap Time")
-plotting.add_sorted_driver_legend(ax, session=race)
+plotting.add_sorted_driver_legend(ax, race)
 
 ###############################################################################
 # Creating fully custom styles
@@ -101,4 +101,4 @@ for driver in ('HAM', 'PER', 'VER', 'RUS'):
 # add axis labels and a legend
 ax.set_xlabel("Lap Number")
 ax.set_ylabel("Lap Time")
-plotting.add_sorted_driver_legend(ax, session=race)
+plotting.add_sorted_driver_legend(ax, race)

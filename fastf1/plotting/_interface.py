@@ -27,6 +27,10 @@ from fastf1.plotting._constants import Constants as _Constants
 _DRIVER_TEAM_MAPPINGS = dict()
 
 
+# TODO: make internal Optional[Session] -> Session, disallow None; looks like
+#  driver_color and team_color are the only places where None is used, use
+#  static dict instead? Better for consistency anyway
+
 def _get_driver_team_mapping(
         session: Optional[Session] = None
 ) -> "_DriverTeamMapping":
@@ -47,7 +51,7 @@ def _get_driver_team_mapping(
     return _DRIVER_TEAM_MAPPINGS[api_path]
 
 
-def _get_driver(identifier: str, *, session: Optional[Session]) -> _Driver:
+def _get_driver(identifier: str, session: Optional[Session]) -> _Driver:
     dtm = _get_driver_team_mapping(session)
     identifier = _normalize_string(identifier).lower()
 
@@ -70,11 +74,7 @@ def _get_driver(identifier: str, *, session: Optional[Session]) -> _Driver:
     return dtm.drivers_by_normalized[normalized_driver]
 
 
-def _get_team(
-        identifier: str,
-        *,
-        session: Optional[Session]
-) -> _Team:
+def _get_team(identifier: str, session: Optional[Session]) -> _Team:
     dtm = _get_driver_team_mapping(session)
     identifier = _normalize_string(identifier).lower()
 
@@ -98,12 +98,12 @@ def _get_team(
 
 def _get_driver_color(
         identifier: str,
-        *,
         session: Optional[Session],
+        *,
         colormap: str = 'default',
         _variants: bool = False
 ) -> str:
-    driver = _get_driver(identifier, session=session)
+    driver = _get_driver(identifier, session)
     team_name = driver.team.normalized_value
 
     if _variants:
@@ -112,16 +112,16 @@ def _get_driver_color(
         idx = driver_ref.index(driver)
         if idx > 1:
             idx = 1  # we only have two colors, limit to 0 or 1
-        return _get_team_color(team_name, session=session, colormap='default',
+        return _get_team_color(team_name, session, colormap='default',
                                _variant=idx)
     else:
-        return _get_team_color(team_name, session=session, colormap=colormap)
+        return _get_team_color(team_name, session, colormap=colormap)
 
 
 def _get_team_color(
             identifier: str,
-            *,
             session: Optional[Session],
+            *,
             colormap: str = 'default',
             _variant: int = 0  # internal use only
 ) -> str:
@@ -134,7 +134,7 @@ def _get_team_color(
     if dtm.year not in Constants.keys():
         raise ValueError(f"No team colors for year '{dtm.year}'")
 
-    team_name = _get_team(identifier, session=session).normalized_value
+    team_name = _get_team(identifier, session).normalized_value
     team_consts = Constants[dtm.year].Teams[team_name]
 
     if colormap == 'default':
@@ -145,8 +145,8 @@ def _get_team_color(
 
 def get_team_name(
         identifier: str,
-        *,
         session: Session,
+        *,
         short: bool = False
 ) -> str:
     """
@@ -165,7 +165,7 @@ def get_team_name(
     if session is None:
         raise ValueError('`session` must not be None')
 
-    team = _get_team(identifier, session=session)
+    team = _get_team(identifier, session)
 
     if short:
         dtm = _get_driver_team_mapping(session)
@@ -177,8 +177,8 @@ def get_team_name(
 
 def get_team_name_by_driver(
         identifier: str,
-        *,
         session: Session,
+        *,
         short: bool = False,
 ) -> str:
     """
@@ -197,7 +197,7 @@ def get_team_name_by_driver(
     if session is None:
         raise ValueError('`session` must not be None')
 
-    driver = _get_driver(identifier, session=session)
+    driver = _get_driver(identifier, session)
     team = driver.team
 
     if short:
@@ -210,8 +210,8 @@ def get_team_name_by_driver(
 
 def get_team_color(
         identifier: str,
-        *,
         session: Session,
+        *,
         colormap: str = 'default',
 ) -> str:
     """
@@ -231,10 +231,10 @@ def get_team_color(
     if session is None:
         raise ValueError('`session` must not be None')
 
-    return _get_team_color(identifier, session=session, colormap=colormap)
+    return _get_team_color(identifier, session, colormap=colormap)
 
 
-def get_driver_name(identifier: str, *, session: Session) -> str:
+def get_driver_name(identifier: str, session: Session) -> str:
     """
     Get a full driver name based on the driver's abbreviation or based on
     a recognizable and identifiable part of the driver's name.
@@ -243,11 +243,11 @@ def get_driver_name(identifier: str, *, session: Session) -> str:
         identifier: driver abbreviation or recognizable part of the driver name
         session: the session for which the data should be obtained
     """
-    driver = _get_driver(identifier, session=session)
+    driver = _get_driver(identifier, session)
     return driver.value
 
 
-def get_driver_abbreviation(identifier, *, session: Session) -> str:
+def get_driver_abbreviation(identifier, session: Session) -> str:
     """
     Get a driver's abbreviation based on a recognizable and identifiable
     part of the driver's name.
@@ -264,13 +264,11 @@ def get_driver_abbreviation(identifier, *, session: Session) -> str:
     if session is None:
         raise ValueError('`session` must not be None')
 
-    driver = _get_driver(identifier, session=session)
+    driver = _get_driver(identifier, session)
     return driver.abbreviation
 
 
-def get_driver_names_by_team(
-        identifier: str, *, session: Session
-) -> List[str]:
+def get_driver_names_by_team(identifier: str, session: Session) -> List[str]:
     """
     Get a list of full names of all drivers that drove for a team in a given
     session based on a recognizable and identifiable part of the team name.
@@ -282,12 +280,12 @@ def get_driver_names_by_team(
     if session is None:
         raise ValueError('`session` must not be None')
 
-    team = _get_team(identifier, session=session)
+    team = _get_team(identifier, session)
     return [driver.value for driver in team.drivers]
 
 
 def get_driver_abbreviations_by_team(
-        identifier: str, *, session: Session
+        identifier: str, session: Session
 ) -> List[str]:
     """
     Get a list of abbreviations of all drivers that drove for a team in a given
@@ -300,14 +298,14 @@ def get_driver_abbreviations_by_team(
     if session is None:
         raise ValueError('`session` must not be None')
 
-    team = _get_team(identifier, session=session)
+    team = _get_team(identifier, session)
     return [driver.abbreviation for driver in team.drivers]
 
 
 def get_driver_color(
         identifier: str,
-        *,
         session: Session,
+        *,
         colormap: str = 'default',
 ) -> str:
     """
@@ -337,14 +335,14 @@ def get_driver_color(
     if session is None:
         raise ValueError('`session` must not be None')
 
-    return _get_driver_color(identifier, session=session, colormap=colormap)
+    return _get_driver_color(identifier, session, colormap=colormap)
 
 
 def get_driver_style(
         identifier: str,
         style: Union[str, List[str], List[dict]],
-        *,
         session: Session,
+        *,
         colormap: str = 'default',
         additional_color_kws: Union[list, tuple] = ()
 ) -> Dict[str, Any]:
@@ -394,9 +392,9 @@ def get_driver_style(
         >>> from fastf1 import get_session
         >>> from fastf1.plotting import get_driver_style
         >>> session = get_session(2023, 10, 'R')
-        >>> get_driver_style('ALO', style=['color', 'marker'], session=session)
+        >>> get_driver_style('ALO', ['color', 'marker'], session)
         {'color': '#00665e', 'marker': 'x'}
-        >>> get_driver_style('STR', style=['color', 'marker'], session=session)
+        >>> get_driver_style('STR', ['color', 'marker'], session)
         {'color': '#00665e', 'marker': 'o'}
 
     **Option 2**: Provide a custom list of styling variants
@@ -437,9 +435,9 @@ def get_driver_style(
                 {'linestyle': 'solid', 'color': 'auto', 'custom_arg': True}, \
                 {'linestyle': 'dotted', 'color': '#FF0060', 'other_arg': 10} \
             ]
-        >>> get_driver_style('ALO', style=my_styles, session=session)
+        >>> get_driver_style('ALO', my_styles, session)
         {'linestyle': 'solid', 'color': '#00665e', 'custom_arg': True}
-        >>> get_driver_style('STR', style=my_styles, session=session)
+        >>> get_driver_style('STR', my_styles, session)
         {'linestyle': 'dotted', 'color': '#FF0060', 'other_arg': 10}
 
     Args:
@@ -486,7 +484,7 @@ def get_driver_style(
         *additional_color_kws
     )
 
-    driver = _get_driver(identifier, session=session)
+    driver = _get_driver(identifier, session)
     team = driver.team
     idx = team.drivers.index(driver)
 
@@ -504,9 +502,9 @@ def get_driver_style(
         # arguments
         for opt in style:
             if opt in color_kwargs:
-                value = get_team_color(team.normalized_value,
-                                       colormap=colormap,
-                                       session=session)
+                value = _get_team_color(team.normalized_value,
+                                        session,
+                                        colormap=colormap)
             elif opt in stylers:
                 value = stylers[opt][idx]
             else:
@@ -530,15 +528,15 @@ def get_driver_style(
         plot_style = custom_style.copy()
         for kwarg in color_kwargs:
             if plot_style.get(kwarg, None) == 'auto':
-                color = get_team_color(team.normalized_value,
-                                       colormap=colormap,
-                                       session=session)
+                color = _get_team_color(team.normalized_value,
+                                        session,
+                                        colormap=colormap)
                 plot_style[kwarg] = color
 
     return plot_style
 
 
-def get_compound_color(compound: str, *, session: Session) -> str:
+def get_compound_color(compound: str, session: Session) -> str:
     """
     Get the compound color as hexadecimal RGB color code for a given compound.
 
@@ -630,7 +628,7 @@ def list_compounds(session: Session) -> List[str]:
     return list(Constants[year].CompoundColors.keys())
 
 
-def add_sorted_driver_legend(ax: matplotlib.axes.Axes, *, session: Session):
+def add_sorted_driver_legend(ax: matplotlib.axes.Axes, session: Session):
     """
     Adds a legend to the axis where drivers are ordered by team and within a
     team in the same order that is used for selecting plot styles.
@@ -667,7 +665,7 @@ def add_sorted_driver_legend(ax: matplotlib.axes.Axes, *, session: Session):
     # styles are cycled.
     ref = list()
     for hdl, lbl in zip(handles, labels):
-        driver = _get_driver(lbl, session=session)
+        driver = _get_driver(lbl, session)
         team = driver.team
 
         team_idx = teams_list.index(team)

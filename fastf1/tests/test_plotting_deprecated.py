@@ -91,6 +91,7 @@ def test_functions_exist(func_name):
 
 
 def test_driver_color():
+    # TODO: use an old session that is supported by static dicts
     dtm = _get_driver_team_mapping(session=None)
     any_abb = list(dtm.drivers_by_abbreviation.keys())[0]
     with pytest.warns(FutureWarning, match="is deprecated"):
@@ -102,6 +103,7 @@ def test_driver_color():
 
 
 def test_team_color():
+    # TODO: use an old session that is supported by static dicts
     dtm = _get_driver_team_mapping(session=None)
     any_team = dtm.teams[0].normalized_value
     with pytest.warns(FutureWarning, match="is deprecated"):
