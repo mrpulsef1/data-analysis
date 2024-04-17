@@ -87,38 +87,6 @@ Next, we load the session and select the desired data.
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/runner/work/Fast-F1/Fast-F1/fastf1/core.py:478: FutureWarning:
-
-    A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-    The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-    For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-
-    /home/runner/work/Fast-F1/Fast-F1/fastf1/core.py:478: FutureWarning:
-
-    A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-    The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-    For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-
-    /home/runner/work/Fast-F1/Fast-F1/fastf1/core.py:478: FutureWarning:
-
-    A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-    The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-    For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-
-
 
 
 
@@ -203,7 +171,7 @@ After this, we can actually plot the data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.307 seconds)
+   **Total running time of the script:** (0 minutes 5.921 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_speed_on_track.py:

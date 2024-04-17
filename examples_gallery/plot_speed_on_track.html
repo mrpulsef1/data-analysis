@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Draw a track map with numbered corners" href="plot_annotate_corners.html" /><link rel="prev" title="Who can still win the drivers WDC?" href="plot_who_can_still_win_wdc.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Speed visualization on track map - FastF1 3.2.2</title>
+        <title>Speed visualization on track map - FastF1 3.3.4</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">FastF1 <small>3.2.2</small></div></a>
+      <a href="../index.html"><div class="brand">FastF1 <small>3.3.4</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.2.2</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.3.4</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -286,32 +286,6 @@ we want to plot.</p>
 <span class="n">color</span> <span class="o">=</span> <span class="n">lap</span><span class="o">.</span><span class="n">telemetry</span><span class="p">[</span><span class="s1">&#39;Speed&#39;</span><span class="p">]</span>      <span class="c1"># value to base color gradient on</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/Fast-F1/Fast-F1/fastf1/core.py:478: FutureWarning:
-
-A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-
-/home/runner/work/Fast-F1/Fast-F1/fastf1/core.py:478: FutureWarning:
-
-A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-
-/home/runner/work/Fast-F1/Fast-F1/fastf1/core.py:478: FutureWarning:
-
-A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-</pre></div>
-</div>
 <p>Now, we create a set of line segments so that we can color them
 individually. This creates the points as a N x 1 x 2 array so that we can
 stack points  together easily to get the segments. The segments array for
@@ -358,7 +332,7 @@ line collection needs to be (numlines) x (points per line) x 2 (for x and y)</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_speed_on_track_001.png" srcset="../_images/sphx_glr_plot_speed_on_track_001.png" alt="9 2021 - RIC - Speed" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.307 seconds)</p>
+<img src="../_images/sphx_glr_plot_speed_on_track_001.png" srcset="../_images/sphx_glr_plot_speed_on_track_001.png" alt="9 2021 - RIC - Speed" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.921 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-gallery-plot-speed-on-track-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/9c4f09e470a16421a1db3cd9143416e9/plot_speed_on_track.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_speed_on_track.ipynb</span></code></a></p>
@@ -422,7 +396,7 @@ line collection needs to be (numlines) x (points per line) x 2 (for x and y)</p>
 </div>
     <script data-goatcounter="https://ey2kpxm326wjqcsfzewz.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
-    <script src="../_static/documentation_options.js?v=dcedd534"></script>
+    <script src="../_static/documentation_options.js?v=c2c98bb9"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>

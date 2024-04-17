@@ -93,15 +93,18 @@ with plotting.setup_mpl.
 
 
 
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    Index(['Red Bull Racing', 'McLaren', 'Mercedes', 'Ferrari', 'Aston Martin',
-           'AlphaTauri', 'Williams', 'Alpine', 'Alfa Romeo', 'Haas F1 Team'],
-          dtype='object', name='Team')
+    Traceback (most recent call last):
+      File "/home/runner/work/Fast-F1/Fast-F1/examples/plot_team_pace_ranking.py", line 43, in <module>
+        team_palette = {team: fastf1.plotting.team_color(team) for team in team_order}
+      File "/home/runner/work/Fast-F1/Fast-F1/examples/plot_team_pace_ranking.py", line 43, in <dictcomp>
+        team_palette = {team: fastf1.plotting.team_color(team) for team in team_order}
+      File "/home/runner/work/Fast-F1/Fast-F1/fastf1/plotting.py", line 372, in team_color
+        raise KeyError
+    KeyError
 
 
 
@@ -133,20 +136,9 @@ with plotting.setup_mpl.
     plt.show()
 
 
-
-.. image-sg:: /examples_gallery/images/sphx_glr_plot_team_pace_ranking_001.png
-   :alt: 2023 British Grand Prix
-   :srcset: /examples_gallery/images/sphx_glr_plot_team_pace_ranking_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.434 seconds)
+   **Total running time of the script:** (0 minutes 6.965 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_team_pace_ranking.py:

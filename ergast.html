@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Circuit Information" href="circuit_info.html" /><link rel="prev" title="F1 API - fastf1.api" href="api.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Ergast API Interface - FastF1 3.2.2</title>
+        <title>Ergast API Interface - FastF1 3.3.4</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.2.2</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.3.4</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.2.2</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.3.4</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -606,7 +606,7 @@ Defaults to 0 if not set. See also “Response Paging”,
         round: round &lt;int&gt;,
         url: raceUrl &lt;str&gt;,
         raceName: raceName &lt;str&gt;,
-        date: raceDate &lt;datetime&gt;,
+        date: raceDate &lt;typing.Optional[datetime.datetime]&gt;,
         time: raceTime &lt;typing.Optional[datetime.time]&gt;,
         Circuit: {
             circuitId: circuitId &lt;str&gt;,
@@ -620,52 +620,52 @@ Defaults to 0 if not set. See also “Response Paging”,
             }
         },
         FirstPractice: {
-            date: fp1Date &lt;datetime&gt;,
+            date: fp1Date &lt;typing.Optional[datetime.datetime]&gt;,
             time: fp1Time &lt;typing.Optional[datetime.time]&gt;
         },
         SecondPractice: {
-            date: fp2Date &lt;datetime&gt;,
+            date: fp2Date &lt;typing.Optional[datetime.datetime]&gt;,
             time: fp2Time &lt;typing.Optional[datetime.time]&gt;
         },
         ThirdPractice: {
-            date: fp3Date &lt;datetime&gt;,
+            date: fp3Date &lt;typing.Optional[datetime.datetime]&gt;,
             time: fp3Time &lt;typing.Optional[datetime.time]&gt;
         },
         Qualifying: {
-            date: qualifyingDate &lt;datetime&gt;,
+            date: qualifyingDate &lt;typing.Optional[datetime.datetime]&gt;,
             time: qualifyingTime &lt;typing.Optional[datetime.time]&gt;
         },
         Sprint: {
-            date: sprintDate &lt;datetime&gt;,
+            date: sprintDate &lt;typing.Optional[datetime.datetime]&gt;,
             time: sprintTime &lt;typing.Optional[datetime.time]&gt;
         }
     }
 ]
 </pre></div>
 </div>
-</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                       &lt;int&gt;
-round                                        &lt;int&gt;
-raceUrl                                      &lt;str&gt;
-raceName                                     &lt;str&gt;
-raceDate                                &lt;datetime&gt;
-raceTime          &lt;typing.Optional[datetime.time]&gt;
-circuitId                                    &lt;str&gt;
-circuitUrl                                   &lt;str&gt;
-circuitName                                  &lt;str&gt;
-lat                                        &lt;float&gt;
-long                                       &lt;float&gt;
-locality                                     &lt;str&gt;
-country                                      &lt;str&gt;
-fp1Date                                 &lt;datetime&gt;
-fp1Time           &lt;typing.Optional[datetime.time]&gt;
-fp2Date                                 &lt;datetime&gt;
-fp2Time           &lt;typing.Optional[datetime.time]&gt;
-fp3Date                                 &lt;datetime&gt;
-fp3Time           &lt;typing.Optional[datetime.time]&gt;
-qualifyingDate                          &lt;datetime&gt;
-qualifyingTime    &lt;typing.Optional[datetime.time]&gt;
-sprintDate                              &lt;datetime&gt;
-sprintTime        &lt;typing.Optional[datetime.time]&gt;
+</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                           &lt;int&gt;
+round                                            &lt;int&gt;
+raceUrl                                          &lt;str&gt;
+raceName                                         &lt;str&gt;
+raceDate          &lt;typing.Optional[datetime.datetime]&gt;
+raceTime              &lt;typing.Optional[datetime.time]&gt;
+circuitId                                        &lt;str&gt;
+circuitUrl                                       &lt;str&gt;
+circuitName                                      &lt;str&gt;
+lat                                            &lt;float&gt;
+long                                           &lt;float&gt;
+locality                                         &lt;str&gt;
+country                                          &lt;str&gt;
+fp1Date           &lt;typing.Optional[datetime.datetime]&gt;
+fp1Time               &lt;typing.Optional[datetime.time]&gt;
+fp2Date           &lt;typing.Optional[datetime.datetime]&gt;
+fp2Time               &lt;typing.Optional[datetime.time]&gt;
+fp3Date           &lt;typing.Optional[datetime.datetime]&gt;
+fp3Time               &lt;typing.Optional[datetime.time]&gt;
+qualifyingDate    &lt;typing.Optional[datetime.datetime]&gt;
+qualifyingTime        &lt;typing.Optional[datetime.time]&gt;
+sprintDate        &lt;typing.Optional[datetime.datetime]&gt;
+sprintTime            &lt;typing.Optional[datetime.time]&gt;
 </pre></div>
 </div>
 </details><dl class="field-list simple">
@@ -714,20 +714,20 @@ Defaults to 0 if not set. See also “Response Paging”,
         url: driverUrl &lt;str&gt;,
         givenName: givenName &lt;str&gt;,
         familyName: familyName &lt;str&gt;,
-        dateOfBirth: dateOfBirth &lt;datetime&gt;,
+        dateOfBirth: dateOfBirth &lt;typing.Optional[datetime.datetime]&gt;,
         nationality: driverNationality &lt;str&gt;
     }
 ]
 </pre></div>
 </div>
-</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>driverId                  &lt;str&gt;
-driverNumber              &lt;int&gt;
-driverCode                &lt;str&gt;
-driverUrl                 &lt;str&gt;
-givenName                 &lt;str&gt;
-familyName                &lt;str&gt;
-dateOfBirth          &lt;datetime&gt;
-driverNationality         &lt;str&gt;
+</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>driverId                                            &lt;str&gt;
+driverNumber                                        &lt;int&gt;
+driverCode                                          &lt;str&gt;
+driverUrl                                           &lt;str&gt;
+givenName                                           &lt;str&gt;
+familyName                                          &lt;str&gt;
+dateOfBirth          &lt;typing.Optional[datetime.datetime]&gt;
+driverNationality                                   &lt;str&gt;
 </pre></div>
 </div>
 </details><dl class="field-list simple">
@@ -941,7 +941,7 @@ Defaults to 0 if not set. See also “Response Paging”,
         round: round &lt;int&gt;,
         url: raceUrl &lt;str&gt;,
         raceName: raceName &lt;str&gt;,
-        date: raceDate &lt;datetime&gt;,
+        date: raceDate &lt;typing.Optional[datetime.datetime]&gt;,
         time: raceTime &lt;typing.Optional[datetime.time]&gt;,
         Circuit: {
             circuitId: circuitId &lt;str&gt;,
@@ -970,7 +970,7 @@ Defaults to 0 if not set. See also “Response Paging”,
                     url: driverUrl &lt;str&gt;,
                     givenName: givenName &lt;str&gt;,
                     familyName: familyName &lt;str&gt;,
-                    dateOfBirth: dateOfBirth &lt;datetime&gt;,
+                    dateOfBirth: dateOfBirth &lt;typing.Optional[datetime.datetime]&gt;,
                     nationality: driverNationality &lt;str&gt;
                 },
                 Constructor: {
@@ -1005,19 +1005,19 @@ Defaults to 0 if not set. See also “Response Paging”,
 ]
 </pre></div>
 </div>
-</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                    &lt;int&gt;
-round                                     &lt;int&gt;
-raceUrl                                   &lt;str&gt;
-raceName                                  &lt;str&gt;
-raceDate                             &lt;datetime&gt;
-raceTime       &lt;typing.Optional[datetime.time]&gt;
-circuitId                                 &lt;str&gt;
-circuitUrl                                &lt;str&gt;
-circuitName                               &lt;str&gt;
-lat                                     &lt;float&gt;
-long                                    &lt;float&gt;
-locality                                  &lt;str&gt;
-country                                   &lt;str&gt;
+</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                        &lt;int&gt;
+round                                         &lt;int&gt;
+raceUrl                                       &lt;str&gt;
+raceName                                      &lt;str&gt;
+raceDate       &lt;typing.Optional[datetime.datetime]&gt;
+raceTime           &lt;typing.Optional[datetime.time]&gt;
+circuitId                                     &lt;str&gt;
+circuitUrl                                    &lt;str&gt;
+circuitName                                   &lt;str&gt;
+lat                                         &lt;float&gt;
+long                                        &lt;float&gt;
+locality                                      &lt;str&gt;
+country                                       &lt;str&gt;
 </pre></div>
 </div>
 <code>ErgastMultiResponse.content</code> (contains data from subkey <code>RaceResults</code>)<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>number                                                     &lt;int&gt;
@@ -1033,7 +1033,7 @@ driverCode                                                 &lt;str&gt;
 driverUrl                                                  &lt;str&gt;
 givenName                                                  &lt;str&gt;
 familyName                                                 &lt;str&gt;
-dateOfBirth                                           &lt;datetime&gt;
+dateOfBirth                 &lt;typing.Optional[datetime.datetime]&gt;
 driverNationality                                          &lt;str&gt;
 constructorId                                              &lt;str&gt;
 constructorUrl                                             &lt;str&gt;
@@ -1093,7 +1093,7 @@ Defaults to 0 if not set. See also “Response Paging”,
         round: round &lt;int&gt;,
         url: raceUrl &lt;str&gt;,
         raceName: raceName &lt;str&gt;,
-        date: raceDate &lt;datetime&gt;,
+        date: raceDate &lt;typing.Optional[datetime.datetime]&gt;,
         time: raceTime &lt;typing.Optional[datetime.time]&gt;,
         Circuit: {
             circuitId: circuitId &lt;str&gt;,
@@ -1120,7 +1120,7 @@ Defaults to 0 if not set. See also “Response Paging”,
                     url: driverUrl &lt;str&gt;,
                     givenName: givenName &lt;str&gt;,
                     familyName: familyName &lt;str&gt;,
-                    dateOfBirth: dateOfBirth &lt;datetime&gt;,
+                    dateOfBirth: dateOfBirth &lt;typing.Optional[datetime.datetime]&gt;,
                     nationality: driverNationality &lt;str&gt;
                 },
                 Constructor: {
@@ -1135,19 +1135,19 @@ Defaults to 0 if not set. See also “Response Paging”,
 ]
 </pre></div>
 </div>
-</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                    &lt;int&gt;
-round                                     &lt;int&gt;
-raceUrl                                   &lt;str&gt;
-raceName                                  &lt;str&gt;
-raceDate                             &lt;datetime&gt;
-raceTime       &lt;typing.Optional[datetime.time]&gt;
-circuitId                                 &lt;str&gt;
-circuitUrl                                &lt;str&gt;
-circuitName                               &lt;str&gt;
-lat                                     &lt;float&gt;
-long                                    &lt;float&gt;
-locality                                  &lt;str&gt;
-country                                   &lt;str&gt;
+</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                        &lt;int&gt;
+round                                         &lt;int&gt;
+raceUrl                                       &lt;str&gt;
+raceName                                      &lt;str&gt;
+raceDate       &lt;typing.Optional[datetime.datetime]&gt;
+raceTime           &lt;typing.Optional[datetime.time]&gt;
+circuitId                                     &lt;str&gt;
+circuitUrl                                    &lt;str&gt;
+circuitName                                   &lt;str&gt;
+lat                                         &lt;float&gt;
+long                                        &lt;float&gt;
+locality                                      &lt;str&gt;
+country                                       &lt;str&gt;
 </pre></div>
 </div>
 <code>ErgastMultiResponse.content</code> (contains data from subkey <code>QualifyingResults</code>)<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>number                                                    &lt;int&gt;
@@ -1161,7 +1161,7 @@ driverCode                                                &lt;str&gt;
 driverUrl                                                 &lt;str&gt;
 givenName                                                 &lt;str&gt;
 familyName                                                &lt;str&gt;
-dateOfBirth                                          &lt;datetime&gt;
+dateOfBirth                &lt;typing.Optional[datetime.datetime]&gt;
 driverNationality                                         &lt;str&gt;
 constructorId                                             &lt;str&gt;
 constructorUrl                                            &lt;str&gt;
@@ -1213,7 +1213,7 @@ Defaults to 0 if not set. See also “Response Paging”,
         round: round &lt;int&gt;,
         url: raceUrl &lt;str&gt;,
         raceName: raceName &lt;str&gt;,
-        date: raceDate &lt;datetime&gt;,
+        date: raceDate &lt;typing.Optional[datetime.datetime]&gt;,
         time: raceTime &lt;typing.Optional[datetime.time]&gt;,
         Circuit: {
             circuitId: circuitId &lt;str&gt;,
@@ -1242,7 +1242,7 @@ Defaults to 0 if not set. See also “Response Paging”,
                     url: driverUrl &lt;str&gt;,
                     givenName: givenName &lt;str&gt;,
                     familyName: familyName &lt;str&gt;,
-                    dateOfBirth: dateOfBirth &lt;datetime&gt;,
+                    dateOfBirth: dateOfBirth &lt;typing.Optional[datetime.datetime]&gt;,
                     nationality: driverNationality &lt;str&gt;
                 },
                 Constructor: {
@@ -1277,19 +1277,19 @@ Defaults to 0 if not set. See also “Response Paging”,
 ]
 </pre></div>
 </div>
-</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                    &lt;int&gt;
-round                                     &lt;int&gt;
-raceUrl                                   &lt;str&gt;
-raceName                                  &lt;str&gt;
-raceDate                             &lt;datetime&gt;
-raceTime       &lt;typing.Optional[datetime.time]&gt;
-circuitId                                 &lt;str&gt;
-circuitUrl                                &lt;str&gt;
-circuitName                               &lt;str&gt;
-lat                                     &lt;float&gt;
-long                                    &lt;float&gt;
-locality                                  &lt;str&gt;
-country                                   &lt;str&gt;
+</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                        &lt;int&gt;
+round                                         &lt;int&gt;
+raceUrl                                       &lt;str&gt;
+raceName                                      &lt;str&gt;
+raceDate       &lt;typing.Optional[datetime.datetime]&gt;
+raceTime           &lt;typing.Optional[datetime.time]&gt;
+circuitId                                     &lt;str&gt;
+circuitUrl                                    &lt;str&gt;
+circuitName                                   &lt;str&gt;
+lat                                         &lt;float&gt;
+long                                        &lt;float&gt;
+locality                                      &lt;str&gt;
+country                                       &lt;str&gt;
 </pre></div>
 </div>
 <code>ErgastMultiResponse.content</code> (contains data from subkey <code>SprintResults</code>)<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>number                                                     &lt;int&gt;
@@ -1305,7 +1305,7 @@ driverCode                                                 &lt;str&gt;
 driverUrl                                                  &lt;str&gt;
 givenName                                                  &lt;str&gt;
 familyName                                                 &lt;str&gt;
-dateOfBirth                                           &lt;datetime&gt;
+dateOfBirth                 &lt;typing.Optional[datetime.datetime]&gt;
 driverNationality                                          &lt;str&gt;
 constructorId                                              &lt;str&gt;
 constructorUrl                                             &lt;str&gt;
@@ -1375,7 +1375,7 @@ Defaults to 0 if not set. See also “Response Paging”,
                     url: driverUrl &lt;str&gt;,
                     givenName: givenName &lt;str&gt;,
                     familyName: familyName &lt;str&gt;,
-                    dateOfBirth: dateOfBirth &lt;datetime&gt;,
+                    dateOfBirth: dateOfBirth &lt;typing.Optional[datetime.datetime]&gt;,
                     nationality: driverNationality &lt;str&gt;
                 },
                 Constructors: [
@@ -1396,22 +1396,22 @@ Defaults to 0 if not set. See also “Response Paging”,
 round     &lt;int&gt;
 </pre></div>
 </div>
-<code>ErgastMultiResponse.content</code> (contains data from subkey <code>DriverStandings</code>)<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>position                         &lt;int&gt;
-positionText                     &lt;str&gt;
-points                         &lt;float&gt;
-wins                             &lt;int&gt;
-driverId                         &lt;str&gt;
-driverNumber                     &lt;int&gt;
-driverCode                       &lt;str&gt;
-driverUrl                        &lt;str&gt;
-givenName                        &lt;str&gt;
-familyName                       &lt;str&gt;
-dateOfBirth                 &lt;datetime&gt;
-driverNationality                &lt;str&gt;
-constructorIds                 [&lt;str&gt;]
-constructorUrls                [&lt;str&gt;]
-constructorNames               [&lt;str&gt;]
-constructorNationalities       [&lt;str&gt;]
+<code>ErgastMultiResponse.content</code> (contains data from subkey <code>DriverStandings</code>)<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>position                                                   &lt;int&gt;
+positionText                                               &lt;str&gt;
+points                                                   &lt;float&gt;
+wins                                                       &lt;int&gt;
+driverId                                                   &lt;str&gt;
+driverNumber                                               &lt;int&gt;
+driverCode                                                 &lt;str&gt;
+driverUrl                                                  &lt;str&gt;
+givenName                                                  &lt;str&gt;
+familyName                                                 &lt;str&gt;
+dateOfBirth                 &lt;typing.Optional[datetime.datetime]&gt;
+driverNationality                                          &lt;str&gt;
+constructorIds                                           [&lt;str&gt;]
+constructorUrls                                          [&lt;str&gt;]
+constructorNames                                         [&lt;str&gt;]
+constructorNationalities                                 [&lt;str&gt;]
 </pre></div>
 </div>
 </details><dl class="field-list simple">
@@ -1521,7 +1521,7 @@ Defaults to 0 if not set. See also “Response Paging”,
         round: round &lt;int&gt;,
         url: raceUrl &lt;str&gt;,
         raceName: raceName &lt;str&gt;,
-        date: raceDate &lt;datetime&gt;,
+        date: raceDate &lt;typing.Optional[datetime.datetime]&gt;,
         time: raceTime &lt;typing.Optional[datetime.time]&gt;,
         Circuit: {
             circuitId: circuitId &lt;str&gt;,
@@ -1550,19 +1550,19 @@ Defaults to 0 if not set. See also “Response Paging”,
 ]
 </pre></div>
 </div>
-</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                    &lt;int&gt;
-round                                     &lt;int&gt;
-raceUrl                                   &lt;str&gt;
-raceName                                  &lt;str&gt;
-raceDate                             &lt;datetime&gt;
-raceTime       &lt;typing.Optional[datetime.time]&gt;
-circuitId                                 &lt;str&gt;
-circuitUrl                                &lt;str&gt;
-circuitName                               &lt;str&gt;
-lat                                     &lt;float&gt;
-long                                    &lt;float&gt;
-locality                                  &lt;str&gt;
-country                                   &lt;str&gt;
+</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                        &lt;int&gt;
+round                                         &lt;int&gt;
+raceUrl                                       &lt;str&gt;
+raceName                                      &lt;str&gt;
+raceDate       &lt;typing.Optional[datetime.datetime]&gt;
+raceTime           &lt;typing.Optional[datetime.time]&gt;
+circuitId                                     &lt;str&gt;
+circuitUrl                                    &lt;str&gt;
+circuitName                                   &lt;str&gt;
+lat                                         &lt;float&gt;
+long                                        &lt;float&gt;
+locality                                      &lt;str&gt;
+country                                       &lt;str&gt;
 </pre></div>
 </div>
 <code>ErgastMultiResponse.content</code> (contains data from subkey <code>Laps</code>)<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>number                                      &lt;int&gt;
@@ -1609,7 +1609,7 @@ Defaults to 0 if not set. See also “Response Paging”,
         round: round &lt;int&gt;,
         url: raceUrl &lt;str&gt;,
         raceName: raceName &lt;str&gt;,
-        date: raceDate &lt;datetime&gt;,
+        date: raceDate &lt;typing.Optional[datetime.datetime]&gt;,
         time: raceTime &lt;typing.Optional[datetime.time]&gt;,
         Circuit: {
             circuitId: circuitId &lt;str&gt;,
@@ -1636,7 +1636,7 @@ Defaults to 0 if not set. See also “Response Paging”,
                     url: driverUrl &lt;str&gt;,
                     givenName: givenName &lt;str&gt;,
                     familyName: familyName &lt;str&gt;,
-                    dateOfBirth: dateOfBirth &lt;datetime&gt;,
+                    dateOfBirth: dateOfBirth &lt;typing.Optional[datetime.datetime]&gt;,
                     nationality: driverNationality &lt;str&gt;
                 },
                 Constructors: [
@@ -1653,19 +1653,19 @@ Defaults to 0 if not set. See also “Response Paging”,
 ]
 </pre></div>
 </div>
-</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                    &lt;int&gt;
-round                                     &lt;int&gt;
-raceUrl                                   &lt;str&gt;
-raceName                                  &lt;str&gt;
-raceDate                             &lt;datetime&gt;
-raceTime       &lt;typing.Optional[datetime.time]&gt;
-circuitId                                 &lt;str&gt;
-circuitUrl                                &lt;str&gt;
-circuitName                               &lt;str&gt;
-lat                                     &lt;float&gt;
-long                                    &lt;float&gt;
-locality                                  &lt;str&gt;
-country                                   &lt;str&gt;
+</details><details><summary><a>DataFrame Description</a></summary>DataFrame column names and dtypes for automatic typecasting:</br></br><code>ErgastMultiResponse.description</code><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>season                                        &lt;int&gt;
+round                                         &lt;int&gt;
+raceUrl                                       &lt;str&gt;
+raceName                                      &lt;str&gt;
+raceDate       &lt;typing.Optional[datetime.datetime]&gt;
+raceTime           &lt;typing.Optional[datetime.time]&gt;
+circuitId                                     &lt;str&gt;
+circuitUrl                                    &lt;str&gt;
+circuitName                                   &lt;str&gt;
+lat                                         &lt;float&gt;
+long                                        &lt;float&gt;
+locality                                      &lt;str&gt;
+country                                       &lt;str&gt;
 </pre></div>
 </div>
 <code>ErgastMultiResponse.content</code> (contains data from subkey <code>PitStops</code>)<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>driverId                                                    &lt;str&gt;
@@ -1678,7 +1678,7 @@ driverCode                                                  &lt;str&gt;
 driverUrl                                                   &lt;str&gt;
 givenName                                                   &lt;str&gt;
 familyName                                                  &lt;str&gt;
-dateOfBirth                                            &lt;datetime&gt;
+dateOfBirth                  &lt;typing.Optional[datetime.datetime]&gt;
 driverNationality                                           &lt;str&gt;
 constructorIds                                            [&lt;str&gt;]
 constructorUrls                                           [&lt;str&gt;]
@@ -2078,7 +2078,7 @@ specified in the request that is associated with this response.</p>
 </div>
     <script data-goatcounter="https://ey2kpxm326wjqcsfzewz.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
-    <script src="_static/documentation_options.js?v=dcedd534"></script>
+    <script src="_static/documentation_options.js?v=c2c98bb9"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

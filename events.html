@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="F1 API - fastf1.api" href="api.html" /><link rel="prev" title="Timing and Telemetry Data - fastf1.core" href="core.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Event Schedule - fastf1.events - FastF1 3.2.2</title>
+        <title>Event Schedule - fastf1.events - FastF1 3.3.4</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">FastF1 <small>3.2.2</small></div></a>
+      <a href="index.html"><div class="brand">FastF1 <small>3.3.4</small></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -152,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">FastF1 <small>3.2.2</small></span>
+  <span class="sidebar-brand-text">FastF1 <small>3.3.4</small></span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -282,7 +282,7 @@ The events reference date and time. This is used mainly internally.
 Usually, this is the same as the date of the last session.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EventFormat</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> |
 The format of the event. One of ‘conventional’, ‘sprint’,
-‘sprint_shootout’, ‘testing’.</p></li>
+‘sprint_shootout’, ‘sprint_qualifying’, ‘testing’. See <a class="reference internal" href="#event-formats"><span class="std std-ref">Event Formats</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Session*</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> |
 The name of the session. One of ‘Practice 1’, ‘Practice 2’, ‘Practice 3’,
 ‘Qualifying’, ‘Sprint’, ‘Sprint Shootout’ or ‘Race’.
@@ -307,7 +307,7 @@ Lap timing data and telemetry data can only be loaded if this is true.</p></li>
 <section id="supported-seasons">
 <h3>Supported Seasons<a class="headerlink" href="#supported-seasons" title="Link to this heading">#</a></h3>
 <p>FastF1 provides its own event schedule for the 2018 season and all later
-seasons. The schedule for the all seasons before 2018 is built using data from
+seasons. The schedule for all seasons before 2018 is built using data from
 the Ergast API. Only limited data is available for these seasons. Usage of the
 Ergast API can be enforced for all seasons by setting <code class="docutils literal notranslate"><span class="pre">backend='ergast'</span></code>,
 in which case the same limitations apply for the more recent seasons too.</p>
@@ -322,14 +322,33 @@ provided for these. These assumptions will be incorrect for certain events!</p>
 <p><strong>Testing events</strong>: Supported for the 2020 season and later seasons. Not
 supported if usage of the Ergast API is enforced.</p>
 </section>
-<section id="event-schedule">
-<h3>Event Schedule<a class="headerlink" href="#event-schedule" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>‘conventional’: Practice 1, Practice 2, Practice 3, Qualifying, Race</p></li>
-<li><p>‘sprint’: Practice 1, Qualifying, Practice 2, Sprint, Race</p></li>
-<li><p>‘sprint_shootout’: Practice 1, Qualifying, Sprint Shootout, Sprint, Race</p></li>
-<li><p>‘testing’: no fixed session order; usually three practice sessions on
-three separate days</p></li>
+<section id="event-formats">
+<span id="id1"></span><h3>Event Formats<a class="headerlink" href="#event-formats" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>‘conventional’: Practice 1, Practice 2, Practice 3, Qualifying, Race</strong></p></li>
+<li><p><strong>‘sprint’: Practice 1, Qualifying, Practice 2, Sprint, Race</strong></p>
+<p>This is the original sprint format that was used in some races in 2021 and
+2022. The Qualifying on friday set the grid for the Sprint on saturday.
+The results from the Sprint set the grid for the Race on sunday.</p>
+</li>
+<li><p><strong>‘sprint_shootout’: Practice 1, Qualifying, Sprint Shootout, Sprint, Race</strong></p>
+<p>This format was used in 2023. The Qualifying on friday sets the grid for the
+main Race on sunday. The Sprint Shootout on saturday is held in similar
+fashion to a normal Qualifying session and sets the grid for the Sprint that
+takes place on saturday as well.</p>
+</li>
+<li><p><strong>‘sprint_qualifying’: Practice 1, Sprint Qualifying, Sprint, Qualifying,
+Race</strong></p>
+<p>This format is used starting from 2024. In general, it is similar to the
+previous ‘sprint_shootout’ format, but the order of the sessions was changed
+and ‘Sprint Shootout’ is renamed to ‘Sprint Qualifying’. This means that
+the Sprint Qualifying on friday is held in similar fashion to a normal
+Qualifying and sets the grid for the Sprint on saturday. The Qualifying later
+on saturday then sets the grid for the race on Sunday.</p>
+</li>
+<li><p><strong>‘testing’: no fixed session order</strong></p>
+<p>usually three practice sessions on three separate days</p>
+</li>
 </ul>
 </section>
 </section>
@@ -340,17 +359,22 @@ identifier to differentiate between the various sessions of one event.
 This identifier can currently be one of the following:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>session name abbreviation: <code class="docutils literal notranslate"><span class="pre">'FP1',</span> <span class="pre">'FP2',</span> <span class="pre">'FP3',</span> <span class="pre">'Q',</span> <span class="pre">'S',</span> <span class="pre">'SS',</span> <span class="pre">'R'</span></code></p></li>
+<li><p>session name abbreviation: <code class="docutils literal notranslate"><span class="pre">'FP1',</span> <span class="pre">'FP2',</span> <span class="pre">'FP3',</span> <span class="pre">'Q',</span> <span class="pre">'S',</span> <span class="pre">'SS',</span> <span class="pre">'SQ',</span>
+<span class="pre">'R'</span></code></p></li>
 <li><p>full session name: <code class="docutils literal notranslate"><span class="pre">'Practice</span> <span class="pre">1',</span> <span class="pre">'Practice</span> <span class="pre">2',</span>
-<span class="pre">'Practice</span> <span class="pre">3',</span> <span class="pre">'Sprint',</span> <span class="pre">'Sprint</span> <span class="pre">Shootout',</span> <span class="pre">'Qualifying',</span> <span class="pre">'Race'</span></code>;
+<span class="pre">'Practice</span> <span class="pre">3',</span> <span class="pre">'Sprint',</span> <span class="pre">'Sprint</span> <span class="pre">Shootout',</span> <span class="pre">'Sprint</span> <span class="pre">Qualifying',</span>
+<span class="pre">'Qualifying',</span> <span class="pre">'Race'</span></code>;
 provided names will be normalized, so that the name is
 case-insensitive</p></li>
 <li><p>number of the session: <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5</span></code></p></li>
 </ul>
 </div></blockquote>
-<p>Note that ‘Sprint Qualifying’ is now always called ‘Sprint’.
-The event name will silently be corrected if you use ‘Sprint Qualifying’/’SQ’
-instead of ‘Sprint’/’S’.</p>
+<p>Note that the old <code class="docutils literal notranslate"><span class="pre">'sprint'</span></code> event format from 2021 and 2022 originally used
+the name ‘Sprint Qualifying’ before renaming these sessions to just ‘Sprint’.
+The official schedule for 2021 now lists all these sessions as ‘Sprint’ and
+FastF1 will therefore return all these session as ‘Sprint’. When querying for a
+specific session, FastF1 will also accept the ‘Sprint Qualifying’/’SQ’
+identifier instead of only ‘Sprint’/’S’ for backwards compatibility.</p>
 </section>
 <section id="functions-for-accessing-schedule-data">
 <h2>Functions for accessing schedule data<a class="headerlink" href="#functions-for-accessing-schedule-data" title="Link to this heading">#</a></h2>
@@ -526,7 +550,10 @@ event, see <a class="reference internal" href="#event-schedule-data">Event Sched
 <tr class="row-even"><td><p><a class="reference internal" href="#fastf1.events.Event.get_sprint_shootout" title="fastf1.events.Event.get_sprint_shootout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sprint_shootout</span></code></a>()</p></td>
 <td><p>Return the sprint shootout session.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.events.Event.get_practice" title="fastf1.events.Event.get_practice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_practice</span></code></a>(number)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fastf1.events.Event.get_sprint_qualifying" title="fastf1.events.Event.get_sprint_qualifying"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sprint_qualifying</span></code></a>()</p></td>
+<td><p>Return the sprint qualifying session.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fastf1.events.Event.get_practice" title="fastf1.events.Event.get_practice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_practice</span></code></a>(number)</p></td>
 <td><p>Return the specified practice session.</p></td>
 </tr>
 </tbody>
@@ -655,6 +682,17 @@ of this event is or was held.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="fastf1.events.Event.get_sprint_qualifying">
+<span class="sig-name descname"><span class="pre">get_sprint_qualifying</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/events.html#Event.get_sprint_qualifying"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.events.Event.get_sprint_qualifying" title="Link to this definition">#</a></dt>
+<dd><p>Return the sprint qualifying session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="core.html#fastf1.core.Session" title="fastf1.core.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="fastf1.events.Event.get_practice">
 <span class="sig-name descname"><span class="pre">get_practice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fastf1/events.html#Event.get_practice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fastf1.events.Event.get_practice" title="Link to this definition">#</a></dt>
 <dd><p>Return the specified practice session.
@@ -731,7 +769,7 @@ of this event is or was held.</p>
 <li><a class="reference internal" href="#">Event Schedule - <code class="xref py py-mod docutils literal notranslate"><span class="pre">fastf1.events</span></code></a><ul>
 <li><a class="reference internal" href="#event-schedule-data">Event Schedule Data</a><ul>
 <li><a class="reference internal" href="#supported-seasons">Supported Seasons</a></li>
-<li><a class="reference internal" href="#event-schedule">Event Schedule</a></li>
+<li><a class="reference internal" href="#event-formats">Event Formats</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#session-identifiers">Session identifiers</a></li>
@@ -754,6 +792,7 @@ of this event is or was held.</p>
 <li><a class="reference internal" href="#fastf1.events.Event.get_qualifying"><code class="docutils literal notranslate"><span class="pre">Event.get_qualifying()</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.events.Event.get_sprint"><code class="docutils literal notranslate"><span class="pre">Event.get_sprint()</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.events.Event.get_sprint_shootout"><code class="docutils literal notranslate"><span class="pre">Event.get_sprint_shootout()</span></code></a></li>
+<li><a class="reference internal" href="#fastf1.events.Event.get_sprint_qualifying"><code class="docutils literal notranslate"><span class="pre">Event.get_sprint_qualifying()</span></code></a></li>
 <li><a class="reference internal" href="#fastf1.events.Event.get_practice"><code class="docutils literal notranslate"><span class="pre">Event.get_practice()</span></code></a></li>
 </ul>
 </li>
@@ -775,7 +814,7 @@ of this event is or was held.</p>
 </div>
     <script data-goatcounter="https://ey2kpxm326wjqcsfzewz.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
-    <script src="_static/documentation_options.js?v=dcedd534"></script>
+    <script src="_static/documentation_options.js?v=c2c98bb9"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>

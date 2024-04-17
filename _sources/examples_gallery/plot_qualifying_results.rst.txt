@@ -191,7 +191,16 @@ Finally, we'll create a list of team colors per lap to color our plot.
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/runner/work/Fast-F1/Fast-F1/examples/plot_qualifying_results.py", line 67, in <module>
+        color = fastf1.plotting.team_color(lap['Team'])
+      File "/home/runner/work/Fast-F1/Fast-F1/fastf1/plotting.py", line 372, in team_color
+        raise KeyError
+    KeyError
 
 
 
@@ -219,12 +228,6 @@ Now, we can plot all the data
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 89-90
 
 Finally, give the plot a meaningful title
@@ -242,20 +245,9 @@ Finally, give the plot a meaningful title
     plt.show()
 
 
-
-.. image-sg:: /examples_gallery/images/sphx_glr_plot_qualifying_results_001.png
-   :alt: Spanish Grand Prix 2021 Qualifying Fastest Lap: 01:16.741 (HAM)
-   :srcset: /examples_gallery/images/sphx_glr_plot_qualifying_results_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.829 seconds)
+   **Total running time of the script:** (0 minutes 1.873 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_qualifying_results.py:

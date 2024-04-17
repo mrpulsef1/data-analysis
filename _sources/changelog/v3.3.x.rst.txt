@@ -1,0 +1,70 @@
+What's new in v3.3.4
+--------------------
+
+(released 17/04/2024)
+
+
+Bug Fixes
+^^^^^^^^^
+
+- Correctly support the new "Sprint Qualifying"
+
+
+What's new in v3.3.3
+--------------------
+
+(released 05/04/2024)
+
+
+New Features
+^^^^^^^^^^^^
+
+- Added support for driver Ayumu Iwasa (IWA)
+
+
+What's new in v3.3.2
+--------------------
+
+(released 26/03/2024)
+
+
+Bug Fixes
+^^^^^^^^^
+
+- Fixed a bug that caused the track status values for each lap to be sometimes
+  incorrect in the 'TrackStatus' column of the :class:`~fastf1.core.Laps`
+  DataFrame (fixes #557 and more).
+
+
+What's new in v3.3.1
+--------------------
+
+(released 10/03/2024)
+
+
+Bug Fixes
+^^^^^^^^^
+
+- Fix: correctly handle empty strings when parsing them in
+  :func:`fastf1.utils.to_datetime` (by @erdieee) (#531)
+
+- Fix: gracefully handle empty strings when parsing datetime values in
+  Ergast responses (by @mdsakalu) (#546). This fixes partially missing data
+  in the results Qualifying and Race results for the 2024 Saudi Arabia GP.
+
+
+
+What's new in v3.3.0
+--------------------
+
+(released 19/02/2024)
+
+
+New Features
+^^^^^^^^^^^^
+
+- Updated team names and team colors for the 2024 season. (As usual, this means
+  that this information is no longer valid for the previous season!)
+
+- Improved the accuracy of :func:`fastf1.utils.delta_time` (by @grahamjwhite)
+  (#512)
