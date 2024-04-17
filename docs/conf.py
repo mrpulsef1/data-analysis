@@ -165,8 +165,6 @@ sphinx_gallery_conf = {
     # Modules for which function/class level galleries are created. In
     # this case sphinx_gallery and numpy in a tuple of strings.
     'doc_module': ('fastf1', ),
-    'expected_failing_examples': ('../examples/plot_qualifying_results.py',
-                                  '../examples/plot_team_pace_ranking.py'),
 }
 
 
